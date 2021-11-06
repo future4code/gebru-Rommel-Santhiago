@@ -1,31 +1,29 @@
-Alunos(as), sejam bem-vindos(as)!
-
-Esse repositório vai acompanhar vocês até o final do curso, para mantermos a organização, sugerimos que vocês sigam a seguinte estrutura:
+Arvore de organização dos repositorios
 
 ```
 .
-├── quinzena-1
+├── semana-00
 │   ├── aula1
 │   ├── aula2
 │   ├── aula3
 │   ├── aula4
 │   └── projeto-nome
 |
-├── quinzena-2
+├── semana-01
 │   ├── aula5
 │   ├── aula6
 │   ├── aula7
 │   ├── aula8
 │   └── projeto-nome
 |
-├── quinzena-3
+├── semana-02
 │   ├── aula9
 │   ├── aula10
 │   ├── aula11
 │   ├── aula12
 │   └── projeto-nome
 |
-├── quinzena-4
+├── semana-03
 │   ├── aula13
 │   ├── aula14
 │   ├── aula15
@@ -34,4 +32,4 @@ Esse repositório vai acompanhar vocês até o final do curso, para mantermos a 
 |
 ```
 
-Uma pasta para cada quinzena, dentro delas uma pasta para cada dia de aula e por fim uma pasta para o projeto quinzenal.
+Uma pasta para cada semana, dentro delas uma pasta para cada dia de aula e por fim uma pasta para o projeto quinzenal.
