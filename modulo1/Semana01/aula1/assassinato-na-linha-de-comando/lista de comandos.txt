@@ -1,0 +1,81 @@
+cd assassinato-na-linha-de-comando
+
+cat inicio
+
+cd misterio
+
+ls
+
+grep PISTA ./cena-do-crime
+
+ls
+
+grep Annabel pessoas
+
+ls
+
+cat -n ./ruas/Vila_Hart
+
+ls
+
+cat ./entrevistas/entrevista-47246024
+
+ls
+
+cat -n ./ruas/Rua_Mattapan
+
+ls
+
+cat ./entrevistas/entrevista-9437737
+
+ls
+
+cat -n ./ruas/Vila_Buckingham
+
+ls
+
+cat ./entrevistas/entrevista-699607
+
+ls
+
+cat -n ./ruas/Rua_Haley
+
+ls
+
+cat ./entrevistas/entrevista-871877
+
+ls
+
+grep -A 5 "Placa L337" ./automoveis
+
+ls
+
+grep "Joe Germuska" ./pessoas
+
+ls
+
+cat -n ./ruas/Rua_Plainfield
+
+ls
+
+cat ./entrevistas/entrevista-29741223
+
+ls
+
+grep "Jeremy Bowers" ./pessoas
+
+ls
+
+cat -n ./ruas/Travessa_Dunstable
+
+ls
+
+cat ./entrevistas/entrevista-9620713
+
+ls
+
+grep "Jacqui Maher" ./pessoas
+
+ls
+
+grep "Jeremy Bowers" ./associacoes/*
