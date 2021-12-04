@@ -22,19 +22,19 @@ if(jogar){
    let carta1Maquina = comprarCarta()
    let carta2Maquina = comprarCarta()
 
-   let pontuacaoUsuario = carta1Usuario.valor + carta2Usuario.valor
-   let pontuacaoMaquina = carta1Maquina.valor + carta2Maquina.valor
+   let pontosUsuario = carta1Usuario.valor + carta2Usuario.valor
+   let pontosMaquina = carta1Maquina.valor + carta2Maquina.valor
 
-   console.log(`${usuario} ${carta1Usuario.texto} ${carta2Usuario.texto} pontuação: ${pontuacaoUsuario}`)
-   console.log(`Maquina ${carta1Maquina.texto} ${carta2Maquina.texto} pontuação ${pontuacaoMaquina}`)
+   console.log(`${usuario} ${carta1Usuario.texto} ${carta2Usuario.texto} pontuação: ${pontosUsuario}`)
+   console.log(`Maquina ${carta1Maquina.texto} ${carta2Maquina.texto} pontuação ${pontosMaquina}`)
 
-   if (pontuacaoUsuario > pontuacaoMaquina) {
+   if (pontosUsuario > pontosMaquina) {
       console.log(`${usuario} ganhou!`)
-  } else if (pontuacaoMaquina > pontuacaoUsuario) {
+  } else if (pontosMaquina > pontosUsuario) {
       console.log("A maquina ganhou!")
-  } else if (pontuacaoUsuario === pontuacaoMaquina) {
+  } else if (pontosUsuario === pontosMaquina) {
       console.log("Empate!")
   }
 } else {
-   console.log("O jogo acabou")
+   console.log("O jogo acabou!")
 }
