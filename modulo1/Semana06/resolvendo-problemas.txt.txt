@@ -1,0 +1,22 @@
+Exercícios de fixação do conhecimento
+
+1 - Ter atenção no enunciado
+Interpretar e saber o que realmente o enunciado está pedindo
+
+2 - Retirar informações relevantes
+Retirar do enunciado informações relevantes para conseguir pensar no codigo
+
+3 - Pensar entradas e saidas
+Pensar em variaveis e funções possiveis para resolver a questão
+
+4 - Fazer um esquema visual
+Criar alguma diagrama ou fluxograma para deixar as coisas mais claras
+
+5 - Criar um codigo feio
+Criar um codigo que resolva a questão
+
+6 - Testar força-bruta
+Testar se há erros ou respostas incorretas no codigo
+
+7 - Refatorar
+Refatorar o codigo, deixar ele mais legivel, mais bonito e até mais otimizado
