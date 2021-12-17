@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/produtos.css">
+    <link rel="stylesheet" href="/css/vendas.css">
+    <title>Adicionar Produto</title>
+</head>
+<body>
+    <header class="header">
+        <div class="titulo">
+            <p class="titulos-pages">PITSTOP DO ACESSORIO</p>
+        </div>
+        
+        <div class="menu">
+            <a href="home.html">Página Inicial</a>
+            <a href="ctrl-estoque.html">Controle de Estoque</a>
+            <a href="add-produto.html">Adicionar Produto</a>
+            <a href="funcionarios.html">Funcionários</a>
+        </div>
+    </header>
+
+    <main>
+        <div>
+            <form action="" class="add-produto">
+                <label for="item">Adicione um produto</label>
+                <input type="texto" name="item" id="item">
+                <label for="quantidade"></label>
+                <input type="number" id="quantidade" name="quantidade" min="1" max="10" value="1">
+            </form>
+            <a href="historico.html">Historico</a> 
+        </div>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td class="texto"><img src="./img/01.jpg" alt="adesivo-de-roda"><p>Adesivo refletivo de roda para carro</p></td>
+                <td>R$ 34,00</td>
+                <td>4</td>
+                <td>R$ 136,00</td>
+            </tr>
+
+            <tr>
+                <td><img src="./img/02.webp" alt="Capa para banco"/><p>Capa para banco de carro universal</p></td>
+                <td> R$ 100,00 </td>
+                <td> 1 </td>
+                <td> R$ 100,00 </td>
+            </tr>
+
+            <tr>
+                <td><img src="./img/03.webp" alt="Suporte para bicicleta"/><p>Suporte para bicicleta</p></td>
+                <td> R$ 200,00 </td>
+                <td> 1 </td>
+                <td> R$ 200,00 </td>
+            </tr>
+
+            <tr>
+                <td><img src="./img/04.webp" alt="Central multimidia"/><p>Central multimidia</p></td>
+                <td> R$ 450,00 </td>
+                <td> 1 </td>
+                <td> R$ 450,00 </td>
+            </tr>
+            
+            <tr>
+                <td><img src="./img/05.webp" alt="Volante esportivo"/><p>Volante esportivo universal</p></td>
+                <td>R$ 90,00</td>
+                <td>1</td>
+                <td>R$ 90,00</td>
+            </tr>
+        </table>
+        <fieldset>
+            <legend> Opções de pagamento </legend>
+            <div>
+              <input type="checkbox" id="dinheiro" name="pagamento" value="dinheiro">
+              <label for="dinheiro"> Dinheiro </label>
+            </div>
+            <div>
+              <input type = "checkbox" id = "cartao" name = "pagamento" value = "cartao">
+              <label for = "cartao"> Cartão </label>
+            </div>
+        </fieldset>
+        
+    </main>
+
+    <footer class="footer">
+        <div>
+            <p>Siga-nos nas redes sociais!</p>
+
+            <div id="footer-img">
+                <img src="https://image.flaticon.com/icons/png/512/25/25305.png"/>
+                <img src="https://image.flaticon.com/icons/png/512/25/25425.png"/>
+                <img src="https://image.flaticon.com/icons/png/512/8/8800.png"/>
+            </div>
+        </div>
+    </footer> 
+</body>
+</html>

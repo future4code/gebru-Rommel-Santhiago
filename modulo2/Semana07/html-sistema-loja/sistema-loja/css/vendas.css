@@ -1,0 +1,56 @@
+main div {
+    display: flex;
+    aling-items: center;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+main div a {
+    height: 20px;
+}
+
+.add-produto {
+    text-align: center;
+    font-size: 25px;
+    margin: 15px;
+    margin-left: 5%;
+}
+
+#quantidade {
+    width: 30px;
+}
+
+table {
+    width: 70%;
+    margin: auto;
+}
+
+table tr td img {
+    width: 75px;
+    vertical-align: middle;
+}
+
+table tr td p {
+    display: inline;
+    margin-left: 20%;
+}
+
+table tr td {
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgb(216, 216, 216);
+}
+
+main fieldset legend {
+    text-align: center;
+    font-size: 30px;
+}
+
+main fieldset div{
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    margin-left: 45%;
+    width: 8%;
+}

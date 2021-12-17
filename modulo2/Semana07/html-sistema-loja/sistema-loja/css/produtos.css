@@ -1,0 +1,35 @@
+.main {
+    text-align: center;
+}
+
+form {
+    width: 50%;
+    margin: 20px auto;
+    font-size: 25px;
+}
+
+form div {
+    display: flex;
+    aling-items: center;
+    justify-content: space-between;
+    margin: 3px;
+}
+
+form input {
+    border: 1px solid #ccc;
+    width: 50%;
+}
+
+form button {
+    background-color: green;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    border-radius: 7px;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    margin: 20px;
+}
