@@ -1,0 +1,101 @@
+* {
+    margin:0;
+    vertical-align:baseline;
+    list-style:none;
+    border:0
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 230px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 200px;
+    width: 100%;
+    background-color: rgba(12, 128, 18, 0.322);
+    background-image: url(../img/cabeçalho.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    padding: 5px;
+}
+
+main {
+    flex: 1 1 auto;
+}
+
+.titulo {
+    color: green;
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.titulo-home {
+    margin: 20px;
+}
+
+.titulos-pages {
+    font-size: 48px;
+    margin: 30px;
+}
+
+.intro {
+    font-size: 16px;
+    margin: 10px;
+}
+.menu {
+    text-align: center;
+}
+
+a:link {
+    background-color: green;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    border-radius: 7px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+}
+
+a:visited {
+    background-color: green;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    border-radius: 7px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    display: inline-block;
+}
+  
+a:hover, a:active {
+    background-color: rgba(44, 230, 59, 0.582);
+    color: white;
+}
+
+.footer {
+    flex-shrink: 0;
+    background-color: gray;
+    height: 100px;
+    bottom: 0;
+    text-align: center;
+}
+
+#footer-img img {
+    width: 60px;
+    margin: 10px;
+}

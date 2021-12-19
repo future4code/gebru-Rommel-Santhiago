@@ -1,0 +1,29 @@
+.main {
+    text-align: center;
+}
+
+h2 {
+    margin-left: 50px;
+}
+
+main div {
+    display: flex;
+    aling-items: center;
+    justify-content: space-between;
+    margin-left: 500px;
+    margin-right: 70px;
+}
+
+table {
+    width: 90%;
+    margin: auto;
+}
+
+table tr td img {
+    width: 75px;
+}
+
+table tr td {
+    text-align: center;
+    background-color: rgb(216, 216, 216);
+}
