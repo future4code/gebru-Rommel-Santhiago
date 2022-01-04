@@ -73,6 +73,7 @@ div img {
 }
 
 #container-de-descricao>ol {
+    text-align: center;
     padding: 15px 0px;
 }
 
