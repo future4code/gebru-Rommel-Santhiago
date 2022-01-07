@@ -1,173 +1,173 @@
 /* 1º */
 #pond {
-    display: flex;
+  display: flex;
   justify-content: flex-end;
 }
 
 /* 2º */
 #pond {
-    display: flex;
+  display: flex;
   justify-content: center;
 }
 
 /* 3º */
 #pond {
-    display: flex;
+  display: flex;
   justify-content: space-around;
 }
 
 /* 4º */
 #pond {
-    display: flex;
+  display: flex;
   justify-content: space-between;
 }
 
 /* 5º */
 #pond {
-    display: flex;
+  display: flex;
   align-items: flex-end;
 }
 
 /* 6º */
 #pond {
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 /* 7º */
 #pond {
-    display: flex;
+  display: flex;
   justify-content: space-around;
   align-items: flex-end;
-  }
+}
 
 /* 8º */
 #pond {
-    display: flex;
+  display: flex;
   flex-direction: row-reverse;
-  }
+}
 
 /* 9º */
 #pond {
-    display: flex;
+  display: flex;
   flex-direction: column;
-  }
+}
 
 /* 10º */
 #pond {
-    display: flex;
+  display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  }
+}
 
 /* 11º */
 #pond {
-    display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: flex-end
-  }
+  justify-content: flex-end;
+}
 
 /* 12º */
 #pond {
-    display: flex;
+  display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
-  }
+}
 
 /* 13º */
 #pond {
-    display: flex;
+  display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   align-items: flex-end;
-  }
+}
 
 /* 14º */
-#Lago {
-    display: flex;
-  }
-  
-  .amarelo {
-  order: 1
-  }
+#pond {
+  display: flex;
+}
+
+.yellow {
+  order: 1;
+}
 
 /* 15º */
 #pond {
-    display: flex;
-  }
-  
-  .red {
-  order: -1
-  }
+  display: flex;
+}
+
+.red {
+  order: -1;
+}
 
 /* 16º */
 #pond {
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  .yellow {
+  display: flex;
+  align-items: flex-start;
+}
+
+.yellow {
   align-self: flex-end;
-  }
+}
 
 /* 17º */
 #pond {
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  .yellow {
+  display: flex;
+  align-items: flex-start;
+}
+
+.yellow {
   align-self: flex-end;
-  order: 1
-  }
+  order: 1;
+}
 
 /* 18º */
 #pond {
-    display: flex;
-  flex-wrap: wrap
-  }
+  display: flex;
+  flex-wrap: wrap;
+}
 
 /* 19º */
 #pond {
-    display: flex;
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  }
+}
 
 /* 20º */
-#Lago {
-    display: flex;
-  flex-flow: column wrap
-  }
+#pond {
+  display: flex;
+  flex-flow: column wrap;
+}
 
 /* 21º */
-#Lago {
-    display: flex;
-    flex-wrap: wrap;
+#pond {
+  display: flex;
+  flex-wrap: wrap;
   align-content: flex-start;
-  }
+}
 
 /* 22º */
-#Lago {
-    display: flex;
-    flex-wrap: wrap;
-  align-content: flex-end
-  }
+#pond {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
 
 /* 23º */
-#Lago {
-    display: flex;
-    flex-wrap: wrap;
+#pond {
+  display: flex;
+  flex-wrap: wrap;
   flex-direction: column-reverse;
   align-content: center;
-  }
+}
 
 /* 24º */
-#Lago {
-    display: flex;
+#pond {
+  display: flex;
   flex-wrap: wrap-reverse;
   flex-direction: column-reverse;
   justify-content: center;
   align-content: space-between;
-  }
+}

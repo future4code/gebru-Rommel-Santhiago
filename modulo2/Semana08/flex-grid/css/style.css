@@ -1,74 +1,75 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: cursive;
 }
 
-.container {
+#conteiner {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 20% 70% 10%;
 }
 
-header {
-    height: 50px;
+#header-container {
+    display: grid;
+    grid-template-columns: 90% 1fr;
+    align-items: center;
     background-color: mediumvioletred;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
- }
-
- header h1 {
-     align-self: center;
- }
-
- header img {
-     width: 20px;
-     margin-right: 10px;
- }
-
- header button {
-     align-self: center;
-     padding: 5px 10px;
- }
-
-main {
-    display: flex;
-    justify-content: space-between;
 }
 
-main aside {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    background-color: #f2d0e0;
-    padding-top: 10px;
+#header-container h1 {
+    padding-left: 20px;
 }
 
-main aside a {
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-    color: black;
-    margin: 8px;
+#header-container button {
+    width: 80%;
 }
 
-main aside a:link {
-    text-decoration: none;
-}
-
-main aside a:visited {
-    text-decoration: none;
-}
-
-main aside img {
+#header-container img {
     width: 20px;
-    margin: 0 10px 0 10px;
 }
 
-main section {
+#main-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+aside {
+    padding: 10px;
+    background-color: #f2d0e0;
+}
+
+aside a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    padding: 5px;
+    margin: 5px 0 5px 0;
+}
+
+aside a:link {
+    text-decoration: none;
+}
+
+aside a:visited {
+    text-decoration: none;
+}
+
+aside a p {
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+aside a p img {
+    padding: 0 15px 0 5px;
+}
+
+aside img {
+    width: 20px;
+}
+
+section {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -76,7 +77,7 @@ main section {
     margin: 20px;
 }
 
-main section div {
+section div {
     max-width: min-content;
     display: flex;
     flex-direction: column;
@@ -85,18 +86,17 @@ main section div {
     box-shadow: 0.3em 0.3em 0.6em darkgray;
 }
 
-main section img {
-    width: 250px;
+section img {
+    width: 200px;
 }
 
-main section p {
+section p {
     margin: 5px 10px;
     text-align: center;
 }
- 
-footer {
-    display: flex;
-    justify-content: center;
+
+#footer-container {
+    text-align: center;
+    padding: 10px;
     background-color: mediumvioletred;
-    padding: 20px 20px;
 }

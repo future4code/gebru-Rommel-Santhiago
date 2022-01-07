@@ -7,30 +7,69 @@ body {
     color: white;
 }
 
+#main-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 5% 65% 25% 5%;
+    text-align: center;
+}
+
+#top-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
 .green-background {
+    display: grid;
+    align-items: center;
     background-color: green;
 }
 
 .yellow-background {
+    display: grid;
+    align-items: center;
     background-color: yellow;
 }
 
 .pink-background {
+    display: grid;
+    align-items: center;
     background-color: fuchsia;
 }
 
+#middle-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+
 .blue-background {
+    height: 100%;
+    display: grid;
+    align-items: center;
     background-color: blue;
 }
 
+#vertical-middle-container {
+    display: grid;
+}
+
 .red-background {
+    height: 100%;
+    display: grid;
+    align-items: center;
     background-color: red;
 }
 
 .lightgreen-background {
+    height: 100%;
+    display: grid;
+    align-items: center;
     background-color: lightgreen;
 }
 
 .purple-background {
+    height: 100%;
+    display: grid;
+    align-items: center;
     background-color: purple;
 }
