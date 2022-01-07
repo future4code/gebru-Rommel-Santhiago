@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: cursive;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 50px;
+    background-color: mediumvioletred;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+ }
+
+ header h1 {
+     align-self: center;
+ }
+
+ header img {
+     width: 20px;
+     margin-right: 10px;
+ }
+
+ header button {
+     align-self: center;
+     padding: 5px 10px;
+ }
+
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+main aside {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: #f2d0e0;
+    padding-top: 10px;
+}
+
+main aside a {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    margin: 8px;
+}
+
+main aside a:link {
+    text-decoration: none;
+}
+
+main aside a:visited {
+    text-decoration: none;
+}
+
+main aside img {
+    width: 20px;
+    margin: 0 10px 0 10px;
+}
+
+main section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+main section div {
+    max-width: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    box-shadow: 0.3em 0.3em 0.6em darkgray;
+}
+
+main section img {
+    width: 250px;
+}
+
+main section p {
+    margin: 5px 10px;
+    text-align: center;
+}
+ 
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: mediumvioletred;
+    padding: 20px 20px;
+}
