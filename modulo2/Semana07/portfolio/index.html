@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/index.js" defer></script>
+    <title>DEV WEB | ROMMEL</title>
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li><a href="#painel-inicio">INICIO</a></li>
+                <li><a href="#painel-sobre">SOBRE MIM</a></li>
+                <li><a href="#painel-projetos">PROJETOS</a></li>
+                <li><a href="#painel-contato">CONTATO</a></li>
+            </ul>  
+        </nav>
+        <p id="painel-inicio"></p>
+        <div class="home"> 
+            <img src="img/img.png" alt="">
+            <div class="title">
+                <h1 >ROMMEL <span>SANTHIAGO</span></h1>
+                <h3>Full Stack Web Developer</h3>  
+            </div>            
+        </div>        
+    </header>
+    <main>
+        <h2 id="painel-sobre">SOBRE MIM</h2>
+        <h3>
+            Ola amigos, eu sou o Rommel Santhiago
+        </h3>
+        <P>
+            Tenho 34 anos, estudando com foco em trabalhar como desenvolvedor.<br>
+            Trabalho a pelo menos 8 anos como técnico de informática, já trabalhei alguns como autônomo concertando celulares.
+            Comecei a estudar HTML e CSS no final de 2019, gostei e decidi que queria mudar de carreira, fiz alguns cursos na <b>Alura</b>, <b>DevMedia</b> e no canal <b>Curso em Video</b> no <b>YouTube</b>.
+        </P>
+        <div id="sobre">
+            <h4>Algumas linguagens em que estou estudando e pretendo trabalhar:</h4>
+            <div class="lista">
+                    <table>
+                        <tr>
+                            <th>Frontend</th>
+                        </tr>
+                        <tr><td>HTML</td></tr>
+                        <tr><td>CSS3</td></tr>
+                        <tr><td>Javascript</td></tr>
+                        <tr><td>React</td></tr>
+                        <tr><td>Vue</td></tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Backend</th>
+                        </tr>
+                        <tr><td>NodeJS</td></tr>
+                        <tr><td>Typescript</td></tr>
+                        <tr><td>MySQL</td></tr>
+                        <tr><td>AWS</td></tr>
+                        <tr><td>Firebase</td></tr>
+                    </table>
+            </div>  
+        </div>
+        <div class="img">
+           <img src="img/II-Corintios-12-9FB.jpg" alt="II Corintios 12 9"> 
+        </div>
+          
+        <h2 id="painel-projetos">PROJETOS</h2>
+        <div class="projetos">
+            <div id="projeto">
+                <a href="https://rommel-aluraconfweb.web.app" target="_blank" id="link"><img src="img/aluraconf.jpg" alt="AluraConf" placeholder="AluraConf" id="img-projetos">
+                <h4>Landing page AluraConf</h4> 
+                </a>     
+                <P>
+                    Pagina feita durante o curso de Frontend na Alura. <br>
+                    Foi usado apenas HTML, CSS, Javascript e a biblioteca JQuery apenas para dar um efeito de deslizamento suave na pagina. 
+                </P>
+            </div>
+            <div id="projeto">
+                <a href="https://klnflix.firebaseapp.com" target="_blank" id="link"><img src="img/clonefix.jpg" alt="KlnFlix" placeholder="KlnFlix" id="img-projetos">
+                <h4>Frontend da NetFlix</h4>
+                </a>                
+                <p>
+                    Feito com ReactJS atraves do canal do 
+                    <a href="https://www.youtube.com/channel/UCw9mYSlqKRXI6l4vH-tAYpQ" class="canal" target="_blanck">Bonieky Lacerda</a> no  YouTube, que tem diversas aulas para quem está iniciando.
+                </p>  
+            </div> 
+            <div id="projeto">
+                <a href="https://pitstopdoacessorio.web.app" target="_blank" id="link"><img src="img/pitstop.jpg" alt="KlnFlix" placeholder="PitStop" id="img-projetos">
+                <h4>Projeto sistema de loja</h4>
+                </a> 
+                <p>
+                    Um site de loja de acessorios feito para o projeto de sistema de loja na Labenu. <br> OBS: Esse ainda não está finalizado.
+                </p>  
+            </div> 
+        </div>
+        
+        <h2 id="painel-contato">CONTATO</h2>
+        <div class="form-contato">
+            <form action="" >
+                <div>
+                    <label for="nome">NOME</label>
+                    <input type="text" id="nome" name="nome">
+                </div>
+                <div>
+                    <label for="email">EMAIL</label>
+                    <input type="text" id="email" name="email">
+                </div>
+                <div>
+                    <label for="mensagem">MENSAGEM</label>
+                    <textarea name="mensagem" id="mensagem"></textarea>
+                </div>
+                <input type="submit" id="submit" value="Enviar mensagem">
+            </form>
+        </div>
+        <h2 class="title-redes">REDES SOCIAIS</h2>
+        <div class="redes-sociais">
+            <a href="https://www.linkedin.com/in/rommelsanthiago/" target="_blank"><i class="fa fa-linkedin fa-border" style="font-size:16px;color:lightseagreen;border-color: lightseagreen;"></i> LINKEDIN</a>
+            <a href="https://github.com/rommelsanthiago" target="_blank"><i class="fa fa-github fa-border" style="font-size:16px;color:lightseagreen;border-color: lightseagreen;"></i> GITHUB</a>
+            <a href="https://pt.stackoverflow.com/users/271415/rommel-santhiago" target="_blank"><i class="fa fa-stack-overflow fa-border" style="font-size:16px;color:lightseagreen;border-color: lightseagreen;"></i> STACKOVERFLOW</a>
+        </div>
+    </main>
+    <footer>
+        <small>&copy; Copyright 2022, Rommel Santhiago All rights reserved.</small>
+    </footer>
+</body>
+</html>
