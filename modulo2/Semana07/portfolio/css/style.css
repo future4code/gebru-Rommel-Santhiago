@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #000403;
+    color: lightseagreen;
+    font-family: Cambria;
+}
+
+/* Estilização do Menu */
+.menu {
+    position: fixed;
+    text-align: center;
+    padding: 3vh;
+    background-color: #000403;
+    border: 1.5px solid lightseagreen;
+    width: 99.8%;
+}
+
+.menu ul li {
+    display: inline;
+    text-align: center;
+    margin: 5vh;
+}
+
+.menu a {
+    color: lightseagreen;
+    padding: 6px;
+}
+
+.menu a:link {
+    text-decoration: none;
+}
+
+.menu a:visited {
+    text-decoration: none;
+}
+
+.menu a:hover, .conteiner a:active {
+    background-color: lightseagreen;
+    color: #000403;
+    width: 100%;
+    padding: 6px;
+}
+
+/* Foto de perfil e titulo */
+.home {
+    padding-top: 60px;
+}
+
+.home img {
+    width: 250px;
+    margin: 10px 10px 5px 80px;
+}
+
+.title {
+    display: inline-block;
+}
+
+.home h1 {
+    margin: 30px 0 0 20px;
+    max-width: 650px;
+    height: 200px;
+    font-size: 90px;
+}
+
+.home h1 span {
+    margin-left: 150px;
+}
+
+.home h3 {
+    width: 420px;
+    height: 100px;
+    margin-left: 75vh;
+    font-size: 35px;
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 650px) and (max-width: 880px){
+    .home img{
+        margin-left: 190px;
+    }
+    .home h3 {
+        margin-left: 25vh;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .home img{
+        margin-left: 100px;
+    }
+    .home h1 {
+        font-size: 45px;
+        height: 120px;
+    }
+    .home h3 {
+        margin-left: 15vh;
+        font-size: 25px;
+        height: 50px;
+    }
+}
+
+/* Sobre mim */
+
+main h2 {
+    text-align: center;
+    margin: 10px;
+}
+
+main h3 {
+    text-align: center;
+}
+
+main p {
+    text-align: justify;
+    margin: 0 70px 0 65px;
+}
+
+main p b {
+    font-size: 18px;
+}
+
+main h4 {
+    font-size: 20px;
+    margin: 10px 0 0 15px;
+}
+
+#sobre {
+    text-align: center;
+}
+
+.lista {
+    display: -webkit-inline-box;
+}
+
+.lista table {
+    width: 50%;
+    padding: 10px 40px 10px 40px;
+}
+
+table tr th {
+    font-size: 22px;
+}
+
+.img {
+    width: 100%;
+    text-align: center;
+}
+
+.img img {
+    width: 50%;
+}
+
+/* Projetos */
+
+.projetos {
+    display: grid;
+    font-size: 26px;
+    margin: 10px 0 30px 70px;
+}
+
+#projeto {
+    margin: 10px;
+    padding: 10px;
+}
+
+#projeto h4 {
+    font-size: 30px;
+}
+
+#projeto #link {
+    color: lightseagreen;
+}
+
+#projeto #link:link {
+    text-decoration: none;
+}
+#projeto #link:visited {
+    text-decoration: none;
+}
+
+#img-projetos {
+    float: left;
+    width: 300px;
+    margin-right: 20px;
+    border-radius: 2%;
+}
+
+#projeto .canal {
+    color: lightseagreen;
+    border: 1px solid lightseagreen;
+    border-radius: 3px;
+}
+
+#projeto .canal:link {
+    text-decoration: none;
+}
+
+#projeto .canal:visited {
+    text-decoration: none;
+}
+
+/* Contato */
+
+.form-contato {
+    display: flex;
+    color: whitesmoke;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-contato input, .form-contato textarea {
+    border: 1px solid lightseagreen;
+    border-radius: 14px;
+    width: 400px;
+    padding: 3px;
+}
+
+.form-contato label {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+#mensagem {
+    margin-bottom: 30px;
+}
+
+#submit {
+    background-color: lightseagreen;
+    color: #ffffff;
+    margin-bottom: 1vh;
+    margin-left: 16vh;
+    width: 200px;
+}
+
+.title-redes {
+    margin-top: 45px;
+}
+
+.redes-sociais {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.redes-sociais a {
+    color: whitesmoke;
+    justify-content: space-around;
+    margin: 1em;
+}
+
+.redes-sociais a:link {
+    text-decoration: none;
+}
+.redes-sociais a:visited {
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px 0 10px 0;
+    border: 1.5px solid lightseagreen;
+    width: 99.8%;
+}
