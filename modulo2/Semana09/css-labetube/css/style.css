@@ -6,6 +6,16 @@
     background-color: black;
 }
 
+/* ESTILIZAÇÃO PRINCIPAL DAS PAGINAS */
+
+.container {
+    display: grid;
+    grid-template-rows: 10vh 85vh 5vh;
+    align-content: space-between;
+}
+
+/* HEADER PAGINA INICIAL*/
+
 header {
     display: flex;
     justify-content: space-between;
@@ -15,67 +25,102 @@ header {
 }
 
 header img {
-    width: 150px;
-    border-radius: 10px;
-}
-
-header .logo {
-    width: 150px;
-    height: 40px;
+    width: 15%;
+    border-radius: 15px;
 }
 
 header input {
-    height: 20px;
-    width: 200px;
-    padding: 5px 0 5px 10px;
-    border-radius: 8px;
+    padding: 5px 5px;
+    border-radius: 10px;
+}
+
+/* HEADER DEMAIS PAGINAS */
+
+header a {
+    width: 15%;
+    border-radius: 15px;
+}
+
+header a img {
+    width: 99%;
+}
+
+/* MAIN PAGINA INICIAL */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px;
+}
+
+#part1, #part2 {
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
 }
 
 .videos {
-    padding: 10px 20px;
+    width: 20%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.videos h3 {
+    font-size: 90%;
+    text-align: center;
 }
 
 main a {
-    max-width: min-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: lightgreen;
-    text-align: center;
-    padding: 5px 10px;
-    margin: 8px;
-    box-shadow: 0.3em 0.3em 0.6em lightgreen;
-}
-
-main a:link, a:visited {
-    text-decoration: none;
+    width: 100%;
+    height: 100%;
 }
 
 main a img {
-    width: 240px;
-    height: 160px;
+    width: 100%;
+    height: 100%;
 }
 
-main {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+@media screen and (min-device-width : 481px) and (max-device-width : 800px){
+    main a img {
+        height: 80%;
+    } 
 }
 
-footer {
+/* MAIN PAGINA DE VIDEOS */
+.video {
+    width: 55vw;
+    height: 100%;
+    text-align: center;
+}
+
+.video video {
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+.video h2 {
+    font-size: 100%;
+}
+
+/* FOOTER */
+
+.footer {
     display: flex;
     justify-content: center;
+    position: absolute;  
+    bottom: 0;   
+    width: 100%;
     align-items: center;
-    padding-bottom: 10px;
-    bottom: 0 auto;
     background-color: darkgreen;
 }
 
-footer h2 {
-    padding: 20px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+.footer small {
+    font-size: 100%;
+    padding-top: 0.9%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
