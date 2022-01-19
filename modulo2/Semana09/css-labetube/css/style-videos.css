@@ -1,0 +1,45 @@
+.video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: lightgreen;
+    text-align: center;
+}
+
+h2 {
+    width: 60vw;
+    padding: 2vw 0;
+}
+
+@media  screen and (max-width: 840px){
+    .video video {
+        width: 80vw;
+        height: 60vh;
+        margin-top: 5vh;
+    }
+
+    h2 {
+        width: 80vw;
+    }
+
+    #footer {
+        margin-top: 10vh;
+        text-align: center;
+    }
+}
+
+@media  screen and (max-width: 540px){
+    .video video {
+        width: 90vw;
+        height: 40vh;
+    }
+
+    h2 {
+        width: 80vw;
+    }
+
+    #footer {
+        margin-top: 15vh;
+        text-align: center;
+    }
+}
