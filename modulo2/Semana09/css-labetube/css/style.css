@@ -6,11 +6,16 @@
     background-color: black;
 }
 
+.container {
+    display: grid;
+    grid-template-rows: 10vh 80vh 10vh;
+}
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 30px;
+    padding: 2vw 3vh;
     background-color: darkgreen;
 }
 
@@ -31,38 +36,45 @@ header input {
     border-radius: 8px;
 }
 
-.videos {
-    padding: 10px 20px;
-}
-
-main a {
-    max-width: min-content;
+main {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: lightgreen;
-    text-align: center;
-    padding: 5px 10px;
-    margin: 8px;
-    box-shadow: 0.3em 0.3em 0.6em lightgreen;
+    top: 0;
 }
 
-main a:link, a:visited {
-    text-decoration: none;
-}
-
-main a img {
-    width: 240px;
-    height: 160px;
-}
-
-main {
-    width: 100vw;
+section {
+    width: 90vw;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.videos {
+    max-width: min-content;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: lightgreen;
+    text-align: center;
+    padding: 0.6vw 1.5vh;
+    margin: 1% 2%;
+    box-shadow: 0.3em 0.3em 0.6em lightgreen;
+}
+
+section a:link, a:visited {
+    text-decoration: none;
+}
+
+section a img {
+    width: 15vw;
+    height: 15vh;
+}
+
+section h3 {
+    font-size: 90%;
 }
 
 footer {
@@ -70,7 +82,7 @@ footer {
     justify-content: center;
     align-items: center;
     padding-bottom: 10px;
-    bottom: 0 auto;
+    bottom: 0;
     background-color: darkgreen;
 }
 
@@ -78,4 +90,42 @@ footer h2 {
     padding: 20px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+}
+
+@media screen and (max-width: 840px){
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    section {
+        width: 95vw;
+        padding: 5% 0;
+    }
+    
+    .videos {
+        max-width: max-content;
+        width: 30vw;
+        margin: 5%;
+    }
+
+    section a img {
+        width: 20vw;
+        height: 20vh;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .videos {
+        width: 70vw;
+    }
+
+    section a img {
+        width: 70vw;
+        height: 20vh;
+    }
+
+    footer {
+        text-align: center;
+    }
 }
