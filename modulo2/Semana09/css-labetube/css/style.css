@@ -19,7 +19,7 @@ header {
     background-color: darkgreen;
 }
 
-header img {
+header img, header a img {
     width: 150px;
     border-radius: 10px;
 }
