@@ -113,7 +113,7 @@ class Post extends React.Component {
     return <PostContainer>
       <PostHeader>
         <UserPhoto src={this.props.fotoUsuario} alt={'Imagem do usuario'}/>
-        <p>{this.props.nomeUsuario}</p>
+        <p style={{fontWeight: 'bold'}}>{this.props.nomeUsuario}</p>
         <IconeSalvar 
           icone={iconeSalvar}
           onClickSave={this.onClickSalvar}
