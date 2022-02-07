@@ -1,5 +1,7 @@
 import React from 'react'
-import { MessageContainer, ContentMessages, ContentMessage, ContentMessageUser, FormMessage, UserInput, TextInput, ButtonForm, NameUser, Mensagem, ButtonDelete } from './Styled.js'
+import { MessageContainer, ContentMessages, ContentMessage, 
+    ContentMessageUser, FormMessage, UserInput, TextInput, ButtonForm, NameUser, 
+    Mensagem, MensagemUser, ButtonDelete,  TooltipCard, TooltipBox, TooltipText, TextBallon, P } from './Styled.js'
 
 export default class WhatsMain extends React.Component {
     constructor(props) {
@@ -53,19 +55,37 @@ export default class WhatsMain extends React.Component {
     render() {
         const messages = this.state.messageState.map((message) => {
 
-            if(message.user === "eu"){
+            if(message.user.toString().toLowerCase() === "eu"){
                 return  <ContentMessageUser key={message.id}>
-                            <Mensagem>
-                                {message.text}
-                                <ButtonDelete onClick={  () => this.onDeleteMessage(message.id) }><sup>🔻</sup></ButtonDelete>
-                            </Mensagem>
+                            <MensagemUser tipo={'eu'}>
+                                <P>{message.text}</P>
+                                <TooltipCard>
+                                    <TooltipText>
+                                        <ButtonDelete onClick={  () => this.onDeleteMessage(message.id) }>
+                                            <sup>⌫</sup>
+                                        </ButtonDelete>
+                                    </TooltipText>
+                                    <TooltipBox>
+                                        <TextBallon>Apagar mensagem?</TextBallon>
+                                    </TooltipBox>
+                                </TooltipCard>
+                            </MensagemUser>
                         </ContentMessageUser>
             } else {
                 return  <ContentMessage key={message.id}>
                             <NameUser>{message.user} ➣</NameUser>
-                            <Mensagem>
-                                {message.text}
-                                <ButtonDelete onClick={  () => this.onDeleteMessage(message.id) }><sup>X</sup></ButtonDelete>
+                            <Mensagem tipo={"outro"}>
+                                <P>{message.text}</P> 
+                                <TooltipCard>
+                                    <TooltipText>
+                                        <ButtonDelete onClick={  () => this.onDeleteMessage(message.id) }>
+                                            <sup>⌫</sup>
+                                        </ButtonDelete>
+                                    </TooltipText>
+                                    <TooltipBox>
+                                        <TextBallon>Apagar mensagem?</TextBallon>
+                                    </TooltipBox>
+                                </TooltipCard>
                             </Mensagem>
                         </ContentMessage>
             }

@@ -4,7 +4,7 @@ import WhatsHeader from '../WhatsHeader/WhatsHeader'
 import WhatsMain from '../WhatsMain/WhatsMain'
 
 const WhatsContainer = styled.div`
-    width: 60vw;
+    width: 40vw;
     height: 99.4vh;
     display: flex;
     flex-direction: column;
