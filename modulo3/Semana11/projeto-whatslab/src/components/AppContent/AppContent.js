@@ -11,6 +11,10 @@ const WhatsContainer = styled.div`
     margin: 0;
     align-items: center;
     border: 2px solid #075E54;
+
+    @media (max-width: 540px){
+        width: 100vw;
+    }
 `
 
 export default class AppContent extends React.Component {

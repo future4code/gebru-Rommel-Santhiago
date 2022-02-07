@@ -9,6 +9,10 @@ const Title = styled.h1`
     font-size: 1em;
     color: whitesmoke;
     background-color: #075E54;
+
+    @media (max-width: 540px){
+        width: 100vw;
+    }
 `
 
 export default function WhatsHeader () {

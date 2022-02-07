@@ -4,6 +4,10 @@ export const MessageContainer = styled.div`
     width: 40vw;
     height: 100vh;
     background-color: #ECE5DD;
+
+    @media (max-width: 540px){
+      width: 100vw;
+    }
 `
 
 export const ContentMessages = styled.div`
@@ -24,6 +28,10 @@ export const ContentMessage =styled.h4`
     margin: 0;
     padding: 0 0.5em;
     font-weight: normal;
+
+    @media (max-width: 540px){
+      width: 75vw;
+    }
 `
 
 export const ContentMessageUser =styled.h4`
@@ -33,6 +41,10 @@ export const ContentMessageUser =styled.h4`
     margin-left: 5em;
     padding: 0 0.5em;
     font-weight: normal;
+
+    @media (max-width: 540px){
+      margin-left: 2em;
+    }
 `
 
 export const FormMessage = styled.div`
@@ -42,6 +54,10 @@ export const FormMessage = styled.div`
   position: fixed;
   bottom: 0;
   padding: 1em 1.5em;
+
+  @media (max-width: 540px){
+    width: 90vw;
+  }
 `
 
 export const UserInput = styled.input`
@@ -59,6 +75,10 @@ export const TextInput = styled.input`
   border: none;
   border-radius: 0.3em;
   padding: 1em 0.5em;
+
+  @media (max-width: 540px){
+    max-width: 60vw;
+  }
 `
 export const ButtonForm = styled.button`
     border: none;
