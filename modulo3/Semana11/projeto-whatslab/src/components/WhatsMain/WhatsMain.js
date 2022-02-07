@@ -1,7 +1,8 @@
 import React from 'react'
 import { MessageContainer, ContentMessages, ContentMessage, 
     ContentMessageUser, FormMessage, UserInput, TextInput, ButtonForm, NameUser, 
-    Mensagem, MensagemUser, ButtonDelete,  TooltipCard, TooltipBox, TooltipText, TextBallon, P } from './Styled.js'
+    Mensagem, MensagemUser, ButtonDelete, Doublecheck, TooltipCard, TooltipBox, TooltipText, TextBallon, P } from './Styled.js'
+import doublecheck from '../../img/double-check.svg'
 
 export default class WhatsMain extends React.Component {
     constructor(props) {
@@ -58,7 +59,10 @@ export default class WhatsMain extends React.Component {
             if(message.user.toString().toLowerCase() === "eu"){
                 return  <ContentMessageUser key={message.id}>
                             <MensagemUser tipo={'eu'}>
-                                <P>{message.text}</P>
+                                <P>
+                                    {message.text}
+                                    <Doublecheck src={doublecheck}/>
+                                </P>
                                 <TooltipCard>
                                     <TooltipText>
                                         <ButtonDelete onClick={  () => this.onDeleteMessage(message.id) }>

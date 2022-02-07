@@ -130,6 +130,7 @@ export const MensagemUser = styled.div`
 
 export const P = styled.p`
       z-index: 9;
+      display: flex;
       margin: 5px 0 0 0;
 `
 
@@ -144,6 +145,13 @@ export const ButtonDelete = styled.button`
     }
 `
 
+export const Doublecheck = styled.img`
+  position: relative;
+  height: 0.5em;
+  left: 25px;
+  align-self: flex-end;
+`
+
 export const TooltipText = styled.div`
   margin: 0 5px;
   text-align: center;
@@ -152,7 +160,7 @@ export const TooltipText = styled.div`
 
 export const TooltipBox = styled.div`
   position: absolute;
-  bottom: 25px;
+  bottom: 10px;
   left: -70px;
   visibility: hidden;
   color: transparent;
@@ -181,7 +189,8 @@ export const TextBallon = styled.p`
 export const TooltipCard = styled.div`
   z-index: 1;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
   height: 15px;
   bottom: 10px;
   position: relative;
