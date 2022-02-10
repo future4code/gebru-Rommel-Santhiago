@@ -22,18 +22,18 @@ class App extends React.Component {
     state = {
       tarefas: [
         {
-          id: Date.now(),
+          id: 1,
           texto: 'Pedalar',
           completa: false
         },
         {
-          id: Date.now(),
+          id: 2,
           texto: 'Almoçar',
           completa: true
         }
       ],
       inputValue: '',
-      filtro: 'pendentes'
+      filtro: ''
     }
 
   componentDidUpdate() {
@@ -62,7 +62,19 @@ class App extends React.Component {
   }
 
   selectTarefa = (id) => {
+    const novaListaDeTarefas = this.state.tarefas.map((tarefa) => {
+      if(id === tarefa.id) {
+        const marcaTarefa = {
+          ...tarefa, 
+          completa: !tarefa.completa
+        }
+        return marcaTarefa
+      } else {
+        return tarefa
+      }
+    })
 
+    this.setState({tarefas: novaListaDeTarefas})
   }
 
   onChangeFilter = (event) => {
@@ -102,6 +114,7 @@ class App extends React.Component {
           {listaFiltrada.map(tarefa => {
             return (
               <Tarefa
+                key={tarefa.id}
                 completa={tarefa.completa}
                 onClick={() => this.selectTarefa(tarefa.id)}
               >
