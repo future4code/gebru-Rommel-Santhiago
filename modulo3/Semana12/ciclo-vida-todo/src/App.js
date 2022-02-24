@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+// import TarefasCompletas from './components/TarefasCompletas'
 import './styles.css'
 
 const TarefaList = styled.ul`
@@ -33,7 +34,7 @@ class App extends React.Component {
     }
 
   componentDidUpdate() {
-      // localStorage.setItem('tarefa', this.state.inputValue)
+
   }
 
   componentDidMount(prevProps, prevState) {
@@ -127,6 +128,7 @@ class App extends React.Component {
             <option value="completas">Completas</option>
           </select>
         </InputsContainer>
+        {/* <TarefasCompletas /> */}
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
