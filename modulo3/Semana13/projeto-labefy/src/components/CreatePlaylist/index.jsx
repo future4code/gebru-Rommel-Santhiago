@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios'
+import { Container, Input, Title  } from './style'
 
 const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
 const headers = {
@@ -25,6 +26,7 @@ export default class CreatePlaylist extends React.Component {
             .catch((err) => {
             console.log(err.message)
             })
+        alert(`Playlist ${this.state.playlistValue} criada com sucesso!`)
         this.setState({ playlistValue: '' })
         this.pegaPlaylists()
     }
@@ -43,14 +45,15 @@ export default class CreatePlaylist extends React.Component {
 
   render() {
     return (
-      <div>
-        <input
+      <Container>
+        <Title>Criar playlist</Title>
+        <Input
           placeholder='Nome da playlist'
           value={this.state.playlistValue}
           onChange={this.onChangePlaylistValue}
         />
-        <button onClick={this.criarPlaylist}>Criar playlist</button>
-      </div>
+        <button onClick={this.criarPlaylist}>Criar</button>
+      </Container>
     )
   }
 }

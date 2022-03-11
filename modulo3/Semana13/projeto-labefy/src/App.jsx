@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Home from './pages/Home'
+
+import Routes from './Routes'
 
 const Title = styled.h1`
   margin: 0;
@@ -8,6 +9,7 @@ const Title = styled.h1`
   color: whitesmoke;
   border-bottom: solid 3px #DE3163;
   background-color: #566573;
+  padding: 10px 0;
 `
 
 export default class App extends React.Component{
@@ -15,7 +17,7 @@ export default class App extends React.Component{
     return (
       <div>
         <Title>PROJETO LABEFY</Title>
-        <Home />
+        <Routes />
       </div>
     )
   }

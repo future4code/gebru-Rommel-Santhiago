@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import { Container, Title, Button } from './style'
 
 export default class Menu extends React.Component {
@@ -6,8 +8,12 @@ export default class Menu extends React.Component {
         return (
             <Container>
                 <Title>Library</Title>
-                <Button>Playlists</Button>
-                <Button>Cria Playlist</Button>
+                <Link to='/'>
+                    <Button>Playlists</Button>
+                </Link>
+                <Link to='criar-playlist'>
+                    <Button>Cria Playlist</Button>
+                </Link>
             </Container>
         )
     }
