@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import Modal from './Modal'
 import AddTrack from '../AddTrack'
+import TrackList from '../TrackList'
 import { Container, Title, ContentCard, Description, Cover, CoverBackground, CardTitle, Span, Button } from './style'
 
 const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
@@ -17,11 +18,6 @@ export default class Playlists extends React.Component {
     super();
     this.state = {
         playlists: [],
-        tracks: [{
-          name: '',
-          artist: '',
-          url: ''
-      }],
         show: false
     }
     this.handleShow = this.handleShow.bind(this);
@@ -53,19 +49,8 @@ export default class Playlists extends React.Component {
       }
     }
 
-    getPlaylistTracks = async (listId) => {
-      try {
-        const res = await axios.get(`${url}/${this.props.listId}/tracks`, headers)
-        this.setState({ tracks: res.data.result.list })
-        console.log(res)
-      } catch (err) {
-        console.log(err.response)
-      }
-    }
-
     handleShow = () => {
       this.setState({show: true})
-      this.getPlaylistTracks()
     }
 
     handleClose = () => {
@@ -73,11 +58,6 @@ export default class Playlists extends React.Component {
     }
 
     render() {
-        
-        const trackLists = this.state.tracks.map((track) => {
-          return <p key={track.id}>{track.name}</p>
-        })
-
         const renderPlaylists = this.state.playlists.map((playlist) => {
             return <Description key={playlist.id}>
                 <Cover>
@@ -87,7 +67,7 @@ export default class Playlists extends React.Component {
                   <Button playlistID={playlist.id} onClick={() => this.handleShow(playlist.id)} color={'whitesmoke'} backgroundColor={'transparent'}><Span>{playlist.name} ≡</Span></Button> 
                   <Modal show={this.state.show} handleClose={this.handleClose}>
                     <AddTrack playlistID={playlist.id}/>
-                    {trackLists}
+                    <TrackList playlistID={playlist.id} playlistName={playlist.name} />
                     <Button onClick={() => this.deletePlaylist(playlist.id)} color={'red'} backgroundColor={'whitesmoke'} right={'20px'}>Apagar Lista</Button>
                   </Modal>
                 </CardTitle>
@@ -96,7 +76,7 @@ export default class Playlists extends React.Component {
 
         return (
             <Container>
-                <Title>Playlist</Title>
+                <Title>Playlists</Title>
                 <ContentCard>
                   {renderPlaylists}
                 </ContentCard>

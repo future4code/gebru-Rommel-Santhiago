@@ -12,7 +12,6 @@ const headers = {
 export default class AddTrack extends React.Component {
     state = {
         addItem: 'buttonAdd',
-        tracks: [],
         inputNameMusic: '',
         inputNameArtist: '',
         inputTrack: []
@@ -27,6 +26,7 @@ export default class AddTrack extends React.Component {
     
         axios.post( `${urlApi}${this.props.playlistID}/tracks`, body,headers )
           .then(() => {
+                console.log(`${urlApi}${this.props.playlistID}/tracks`)
               alert(`Musica ${this.state.inputNameMusic} adicionada com sucesso!`)
               this.setState({ inputNameMusic: '', inputNameArtist: '', inputTrack: '', addItem: 'buttonAdd' })
           })

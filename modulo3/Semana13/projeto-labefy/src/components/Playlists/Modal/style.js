@@ -1,26 +1,19 @@
 import styled from 'styled-components'
 
-export const ModalList = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width:100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-`
-  
-  
-export const ModalMain = styled.section`
+export const Container = styled.section`
     display: ${props => props.display};
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    position:fixed;
-    background: #566573;
+    position: fixed;
+    border: 10px solid #DE3163;
+    border-radius: 5px;
+    background: #1c2833bd;
+    padding: 10px;
     width: 80%;
-    min-height: 30%;
-    top:50%;
-    left:50%;
+    max-height: 60%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%,-50%);
 `
   
@@ -28,11 +21,13 @@ export const Button = styled.div`
     display: flex;
     align-self: flex-end;
     position: absolute;
-    border-radius: 45%;
-    border: 1px solid red;
-    background-color: red;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 10px;
+    // border: 1px solid #DE3163;
+    background-color: #566573;
     padding: 0 10px;
-    color: whitesmoke;
+    color: #DE3163;
     right: 10px;
     top: 5px;
 `

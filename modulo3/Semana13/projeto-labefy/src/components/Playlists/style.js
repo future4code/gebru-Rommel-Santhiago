@@ -2,12 +2,13 @@ import styled from 'styled-components'
 import { Content } from '../../pages/Home/style'
 
 export const Container = styled(Content)`
-    
+    text-align: center;
+    padding: 0 5em;
 `
 
 export const Title = styled.h2`
     color: whitesmoke;
-    margin: 0.5em 0 0 1em;
+    padding: 20px 0 40px 0;
 `
 
 export const ContentCard = styled.div`
@@ -19,7 +20,7 @@ export const Description = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: yellow;
+  margin: 0 1em;
 `
 
 export const Cover = styled.div`
