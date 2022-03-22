@@ -1,11 +1,13 @@
 import React from 'react'
-import Header from '../components/Header'
+import * as Styled from './style'
+
+import Home from '../Pages/Home'
 
 const App = () => {
   return (
-    <>
-      <Header />
-    </>
+    <Styled.Container>
+      <Home />
+    </Styled.Container>
   )
 }
 
