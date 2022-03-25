@@ -6,3 +6,12 @@ export const Container = styled.div`
     justify-content: center;
     background-color: #d0d0d0;
 `
+
+export const ButtonClear = styled.button`
+    width: 150px;
+    height: 20px;
+    display: flex;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+`

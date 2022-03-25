@@ -2,20 +2,13 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import * as Styled from './style'
+import { Loader } from './Load'
 
-//import {chooseProfile, clearSwipes, getProfileToSwipe} from '../../actions/profiles'
-
-const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:rommel/'
-
-const headers = {
-    headers: {
-        Authorization: 'rommel-santhiago-gebru'
-    }
-}
+const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rommel-santhiago-gebru/'
 
 const Main = () => {
 
-    const [profileToSwipe, setProfileToSwipe] = useState('')
+    const [profileToSwipe, setProfileToSwipe] = useState(null)
     const [animationDirection, setAnimationDirection] = useState(null)
 
     useEffect(() => {
@@ -24,8 +17,8 @@ const Main = () => {
 		}
 	}) 
 
-    const getProfileToChoose = () => {
-        axios.get(`${url}person`, headers)
+    const getProfileToChoose = async ()  => {
+       await axios.get(`${url}person`)
         .then(res => {
             setProfileToSwipe(res.data.profile)
         })
@@ -34,26 +27,22 @@ const Main = () => {
     const onChooseOption = (option) => () => {
 		let currentAnimation = option === 'dislike' ? Styled.swipeRight : Styled.swipeLeft
 
-		if (animationDirection === null) {
+		if (currentAnimation === null) {
 			setAnimationDirection(currentAnimation)
 		}
-        
-        console.log( animationDirection)
 		
         if (profileToSwipe) {
 			chooseProfile(profileToSwipe.id, option === 'like')
 		}
-
-        
 	}
 
-    const chooseProfile = (id, choice) => {
+    const chooseProfile = async (id, choice) => {
         if(!id) {
             getProfileToChoose()
             return
         }
     
-        axios.post(`${url}choose-person`, {
+        await axios.post(`${url}choose-person`, {
             id,
             choice
         })
@@ -63,16 +52,28 @@ const Main = () => {
 
     return (
         <Styled.Container>
+            {animationDirection !== null && <Loader/>}
+            {profileToSwipe ? 
             <Styled.Content animation={animationDirection}>
-                <Styled.Img src={profileToSwipe.photo} alt='Matchs' />
+                <Styled.Img src={profileToSwipe.photo} alt='Profile' height={'95%'}/>
                 <Styled.ContentText>
                     <Styled.Title>{profileToSwipe.name}, {profileToSwipe.age}</Styled.Title>
                     <Styled.Bio>{profileToSwipe.bio}</Styled.Bio>
                 </Styled.ContentText>
             </Styled.Content>
+            : <Loader/>
+            }
             <Styled.Buttons>
-                <Styled.Button onClick={onChooseOption('dislike')} option='dislike' color={'red'} borderColor={'red'}>X</Styled.Button>
-                <Styled.Button onClick={onChooseOption('like')} option='like' color={'green'} borderColor={'green'}>♡</Styled.Button>
+                <Styled.Button 
+                    onClick={onChooseOption('dislike')} 
+                    option='dislike' color={'red'} borderColor={'red'}>
+                        x
+                </Styled.Button>
+                <Styled.Button 
+                    onClick={onChooseOption('like')} 
+                    option='like' color={'green'} borderColor={'green'}>
+                        ♡
+                </Styled.Button>
             </Styled.Buttons>
         </Styled.Container>
     )

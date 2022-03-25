@@ -1,17 +1,11 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    max-width: 600px;
-    height: 95vh;
-    background-color: whitesmoke;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-top: 1em;
-`
-
-export const Content = styled.div`
-    height: 100%;
-    display: flex;
+  display: ${props => props.display};
+  width: 200px;
+  max-height: 520px;
+  overflow-y: auto;
+  border-left: 1px solid lightgray;
 `
 
 export const List = styled.ul`
