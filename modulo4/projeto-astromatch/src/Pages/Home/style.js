@@ -6,30 +6,34 @@ export const Container = styled.div`
     background-color: whitesmoke;
     border: 1px solid black;
     border-radius: 5px;
-    margin-top: 1em;
+    position: absolute;
+    top: 1em;
 `
 
 export const Content = styled.div`
-    height: 100%;
+    height: 91%;
     display: flex;
+    background-color: ${props => props.backgroundColor};
 `
 
 export const List = styled.ul`
+  width: 85%;
   padding: 0 10px;
 `
 
 export const ListItem = styled.li`
   height: 70px;
+  width: 100%;
   display: flex;
   align-items: center;
   position: relative;
   padding: 0 5px;
   margin: 10px 0;
   list-style: none;
-  width: 100%;
   transition: 0.2s;
   cursor: pointer;
   background: whitesmoke;
+  border-radius: 5px;
   
   :hover {
     background: grey;

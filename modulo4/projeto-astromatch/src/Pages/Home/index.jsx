@@ -7,22 +7,30 @@ import Header from '../../components/Header'
 import Main from '../../components/Main'
 import Matchs from '../../components/Matchs'
 
-const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rommel-santhiago-gebru/'
+const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rommel-santhiago-gebru/matches'
 
-const Home = () => {
+const Home = (props) => {
     const [matches, setMatches] = useState([])
     const [show, setShow] = useState(false)
+    const [color, setColor] = useState('whitesmoke')
+
+    let swipe = props.swipe
     
     useEffect(() => {
-        if(getMatches){
-            getMatches()
-        }
-    })
+        getMatches(matches)
+    }, [matches])
 
-    const getMatches = async () => {
-        await axios.get(`${url}matches`)
+    useEffect(() => {
+        swipeMode(swipe)
+    }, [swipe])
+
+    const getMatches = () => {
+        axios.get(url)
         .then(res => {
             setMatches(res.data.matches)
+        })
+        .catch(err => {
+            console.log(err)
         })
     }
     
@@ -30,11 +38,19 @@ const Home = () => {
         setShow(!show)
     }
 
+    const swipeMode = (swipe) => {        
+        if(swipe === true){
+            setColor('whitesmoke')
+        } else {
+            setColor('#000000cc') 
+        }
+    }
+
     return (
         <Styled.Container >
             <GlobalStyle />
-            <Header handleShow={handleShow} />
-            <Styled.Content>
+            <Header handleShow={handleShow} show={show} swipe={swipe} />
+            <Styled.Content backgroundColor={color} >
                 <Main />
                 <Matchs show={show}>
                     <Styled.List>

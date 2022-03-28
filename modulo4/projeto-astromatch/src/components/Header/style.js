@@ -4,14 +4,17 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 2px solid #000000cc;
     padding: 0 10px;
+    background-color: ${props => props.backgroundColor};
 `
 
 export const Button = styled.button`
-
+    background: none;
+    border: none;
 `
 export const Img = styled.img`
-    width: 150px;
-    heght: 50px;
+    width: ${props => props.width};
+    heght: ${props => props.width};
+    margin-left: ${props => props.marginLeft};
 `

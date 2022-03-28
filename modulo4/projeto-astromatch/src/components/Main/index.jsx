@@ -3,34 +3,46 @@ import axios from 'axios'
 
 import * as Styled from './style'
 import { Loader } from './Load'
+import CardSwipe from '../CardSwipe'
 
 const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/rommel-santhiago-gebru/'
+
+const headers = {  
+    header: {
+      'Authorization': 'rommel-santhiago-gebru' 
+    }
+}
 
 const Main = () => {
 
     const [profileToSwipe, setProfileToSwipe] = useState(null)
     const [animationDirection, setAnimationDirection] = useState(null)
+    const [noProfile, setNoProfile] = useState(null)
 
     useEffect(() => {
-		if (!profileToSwipe) {
+		if (!profileToSwipe && noProfile === null) {
 			getProfileToChoose()
 		}
 	}) 
 
-    const getProfileToChoose = async ()  => {
-       await axios.get(`${url}person`)
+    const getProfileToChoose = ()  => {
+        axios.get(`${url}person`, headers)
         .then(res => {
             setProfileToSwipe(res.data.profile)
+        })
+        .catch(err => {
+            setNoProfile(err)
         })
     }
 
     const onChooseOption = (option) => () => {
 		let currentAnimation = option === 'dislike' ? Styled.swipeRight : Styled.swipeLeft
 
-		if (currentAnimation === null) {
+		if (animationDirection === null) {
 			setAnimationDirection(currentAnimation)
+            setTimeout(() => {setAnimationDirection(null)}, 1000)
 		}
-		
+
         if (profileToSwipe) {
 			chooseProfile(profileToSwipe.id, option === 'like')
 		}
@@ -54,26 +66,29 @@ const Main = () => {
         <Styled.Container>
             {animationDirection !== null && <Loader/>}
             {profileToSwipe ? 
-            <Styled.Content animation={animationDirection}>
-                <Styled.Img src={profileToSwipe.photo} alt='Profile' height={'95%'}/>
-                <Styled.ContentText>
-                    <Styled.Title>{profileToSwipe.name}, {profileToSwipe.age}</Styled.Title>
-                    <Styled.Bio>{profileToSwipe.bio}</Styled.Bio>
-                </Styled.ContentText>
-            </Styled.Content>
+            <CardSwipe 
+                profileToSwipe={profileToSwipe}
+                animationDirection={animationDirection}
+            />
             : <Loader/>
             }
             <Styled.Buttons>
-                <Styled.Button 
+                <Styled.Button
                     onClick={onChooseOption('dislike')} 
-                    option='dislike' color={'red'} borderColor={'red'}>
-                        x
-                </Styled.Button>
+                    option='dislike'
+                    color={'red'}
+                    backgroundHover={'red'}
+                    colorHover={'white'}
+                    paddingBottom={'6px'}
+                >x</Styled.Button>
+
                 <Styled.Button 
                     onClick={onChooseOption('like')} 
-                    option='like' color={'green'} borderColor={'green'}>
-                        ♡
-                </Styled.Button>
+                    option='like'
+                    color={'green'}
+                    backgroundHover={'green'}
+                    colorHover={'white'}
+                >♥</Styled.Button>
             </Styled.Buttons>
         </Styled.Container>
     )
