@@ -1,8 +1,8 @@
+import {useNavigate} from 'react-router-dom'
 import * as Styled from './styles'
-import { useNavigate } from 'react-router-dom'
-import { goBack } from '../../routes/coordinator'
+import { goBack } from '../../../routes/coordinator'
 
-export const ApplicationForm = () => {
+export const CreateTrip = () => {
   const navigate = useNavigate()
 
   return (

@@ -1,9 +1,13 @@
 import React from 'react'
 
-function App () {
+import { Router } from '../routes/routes'
+import GlobalStyles from '../globalStyles'
+
+const App = () => {
   return (
     <>
-      <h1>Projeto LabeX</h1>
+      <GlobalStyles />
+      <Router />
     </>
   )
 }

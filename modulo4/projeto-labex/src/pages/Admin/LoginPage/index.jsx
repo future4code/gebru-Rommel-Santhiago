@@ -1,13 +1,13 @@
 import * as Styled from './styles'
 import { useNavigate } from 'react-router-dom'
-import { goApplicationForm, goBack } from '../../routes/coordinator'
+import { goAdminTripDetails, goBack } from '../../../routes/coordinator'
 
-export const ListTrips = () => {
+export const Login = () => {
   const navigate = useNavigate()
 
   return (
     <>
-      <button onClick={() => goApplicationForm(navigate)}>Formulário</button> 
+      <button onClick={() => goAdminTripDetails(navigate)}>Inicio admin</button>
       <button onClick={() => goBack(navigate)}>Home</button>
     </>
   )
