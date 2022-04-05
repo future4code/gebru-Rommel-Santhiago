@@ -48,7 +48,6 @@ export const Main = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #CCCCCC;
 `
 
 export const ArrowDown = styled.img`
@@ -82,5 +81,10 @@ export const ContentMain = styled.div`
 
 export const Footer = styled.footer`
     height: 20vh;
-    background-color: #CCCCCC;
+    text-align: center;
+`
+
+export const Title = styled.h2`
+    padding: 3em 0 0 0;
+    color: #4D4D4D;
 `

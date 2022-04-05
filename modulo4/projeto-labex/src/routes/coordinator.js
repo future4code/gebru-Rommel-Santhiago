@@ -1,27 +1,35 @@
-    export const goTripsList = (navigate) => {
+    export const goToHome = (navigate) => {
+        navigate('/')
+    }
+    
+    export const goToTripsList = (navigate) => {
         navigate('/trips/list')
     }
 
-    export const goLogin = (navigate) => {
+    export const goToLogin = (navigate) => {
         navigate('/login')
     }
 
-    export const goAbout = (navigate) => {
+    export const goToAbout = (navigate) => {
         navigate('/about')
     }
 
-    export const goApplicationForm = (navigate) => {
+    export const goToApplicationForm = (navigate) => {
         navigate('/trips/application')
     }
 
-    export const goAdminTripDetails = (navigate) => {
+    export const goToAdminPage = (navigate) => {
         navigate('/admin/trips/list')
     }
 
-    export const goAdminCreateTrip = (navigate) => {
+    export const goToAdminTripDetails = (navigate) => {
+        navigate('/admin/trips/:id')
+    }
+
+    export const goToAdminCreateTrip = (navigate) => {
         navigate('/admin/trips/create')
     }
 
-    export const goBack = (navigate) => {
+    export const goToBack = (navigate) => {
         navigate(-1)
     }

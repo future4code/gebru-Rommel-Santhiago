@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'Roboto Mono', monospace;
     letter-spacing: 1px;
+    background: #CCCCCC;
   }
 `
 

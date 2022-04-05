@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as Styled from './style'
+import * as Styled from './styles'
 
 const Card = (props) => {
     return (

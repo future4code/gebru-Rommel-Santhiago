@@ -1,11 +1,14 @@
 import {useNavigate} from 'react-router-dom'
+
 import * as Styled from './styles'
-import { goBack } from '../../../routes/coordinator'
+import { goToBack } from '../../../routes/coordinator'
+import { useProtectedPage } from '../../../Hooks/useProtectedPage'
 
 export const CreateTrip = () => {
   const navigate = useNavigate()
+  useProtectedPage();
 
   return (
-    <button onClick={() => goBack(navigate)}>Página anterior</button>
+    <button onClick={() => goToBack(navigate)}>Página anterior</button>
   )
 }

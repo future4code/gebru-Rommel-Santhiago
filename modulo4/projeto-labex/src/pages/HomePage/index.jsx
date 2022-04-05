@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom'
-import { goAbout, goTripsList, goLogin } from '../../routes/coordinator'
+import { goToAbout, goToTripsList, goToLogin, goToAdminPage } from '../../routes/coordinator'
 
 import * as Styled from './styles'
 import BgImg from '../../img/background.png'
@@ -15,12 +15,25 @@ export const Home = () => {
 
     const [iconAdm, setIconAdmin] = useState(adminGrey)
 
+    const link = (page) => {
+        const token = localStorage.getItem("token")
+
+        if (token === null) {
+          page = goToLogin(navigate);
+        } else {
+          page = goToAdminPage(navigate)
+        }
+
+        return page
+    }
+
+
     return (
         <div>
             <Styled.Header img={BgImg}>
                 <Styled.Buttons>
                     <Styled.Button
-                        onClick={() => goAbout(navigate)}
+                        onClick={() => goToAbout(navigate)}
                         color={'#4D4D4D'}
                         background={'#CCCCCC'}
                         hoverBg={'#666666'}
@@ -29,7 +42,7 @@ export const Home = () => {
                         Sobre
                     </Styled.Button>
                     <Styled.Button
-                        onClick={() => goLogin(navigate)}
+                        onClick={() => link()}
                         color={'#CCCCCC'}
                         background={'#666666'}
                         hoverBg={'#CCCCCC'}
@@ -49,7 +62,7 @@ export const Home = () => {
                 </Styled.ContentMain>
                 <Styled.ArrowDown src={ArrowDown} alt='Arrow Dow' />
                 <Styled.ButtonMore
-                    onClick={() => goTripsList(navigate)}
+                    onClick={() => goToTripsList(navigate)}
                     color={'#4D4D4D'}
                     background={'#CCCCCC'}
                     hoverBg={'#666666'}
@@ -59,6 +72,7 @@ export const Home = () => {
                 </Styled.ButtonMore>
             </Styled.Main>
             <Styled.Footer>
+                <Styled.Title>&copy; Copyright 2022, Rommel, Turma: Gebru Labenu All rights reserved.</Styled.Title>
             </Styled.Footer>
         </div>
     )
