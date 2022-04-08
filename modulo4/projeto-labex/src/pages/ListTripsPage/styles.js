@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     width: 100vw;
-    heighr: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,48 +13,24 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
 `
 
 export const Buttons = styled.div`
+    width: 300px;
     display: flex;
+    justify-content: space-between;
     margin: 20px;
-`
-export const Button = styled.button`
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 10px;
-    padding: 10px;
-    background: #4D4D4D;
-    border: none;
-    border-radius: 10px;
-    color: #CCCCCC;
-    &&: hover {
-        background: whitesmoke;
-        color: #4D4D4D;
-    }
 `
 
 export const Title = styled.h1`
-    color: #4D4D4D;
-`
-
-export const Card = styled.div`
-    width: 40%;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 5px;
-    box-shadow: black 0 0 8px 4px;
-    background: #4D4D4D;
+    font-size: 2em;
+    margin: 10px 0;
     color: whitesmoke;
-    margin: 20px 0;
-    padding: 20px;
+    text-shadow: 
+               -2px -2px 0px #4D4D4D, 
+               -2px 2px 0px #4D4D4D,      
+                2px -1px 0px #4D4D4D,    
+                2px 0px 0px #4D4D4D;
 `
 
 export const Span = styled.span`

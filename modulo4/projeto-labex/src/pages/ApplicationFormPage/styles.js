@@ -7,13 +7,21 @@ export const Container = styled.div`
 `
 
 export const Title = styled.h1`
-
+    font-size: 2em;
+    margin: 10px 0 50px 0;
+    color: whitesmoke;
+    text-shadow: 
+               -2px -2px 0px #4D4D4D, 
+               -2px 2px 0px #4D4D4D,      
+                2px -1px 0px #4D4D4D,    
+                2px 0px 0px #4D4D4D;
 `
 
 export const Form = styled.form`
     width: 400px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 `
 
 export const Select = styled.select`
@@ -33,7 +41,9 @@ export const Input = styled.input`
 `
 
 export const Buttons = styled.div`
-
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
 `
 
 export const Button = styled.button`

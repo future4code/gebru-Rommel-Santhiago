@@ -9,6 +9,7 @@ import adminGrey from '../../img/adminGrey.png'
 import adminRed from '../../img/adminRed.png'
 import ArrowDown from '../../img/down-arrow.svg'
 import Card from '../../components/Card'
+import Button from '../../components/Button'
 
 export const Home = () => {
     const navigate = useNavigate()
@@ -32,17 +33,19 @@ export const Home = () => {
         <div>
             <Styled.Header img={BgImg}>
                 <Styled.Buttons>
-                    <Styled.Button
+                    <Button
                         onClick={() => goToAbout(navigate)}
+                        width={'100px'}
                         color={'#4D4D4D'}
                         background={'#CCCCCC'}
                         hoverBg={'#666666'}
                         hoverColor={'#CCCCCC'}
                     >
                         Sobre
-                    </Styled.Button>
-                    <Styled.Button
+                    </Button>
+                    <Button
                         onClick={() => link()}
+                        width={'120px'}
                         color={'#CCCCCC'}
                         background={'#666666'}
                         hoverBg={'#CCCCCC'}
@@ -51,25 +54,26 @@ export const Home = () => {
                         onMouseLeave={() => setIconAdmin(adminGrey)}
                     >
                        <Styled.AdminIcon src={iconAdm} /> Admin
-                    </Styled.Button>
+                    </Button>
                 </Styled.Buttons>
             </Styled.Header>
             <Styled.Main>
                 <Styled.ContentMain>
-                    <Card>New York</Card>
-                    <Card>Italy</Card>
-                    <Card>France</Card>
+                    <Card height={'400px'}>New York</Card>
+                    <Card height={'400px'}>Italy</Card>
+                    <Card height={'400px'}>France</Card>
                 </Styled.ContentMain>
                 <Styled.ArrowDown src={ArrowDown} alt='Arrow Dow' />
-                <Styled.ButtonMore
+                <Button
                     onClick={() => goToTripsList(navigate)}
-                    color={'#4D4D4D'}
-                    background={'#CCCCCC'}
-                    hoverBg={'#666666'}
-                    hoverColor={'#CCCCCC'}
+                    width={'150px'}
+                    color={'#CCCCCC'}
+                    background={'#666666'}
+                    hoverBg={'#CCCCCC'}
+                    hoverColor={'#4D4D4D'}
                 >
                     Mais viagens
-                </Styled.ButtonMore>
+                </Button>
             </Styled.Main>
             <Styled.Footer>
                 <Styled.Title>&copy; Copyright 2022, Rommel, Turma: Gebru Labenu All rights reserved.</Styled.Title>

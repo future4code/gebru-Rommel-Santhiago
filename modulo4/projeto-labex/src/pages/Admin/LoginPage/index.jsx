@@ -4,62 +4,84 @@ import axios from 'axios'
 import * as Styled from './styles'
 import { useNavigate } from 'react-router-dom'
 import { goToAdminPage, goToHome } from '../../../routes/coordinator'
+import useForm from '../../../Hooks/useForm'
+import Button from '../../../components/Button'
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const { form, onChange } = useForm({email: '', password: ''})
+  const navigate = useNavigate()
 
-  const onChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const onSubmitLogin = () => {
-    // user: astrodev@gmail.com.br  password: 123456
+  const onSubmitLogin = (event) => {
+    event.preventDefault()
     const URL =
-      "https://us-central1-labenu-apis.cloudfunctions.net/labeX/rommel-gebru/login";
-    const body = {
-      email,
-      password
-    };
+      "https://us-central1-labenu-apis.cloudfunctions.net/labeX/rommel-gebru/login"
 
     axios
-      .post(URL, body)
+      .post(URL, form)
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        goToAdminPage(navigate);
+        localStorage.setItem("token", res.data.token)
+        goToAdminPage(navigate)
       })
       .catch((err) => {
-        console.log("ERRO:", err.response);
-      });
-  };
-  // para deslogar: limpar o token
-  // localStorage.removeItem("token");
+        console.log("ERRO:", err.response)
+      })
+  }
 
 
   return (
-    <>
-      <div>
+    <Styled.Container>
+      <Styled.Buttons>
+        <Button 
+          onClick={() => goToAdminPage(navigate)}
+          width={'150px'}
+          color={'#CCCCCC'}
+          background={'#666666'}
+          hoverBg={'#CCCCCC'}
+          hoverColor={'#4D4D4D'}
+        >
+          Inicio admin
+        </Button>
+        <Button 
+          onClick={() => goToHome(navigate)}
+          width={'100px'}
+          color={'#CCCCCC'}
+          background={'#666666'}
+          hoverBg={'#CCCCCC'}
+          hoverColor={'#4D4D4D'}
+        >
+          Home
+        </Button>
+      </Styled.Buttons>
+      <Styled.Title>Pagina de Login</Styled.Title>
+      <Styled.Form onSubmit={onSubmitLogin}>
         <input
+          name={"email"}
           placeholder="email"
-          type="email"
-          value={email}
-          onChange={onChangeEmail}
+          type={"email"}
+          value={form.email}
+          onChange={onChange}
+          required
         />
         <input
+          name={"password"}
           placeholder="password"
-          type="password"
-          value={password}
-          onChange={onChangePassword}
+          type={"password"}
+          value={form.password}
+          onChange={onChange}
+          required
+          pattern={"^[0-9]{6,}"}
+          title={"No minimo 6 digitos numericos"}
         />
-        <button onClick={onSubmitLogin}>Enviar</button>
-      </div>
-      <button onClick={() => goToAdminPage(navigate)}>Inicio admin</button>
-      <button onClick={() => goToHome(navigate)}>Home</button>
-    </>
+        <Button
+          width={'100px'}
+          color={'#CCCCCC'}
+          background={'#666666'}
+          hoverBg={'#CCCCCC'}
+          hoverColor={'#4D4D4D'}
+        >
+          Enviar
+        </Button>
+      </Styled.Form>
+    </Styled.Container>
   )
 }

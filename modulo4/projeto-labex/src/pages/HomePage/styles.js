@@ -19,24 +19,6 @@ export const Buttons = styled.div`
     right: 50px;
 `
 
-export const Button = styled.button`
-    width: 100px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    background: ${props => props.background};
-    border: none;
-    border-radius: 10px;
-    color: ${props => props.color};
-    &&: hover {
-        background: ${props => props.hoverBg};
-        color: ${props => props.hoverColor};
-    }
-`
-
 export const AdminIcon = styled.img`
     width: 15px;
     margin-right: 5px;
@@ -55,26 +37,9 @@ export const ArrowDown = styled.img`
     margin: 30px 0 10px 0;
 `
 
-export const ButtonMore = styled.button`
-    width: 150px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    background: #4D4D4D;
-    border: none;
-    border-radius: 10px;
-    color: #CCCCCC;
-    &&: hover {
-        background: #666666;
-        color: #CCCCCC;
-    }
-`
-
 export const ContentMain = styled.div`
     width: 60%;
+    height: 400px;
     display: flex;
     justify-content: space-around;
 `
