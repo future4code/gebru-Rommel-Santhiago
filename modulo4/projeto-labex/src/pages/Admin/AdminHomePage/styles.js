@@ -19,6 +19,11 @@ export const Title = styled.h1`
                 2px 0px 0px #4D4D4D;
 `
 
+export const Subtitle = styled(Title)`
+    font-size: 1.5em;
+    margin: 20px 0;
+`
+
 export const Trips = styled.div`
     height: 50px;
     width: 500px;

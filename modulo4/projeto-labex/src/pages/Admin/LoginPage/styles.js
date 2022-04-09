@@ -31,3 +31,11 @@ export const Title = styled.h1`
                 2px -1px 0px #4D4D4D,    
                 2px 0px 0px #4D4D4D;
 `
+
+export const Input = styled.input`
+    width: 380px;
+    height: 20px;
+    border-radius: 10px;
+    padding: 4px 8px;
+    margin: 0px 10px;
+`

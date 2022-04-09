@@ -45,7 +45,3 @@ export const Buttons = styled.div`
     display: flex;
     justify-content: space-between;
 `
-
-export const Button = styled.button`
-
-`

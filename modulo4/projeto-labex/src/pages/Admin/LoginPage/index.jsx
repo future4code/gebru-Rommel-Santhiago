@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import axios from 'axios'
 
 import * as Styled from './styles'
@@ -11,8 +11,8 @@ export const Login = () => {
   const { form, onChange } = useForm({email: '', password: ''})
   const navigate = useNavigate()
 
-  const onSubmitLogin = (event) => {
-    event.preventDefault()
+  const onSubmitLogin = (e) => {
+    e.preventDefault()
     const URL =
       "https://us-central1-labenu-apis.cloudfunctions.net/labeX/rommel-gebru/login"
 
@@ -54,7 +54,7 @@ export const Login = () => {
       </Styled.Buttons>
       <Styled.Title>Pagina de Login</Styled.Title>
       <Styled.Form onSubmit={onSubmitLogin}>
-        <input
+        <Styled.Input
           name={"email"}
           placeholder="email"
           type={"email"}
@@ -62,7 +62,7 @@ export const Login = () => {
           onChange={onChange}
           required
         />
-        <input
+        <Styled.Input
           name={"password"}
           placeholder="password"
           type={"password"}
@@ -79,7 +79,7 @@ export const Login = () => {
           hoverBg={'#CCCCCC'}
           hoverColor={'#4D4D4D'}
         >
-          Enviar
+          Entrar
         </Button>
       </Styled.Form>
     </Styled.Container>

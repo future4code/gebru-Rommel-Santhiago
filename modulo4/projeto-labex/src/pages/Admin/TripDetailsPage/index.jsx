@@ -18,6 +18,10 @@ export const TripDetails = () => {
   useProtectedPage()
 
   useEffect(() => {
+    getListTrips()
+  })
+
+  const getListTrips = () => {
     const URL = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/rommel-gebru/trip/${params.id}`
     const headers = {
       headers: {
@@ -33,7 +37,7 @@ export const TripDetails = () => {
       .catch((err) => {
         console.log('ERRO: ', err.response.message)
       })
-  }, [])
+  }
 
   const decideCandidate = (e) => {
     e.preventDefault()
@@ -50,7 +54,7 @@ export const TripDetails = () => {
       axios.put(URL, body, headers)
       .then((res) => {
         alert('Decisão registrada com sucesso!')
-        window.location.reload(false)
+        getListTrips()
       })
       .catch((err) => {
         console.log('ERRO: ', err.response.message)
@@ -86,7 +90,7 @@ export const TripDetails = () => {
       <Styled.Title>Candidatos pendentes</Styled.Title>
       <Styled.ContentCandidate>
           {trip && (trip.candidates.length > 0) ? trip.candidates.map((candidate) => 
-            <Card key={candidate.id}>
+            <Card key={candidate.id} width={'400px'}>
               <p><Styled.Span>Nome: </Styled.Span>{candidate.name}</p>
               <p><Styled.Span>Profissão: </Styled.Span>{candidate.profession}</p>
               <p><Styled.Span>Idade: </Styled.Span>{candidate.age}</p>
@@ -119,7 +123,7 @@ export const TripDetails = () => {
       <Styled.Title>Candidatos aprovados</Styled.Title>
       <Styled.ContentCandidate>
         {trip && (trip.approved.length > 0) ? trip.approved.map((candidate) => {
-          return <Card key={candidate.id}>
+          return <Card key={candidate.id} width={'400px'}>
               <p><Styled.Span>Nome: </Styled.Span>{candidate.name}</p>
               <p><Styled.Span>Profissão: </Styled.Span>{candidate.profession}</p>
               <p><Styled.Span>Idade: </Styled.Span>{candidate.age}</p>

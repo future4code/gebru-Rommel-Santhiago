@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 import * as Styled from './styles'
@@ -17,7 +18,7 @@ export const AdminPage = () => {
   const Details = trips && trips.map((trip) => {
     return <Styled.Trips id={trip.id} key={trip.id}>
       <Styled.Button onClick={() => link(trip.id)}>{trip.name}</Styled.Button>
-      <Styled.DeleteButton />
+      <Styled.DeleteButton onClick={() => deleteTrip(trip.id, trip.name)}/>
     </Styled.Trips>
   })
 
@@ -28,6 +29,27 @@ export const AdminPage = () => {
   const logout = () => {
     localStorage.removeItem("token")
     goToHome(navigate)
+  }
+
+  const deleteTrip = (id, name) => {
+    const URL = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/rommel-gebru/trips/${id}`
+    const headers = {
+      headers: {
+        auth: localStorage.getItem('token')
+      }
+    }
+
+    if (window.confirm(`Tem certeza que deseja deletar a viagem ${name}?`)) {
+      axios
+        .delete(URL, headers)
+        .then((res) => {
+          alert(`Viagem ${name} deletada com sucesso!`)
+          window.location.reload(false)
+        })
+        .catch((err) => {
+          console.log("ERRO:", err.response)
+        })
+    }
   }
 
   return (
@@ -65,6 +87,7 @@ export const AdminPage = () => {
           Sair
         </Button>
       </Styled.Buttons>
+      <Styled.Subtitle>Lista de viagens</Styled.Subtitle>
       {Details}
     </Styled.Container>
   )

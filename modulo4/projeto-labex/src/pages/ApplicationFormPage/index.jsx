@@ -60,6 +60,8 @@ export const ApplicationForm = () => {
           value={form.name}
           onChange={onChange}
           required
+          pattern={"^.{3,}$"}
+          title={"O nome deve ter no mínimo 3 caracteres"}
         />
         <Styled.Input
           name={'age'}
@@ -68,6 +70,7 @@ export const ApplicationForm = () => {
           value={form.age}
           onChange={onChange}
           required
+          min={18}
         />
         <Styled.Input
           name={'applicationText'} 
@@ -76,6 +79,8 @@ export const ApplicationForm = () => {
           value={form.applicationText}
           onChange={onChange}
           required
+          pattern={"^.{20,}$"}
+          title={"O texto deve ter no mínimo 20 caracteres"}
         />
         <Styled.Input
           name={'profession'} 
@@ -84,6 +89,8 @@ export const ApplicationForm = () => {
           value={form.profession}
           onChange={onChange}
           required
+          pattern={"^.{5,}$"}
+          title={"A profissão deve ter no mínimo 5 caracteres"}
         />
         <Styled.Select
           placeholder={"País"}
@@ -92,7 +99,7 @@ export const ApplicationForm = () => {
           onChange={onChange}
           required
         >
-          <option value='' selected>Escolha um Pais</option>
+          <option value='' disabled>Escolha um Pais</option>
           {countries.map((country) => {
                         return <option value={country} key={country}>{country}</option>
                     })}

@@ -3,7 +3,7 @@ export const planets = [
     "Vênus",
     "Terra",
     "Marte",
-    "Jupiter",
+    "Júpiter",
     "Saturno",
     "Urano",
     "Netuno",

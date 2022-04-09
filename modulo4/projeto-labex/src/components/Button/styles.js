@@ -17,5 +17,6 @@ export const Button = styled.button`
     &&: hover {
         background: ${props => props.hoverBg};
         color: ${props => props.hoverColor};
+        border: 1px solid #4D4D4D;
     }
 `

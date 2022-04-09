@@ -5,6 +5,8 @@ import { goToAbout, goToTripsList, goToLogin, goToAdminPage } from '../../routes
 
 import * as Styled from './styles'
 import BgImg from '../../img/background.png'
+import BgImg2 from '../../img/background2.png'
+import Astronaut from '../../img/astronaut.png'
 import adminGrey from '../../img/adminGrey.png'
 import adminRed from '../../img/adminRed.png'
 import ArrowDown from '../../img/down-arrow.svg'
@@ -32,6 +34,12 @@ export const Home = () => {
     return (
         <div>
             <Styled.Header img={BgImg}>
+                <Styled.Content>
+                    <Styled.Title>LabeX</Styled.Title>
+                    <Styled.Vibrate>
+                        <Styled.Img src={Astronaut} />  
+                    </Styled.Vibrate>
+                </Styled.Content>
                 <Styled.Buttons>
                     <Button
                         onClick={() => goToAbout(navigate)}
@@ -57,11 +65,11 @@ export const Home = () => {
                     </Button>
                 </Styled.Buttons>
             </Styled.Header>
-            <Styled.Main>
+            <Styled.Main img={BgImg2}>
                 <Styled.ContentMain>
-                    <Card height={'400px'}>New York</Card>
-                    <Card height={'400px'}>Italy</Card>
-                    <Card height={'400px'}>France</Card>
+                    <Card textAlign={'center'} width={'150px'} height={'70px'}>New York</Card>
+                    <Card textAlign={'center'} width={'150px'} height={'70px'}>Italy</Card>
+                    <Card textAlign={'center'} width={'150px'} height={'70px'}>France</Card>
                 </Styled.ContentMain>
                 <Styled.ArrowDown src={ArrowDown} alt='Arrow Dow' />
                 <Button
@@ -76,7 +84,7 @@ export const Home = () => {
                 </Button>
             </Styled.Main>
             <Styled.Footer>
-                <Styled.Title>&copy; Copyright 2022, Rommel, Turma: Gebru Labenu All rights reserved.</Styled.Title>
+                <Styled.SubTitle>&copy; Copyright 2022, Rommel, Turma: Gebru Labenu All rights reserved.</Styled.SubTitle>
             </Styled.Footer>
         </div>
     )

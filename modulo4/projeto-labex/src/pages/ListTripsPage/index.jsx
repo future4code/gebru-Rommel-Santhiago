@@ -14,7 +14,7 @@ export const ListTrips = () => {
   )
 
   const listTrips = trips && trips.map((trip) => {
-      return <Card key={trip.planet}>
+      return <Card key={trip.id} width={'400px'}>
         <p><Styled.Span>Nome:</Styled.Span> {trip.name}</p>
         <p><Styled.Span>Descrição:</Styled.Span> {trip.description}</p>
         <p><Styled.Span>Planeta:</Styled.Span> {trip.planet}</p>
