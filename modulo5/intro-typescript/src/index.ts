@@ -4,6 +4,8 @@ import checaAnoBissexto from './checaAnoBissexto'
 import comparaDoisNumeros from './comparaDoisNumeros'
 import checaRenovacaoRG from './checaRenovacaoRG'
 
+import desafioComparaDoisNumeros from './desafioComparaDoisNumeros'
+
 const Exercicios = () => {
   // Exercicio 01
   console.log(checaTriangulo(10, 5, 5))
@@ -28,3 +30,10 @@ const Exercicios = () => {
 }
 
 Exercicios()
+
+const Desafios = () => {
+  // Exercicio 06
+  desafioComparaDoisNumeros(5, 10)
+}
+
+Desafios()
