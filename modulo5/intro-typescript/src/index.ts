@@ -2,6 +2,7 @@ import checaTriangulo from './checaTriangulo'
 import coresFavoritas from './imprimeTresCoresFavoritas'
 import checaAnoBissexto from './checaAnoBissexto'
 import comparaDoisNumeros from './comparaDoisNumeros'
+import checaRenovacaoRG from './checaRenovacaoRG'
 
 const Exercicios = () => {
   // Exercicio 01
@@ -16,6 +17,14 @@ const Exercicios = () => {
 
   // Exercicio 04
   comparaDoisNumeros(50, 10)
+
+  // Exercicio 05
+  checaRenovacaoRG(2022, 2004, 2020)
+  checaRenovacaoRG(2022, 2004, 2014)
+  checaRenovacaoRG(2022, 2000, 2015)
+  checaRenovacaoRG(2022, 2000, 2010)
+  checaRenovacaoRG(2022, 1960, 2010)
+  checaRenovacaoRG(2022, 1960, 2007)
 }
 
 Exercicios()
