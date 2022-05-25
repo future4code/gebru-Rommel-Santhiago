@@ -5,6 +5,7 @@ import comparaDoisNumeros from './comparaDoisNumeros'
 import checaRenovacaoRG from './checaRenovacaoRG'
 
 import desafioComparaDoisNumeros from './desafioComparaDoisNumeros'
+import desafioDnaParaRna from './desafioDnaParaRna'
 
 const Exercicios = () => {
   // Exercicio 01
@@ -34,6 +35,9 @@ Exercicios()
 const Desafios = () => {
   // Exercicio 06
   desafioComparaDoisNumeros(5, 10)
+
+  // Exercicio 07
+  desafioDnaParaRna("ATT GCT GCG CAT TAA CGA CGC GTA")
 }
 
 Desafios()
