@@ -1,0 +1,15 @@
+{
+  "name": "exercicio3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "Rommel Santhiago",
+  "license": "ISC",
+  "dependencies": {
+    "colorize": "^0.1.0",
+    "file-system": "^2.2.2"
+  }
+}

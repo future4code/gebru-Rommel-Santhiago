@@ -1,0 +1,13 @@
+{
+  "name": "aulas-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "startOne": "cd Exercicio1 && node ./index.js",
+    "startTwo": "cd Exercicio2 && node ./index.js",
+    "startThree": "cd Exercicio3 && node ./index.js"
+  },
+  "author": "Rommel Santhiago",
+  "license": "ISC"
+}
