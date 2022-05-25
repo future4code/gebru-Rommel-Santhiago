@@ -1,5 +1,6 @@
 import checaTriangulo from './checaTriangulo'
 import coresFavoritas from './imprimeTresCoresFavoritas'
+import checaAnoBissexto from './checaAnoBissexto'
 
 const Exercicios = () => {
   // Exercicio 01
@@ -7,6 +8,10 @@ const Exercicios = () => {
 
   // Exercicio 02
   coresFavoritas("Azul", "Branco", "Verde")
+
+  // Exercicio 03
+  checaAnoBissexto(2016)
+  checaAnoBissexto(2015)
 }
 
 Exercicios()
