@@ -7,6 +7,7 @@ import checaRenovacaoRG from './checaRenovacaoRG'
 import desafioComparaDoisNumeros from './desafioComparaDoisNumeros'
 import desafioDnaParaRna from './desafioDnaParaRna'
 import desafioReverterString from './desafioReverterString'
+import desafioValidaInscricao from './desafioValidaInscricao'
 
 const Exercicios = () => {
   // Exercicio 01
@@ -42,6 +43,10 @@ const Desafios = () => {
 
   // Exercicio 08
   desafioReverterString("SOL")
+
+  // Exercicio 09
+  desafioValidaInscricao(19, "completo", 35)
+  desafioValidaInscricao(19, "completo", 44)
 }
 
 Desafios()
