@@ -1,6 +1,7 @@
 import checaTriangulo from './checaTriangulo'
 import coresFavoritas from './imprimeTresCoresFavoritas'
 import checaAnoBissexto from './checaAnoBissexto'
+import comparaDoisNumeros from './comparaDoisNumeros'
 
 const Exercicios = () => {
   // Exercicio 01
@@ -12,6 +13,9 @@ const Exercicios = () => {
   // Exercicio 03
   checaAnoBissexto(2016)
   checaAnoBissexto(2015)
+
+  // Exercicio 04
+  comparaDoisNumeros(50, 10)
 }
 
 Exercicios()
