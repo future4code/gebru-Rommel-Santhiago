@@ -6,6 +6,7 @@ import checaRenovacaoRG from './checaRenovacaoRG'
 
 import desafioComparaDoisNumeros from './desafioComparaDoisNumeros'
 import desafioDnaParaRna from './desafioDnaParaRna'
+import desafioReverterString from './desafioReverterString'
 
 const Exercicios = () => {
   // Exercicio 01
@@ -38,6 +39,9 @@ const Desafios = () => {
 
   // Exercicio 07
   desafioDnaParaRna("ATT GCT GCG CAT TAA CGA CGC GTA")
+
+  // Exercicio 08
+  desafioReverterString("SOL")
 }
 
 Desafios()
