@@ -3,6 +3,7 @@ import Exercicio02 from './Exercicio02'
 import Exercicio03 from './Exercicio03'
 import Exercicio04 from './Exercicio04'
 import Exercicio05 from './Exercicio05'
+import Exercicio06 from './Exercicio06'
 
 enum GENERO {
 	ACAO="ação",
@@ -47,6 +48,17 @@ const Exercicios = () => {
             {name: "Adilson", email: "adilson@email.com", role: "user"},  
             {name: "Carina", email: "carina@email.com", role: "admin"}      
         ] 
+    ))
+
+    console.log(Exercicio06(
+        [
+            { cliente: "João", saldoTotal: 1000, debitos: [100, 200, 300] },
+            { cliente: "Paula", saldoTotal: 7500, debitos: [200, 1040] },
+            { cliente: "Pedro", saldoTotal: 10000, debitos: [5140, 6100, 100, 2000] },
+            { cliente: "Luciano", saldoTotal: 100, debitos: [100, 200, 1700] },
+            { cliente: "Artur", saldoTotal: 1800, debitos: [200, 300] },
+            { cliente: "Soter", saldoTotal: 1200, debitos: [] }
+        ]
     ))
 }
 
