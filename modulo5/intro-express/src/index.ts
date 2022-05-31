@@ -2,6 +2,8 @@ import express from 'express'
 import { Request, Response } from 'express'
 import cors from 'cors'
 
+import { users } from './data'
+
 const app = express()
 
 app.use(express.json())
@@ -21,6 +23,19 @@ app.get('/', (req: Request , res: Response) => {
         res.status(200).send('Hello from Express')
     } catch (error) {
         console.log(error)
+    }
+})
+
+app.get('/users', (req: Request, res: Response) => {
+    try {
+        const listaDeUsuarios = users.map((user) => {
+            return user
+        })
+
+        res.status(200).send(listaDeUsuarios)
+    }
+    catch (error) {
+        res.status(400).end("Lista de usuarios não encontrada")
     }
 })
 
