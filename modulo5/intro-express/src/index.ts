@@ -44,6 +44,24 @@ app.get('/posts', (req: Request, res: Response) => {
     }
 })
 
+app.get('/posts/:id', (req: Request, res: Response) => {
+    try {
+        const id = Number(req.params.id)
+        let postsID: {}[] = []
+
+        for (let post of posts) {
+            if (post.userId === id) {
+                postsID.push(post)
+            }
+        }
+
+        res.status(200).send(postsID)
+    }
+    catch (error) {
+        res.status(400).end("Lista de posts não encontrada")
+    }
+})
+
 app.listen(3003, () => {
     console.log('Server is running in http://localhost:3003')
 })
