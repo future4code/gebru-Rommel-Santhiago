@@ -2,7 +2,7 @@ import express from 'express'
 import { Request, Response } from 'express'
 import cors from 'cors'
 
-import { users } from './data'
+import { users, posts } from './data'
 
 const app = express()
 
@@ -28,6 +28,19 @@ app.get('/users', (req: Request, res: Response) => {
     }
     catch (error) {
         res.status(400).end("Lista de usuarios não encontrada")
+    }
+})
+
+app.get('/posts', (req: Request, res: Response) => {
+    try {
+        const listaDePosts = posts.map((post) => {
+            return post
+        })
+
+        res.status(200).send(listaDePosts)
+    }
+    catch (error) {
+        res.status(400).end("Lista de posts não encontrada")
     }
 })
 
