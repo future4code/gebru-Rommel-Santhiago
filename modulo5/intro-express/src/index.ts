@@ -10,14 +10,6 @@ app.use(express.json())
 
 app.use(cors())
 
-type User = {
-    id: number,
-    name: string,
-    email: string,
-    phone: number,
-    website: string
-}[]
-
 app.get('/', (req: Request , res: Response) => {
     try {
         res.status(200).send('Hello from Express')

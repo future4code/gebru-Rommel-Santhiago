@@ -1,4 +1,19 @@
-export const users = [
+type User = {
+    id: number,
+    name: string,
+    email: string,
+    phone: number,
+    website: string
+}[]
+
+type Post = {
+    userId: number
+    id: number,
+    title: string,
+    body: string,
+}[]
+
+export const users: User = [
     {
         "id": 1,
         "name": "Leanne Graham",
