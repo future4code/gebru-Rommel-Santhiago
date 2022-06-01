@@ -70,10 +70,6 @@ app.delete('/posts/:id', (req: Request, res: Response) => {
 
         for (let post of posts) {
             if (post.userId === user && post.id === postId) {
-                // const index = post.userId && post.id
-                // if(index > -1){
-                //     newPosts = posts.slice(index, 1)
-                // }
                 newPosts = posts.filter((index) => {
                     return index !== post
                 })
@@ -83,6 +79,25 @@ app.delete('/posts/:id', (req: Request, res: Response) => {
     }
     catch (error) {
         res.status(400).end("Posts não encontrado")
+    }
+})
+
+app.delete('/users/:id', (req: Request, res: Response) => {
+    try {
+        const id: number = Number(req.params.id)
+        let newUsers: {}[] = []
+
+        for (let user of users) {
+            if (user.id === id) {
+                newUsers = users.filter((index) => {
+                    return index !== user
+                })
+            }
+        }
+        res.status(200).send(newUsers)
+    }
+    catch (error) {
+        res.status(400).end("Lista de posts não encontrada")
     }
 })
 
