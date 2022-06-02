@@ -6,6 +6,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+type ToDo = {
+    "userId": number,
+    "id": number,
+    "title": string,
+    "completed": boolean
+}
+
 app.get("/ping", (req: Request, res: Response) => {          
     res.send("Pong! 🏓")
 })
