@@ -8,18 +8,18 @@ app.use(express.json());
 app.use(cors());
 
 type ToDo = {
-    "userId": number,
-    "id": number,
+    "userId": string,
+    "id": string,
     "title": string,
     "completed": boolean
-}
+}[]
 
 const toDos: ToDo = [
     {
         "userId": generateId(),
         "id": generateId(),
         "title": "delectus aut autem",
-        "completed": false
+        "completed": true
       },
       {
         "userId": generateId(),
@@ -49,6 +49,18 @@ const toDos: ToDo = [
 
 app.get("/ping", (req: Request, res: Response) => {          
     res.send("Pong! 🏓")
+})
+
+app.get("/status", (req: Request, res: Response) => {   
+    let toDosTrue: {}[] = []
+    const status = req.query.status === "true" ? true : false
+
+    for(let toDo of toDos){
+        if(toDo.completed === status){
+            toDosTrue.push(toDo)
+        }
+    }
+    res.status(200).send(toDosTrue)
 })
 
 app.listen(3003, () => {
