@@ -91,7 +91,7 @@ app.delete("/deleteToDo", (req: Request, res: Response) => {
 });
 
 app.get("/user", (req: Request, res: Response) => {
-    const userId = Number(req.query.userId);
+    const userId = Number(req.headers.userId);
     let toDosUser: {}[] = []
     for(let toDo of toDos){
         if(toDo.userId === userId){
