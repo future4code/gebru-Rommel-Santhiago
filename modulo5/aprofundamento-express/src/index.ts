@@ -91,18 +91,33 @@ app.delete("/deleteToDo", (req: Request, res: Response) => {
 });
 
 app.get("/user", (req: Request, res: Response) => {
-    const userId = Number(req.headers.userId);
+    const userId = Number(req.query.userId);
     let toDosUser: {}[] = []
+    let toDoOthers: {}[] = []
+    const allToDos = {
+        todos: {
+            selectedUser: toDosUser,
+            others: toDoOthers
+        }
+    }
     for(let toDo of toDos){
         if(toDo.userId === userId){
-            toDosUser.push(toDo)
+           allToDos.todos.selectedUser.push(toDo)
         };
     };
 
-    fs.writeFile(__dirname + '/toDos.json', JSON.stringify(toDos, null, 4), (err) => {
-        if (err) throw err;
-        res.status(201).send(toDosUser);
-    });
+    for(let toDo of toDos){
+        if(toDo.userId !== userId){
+            allToDos.todos.others.push(toDo)
+        };
+    };
+
+    // fs.writeFile(__dirname + '/toDos.json', JSON.stringify(toDos, null, 4), (err) => {
+    //     if (err) throw err;
+    //     res.status(201).send(allToDos);
+    // });
+
+    res.status(200).send(allToDos);
 });
 
 app.listen(3003, () => {
