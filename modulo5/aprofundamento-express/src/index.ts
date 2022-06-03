@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 type ToDo = {
-    "userId": string,
+    "userId": number,
     "id": string,
     "title": string,
     "completed": boolean
@@ -34,9 +34,9 @@ app.get("/status", (req: Request, res: Response) => {
 })
 
 app.post("/createToDo", (req: Request, res: Response) => {
-    const { title, completed } = req.body;  
+    const { userId, title, completed } = req.body;  
     const newToDo = {
-        userId: generateId(),
+        userId,
         id: generateId(),
         title,
         completed
@@ -51,14 +51,15 @@ app.post("/createToDo", (req: Request, res: Response) => {
 })
 
 app.put("/upDateToDo", (req: Request, res: Response) => {
-    const { userIdEdited, IdEdited} = req.query;
+    const userIdEdited = Number(req.query.userIdEdited);
+    const IdEdited = req.query.IdEdited;
     const { titleEdited, completedEdited } = req.body;
 
     for(let toDo of toDos){
         if(toDo.id === IdEdited){
             const index = toDos.indexOf(toDo);
             toDo = {
-                userId: (userIdEdited as string),
+                userId: userIdEdited,
                 id: (IdEdited as string),
                 title: titleEdited,
                 completed: completedEdited
@@ -69,7 +70,7 @@ app.put("/upDateToDo", (req: Request, res: Response) => {
 
     fs.writeFile(__dirname + '/toDos.json', JSON.stringify(toDos, null, 4), (err) => {
         if (err) throw err;
-        res.status(201).send(toDos);
+        res.status(200).send(toDos);
     });
 });
 
@@ -85,7 +86,22 @@ app.delete("/deleteToDo", (req: Request, res: Response) => {
 
     fs.writeFile(__dirname + '/toDos.json', JSON.stringify(toDos, null, 4), (err) => {
         if (err) throw err;
-        res.status(201).send(toDos);
+        res.status(200).send(toDos);
+    });
+});
+
+app.get("/user", (req: Request, res: Response) => {
+    const userId = Number(req.query.userId);
+    let toDosUser: {}[] = []
+    for(let toDo of toDos){
+        if(toDo.userId === userId){
+            toDosUser.push(toDo)
+        };
+    };
+
+    fs.writeFile(__dirname + '/toDos.json', JSON.stringify(toDos, null, 4), (err) => {
+        if (err) throw err;
+        res.status(201).send(toDosUser);
     });
 });
 
