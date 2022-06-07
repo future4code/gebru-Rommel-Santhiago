@@ -75,6 +75,33 @@ app.put("/produtos/upDateProduto/", (req: Request, res: Response) => {
     }
 })
 
+app.delete("/produtos/delete", (req: Request, res: Response) => {
+    try {
+        const produtoId = req.query.produtoId
+
+        if(!produtos){
+            throw new Error("Não há uma lista de produtos")
+        }
+
+        if(!produtoId){
+            throw new Error("Produto não encontrado")
+        }
+
+        produtos.find(produto => {
+            if(produto.id === produtoId){
+                const index = produtos.indexOf(produto)
+                produtos.splice(index, 1)
+            }
+        })
+
+        res.status(200).send(produtos)
+
+    } catch (error) {
+        res.send(error)
+    }
+    
+})
+
 app.listen(3003, () => {
     console.log("Servidor rodando em http://localhost:3003")
 })
