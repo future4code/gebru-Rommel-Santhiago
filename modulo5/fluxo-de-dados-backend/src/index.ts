@@ -1,6 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import { Request, Response } from 'express'
+import { v4 as generateId } from 'uuid'
+
+import { produtos } from './data'
 
 const app = express()
 
@@ -13,6 +16,18 @@ app.get("/test", (req: Request, res: Response) => {
     } catch (error) {
         res.status(500).send(error)
     }
+})
+
+app.post("/produtos", (req: Request, res: Response) => {
+    const { name, price } = req.body
+
+    produtos.push({
+        id: generateId(),
+        name,
+        price
+    })
+
+    res.status(201).send(produtos)
 })
 
 app.listen(3003, () => {

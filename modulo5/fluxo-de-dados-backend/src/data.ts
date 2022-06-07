@@ -1,6 +1,6 @@
 import { v4 as generateId } from 'uuid'
 
-const produtos = [
+export const produtos = [
     {
         id: generateId(),
         name: "Notebook",
