@@ -32,14 +32,44 @@ app.post("/produtos", (req: Request, res: Response) => {
 
 app.get("/produtos", (req: Request, res: Response) => {
     try {
-        if(produtos){
-            const listaDeProdutos = produtos.map((produto) => {
-                return produto
-            })
-            res.status(200).send(listaDeProdutos)
-        } else {
+        if(!produtos){
             throw new Error("Não há uma lista de produtos")
         }
+
+        const listaDeProdutos = produtos.map((produto) => {
+            return produto
+        })
+
+        res.status(200).send(listaDeProdutos)
+
+    } catch (error) {
+        res.status(404).send(error)
+    }
+})
+
+app.put("/produtos/upDateProduto/", (req: Request, res: Response) => {
+    try {
+        const produtoId = req.query.produtoId
+        const priceEdited  = req.body.priceEdited
+
+        if(!produtos){
+            throw new Error("Não há uma lista de produtos")
+        }
+
+        produtos.find(produto => {
+            if(produto.id === produtoId){
+                const index = produtos.indexOf(produto)
+                produto = {
+                    id: produto.id,
+                    name: produto.name,
+                    price: priceEdited
+                }
+                produtos[index] = produto
+            }
+        })
+
+        res.status(200).send(produtos)
+
     } catch (error) {
         res.status(404).send(error)
     }
