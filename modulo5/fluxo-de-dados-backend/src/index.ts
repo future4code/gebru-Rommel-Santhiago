@@ -30,6 +30,21 @@ app.post("/produtos", (req: Request, res: Response) => {
     res.status(201).send(produtos)
 })
 
+app.get("/produtos", (req: Request, res: Response) => {
+    try {
+        if(produtos){
+            const listaDeProdutos = produtos.map((produto) => {
+                return produto
+            })
+            res.status(200).send(listaDeProdutos)
+        } else {
+            throw new Error("Não há uma lista de produtos")
+        }
+    } catch (error) {
+        res.status(404).send(error)
+    }
+})
+
 app.listen(3003, () => {
     console.log("Servidor rodando em http://localhost:3003")
 })
