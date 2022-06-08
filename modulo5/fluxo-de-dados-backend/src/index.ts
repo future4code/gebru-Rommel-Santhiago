@@ -11,6 +11,7 @@ app.use(express.json())
 app.use(cors())
 
 const Errors: { [key: string]: { status: number, message: string } } = {
+    PRODUTO_NOT_FOUND: { status: 404, message: "Produto não encontrado" },
     MISSING_PARAMETERS: { status: 422, message: "Informação faltando. Consulte a documentação" },
     PRICE_PARAMETER: { status: 406, message: "O preço precisa ser um numéro" },
     PRICE_PARAMETER_NULL: { status: 406, message: "O preço não pode ser menor ou igual a zero" },
@@ -30,16 +31,16 @@ app.post("/produtos", (req: Request, res: Response) => {
     try {
         const { name, price } = req.body
         
+        if(+price <= 0){
+            throw new Error(Errors.PRICE_PARAMETER_NULL.message)
+        }
+
         if(!name || !price){
             throw new Error(Errors.MISSING_PARAMETERS.message)
         }
 
         if(price !== +price){
             throw new Error(Errors.PRICE_PARAMETER.message)
-        }
-
-        if(+price <= 0){
-            throw new Error(Errors.PRICE_PARAMETER_NULL.message)
         }
 
         if(name !== name.toString()){
@@ -95,10 +96,24 @@ app.put("/produtos/upDateProduto/", (req: Request, res: Response) => {
     try {
         const produtoId = req.query.produtoId
         const priceEdited  = req.body.priceEdited
-
-        if(!produtos){
-            throw new Error("Não há uma lista de produtos")
+        
+        if(+priceEdited <= 0){
+            throw new Error(Errors.PRICE_PARAMETER_NULL.message)
         }
+
+        if(!priceEdited){
+            throw new Error(Errors.MISSING_PARAMETERS.message)
+        }
+
+        if(priceEdited !== +priceEdited){
+            throw new Error(Errors.PRICE_PARAMETER.message)
+        }
+
+        produtos.find(produto => {
+            if(produtoId !== produto.id){
+                throw new Error(Errors.PRODUTO_NOT_FOUND.message)
+            }
+        })
 
         produtos.find(produto => {
             if(produto.id === produtoId){
@@ -114,8 +129,23 @@ app.put("/produtos/upDateProduto/", (req: Request, res: Response) => {
 
         res.status(200).send(produtos)
 
-    } catch (error) {
-        res.status(404).send(error)
+    } catch (error: any) {
+        switch(error.message){
+            case Errors.MISSING_PARAMETERS.message:
+                res.status(Errors.MISSING_PARAMETERS.status).send(Errors.MISSING_PARAMETERS.message)
+                break;            
+            case Errors.PRICE_PARAMETER.message:
+                res.status(Errors.PRICE_PARAMETER.status).send(Errors.PRICE_PARAMETER.message)
+                break;
+            case Errors.PRICE_PARAMETER_NULL.message:
+                res.status(Errors.PRICE_PARAMETER_NULL.status).send(Errors.PRICE_PARAMETER_NULL.message)
+                break;
+            case Errors.PRODUTO_NOT_FOUND.message:
+                res.status(Errors.PRODUTO_NOT_FOUND.status).send(Errors.PRODUTO_NOT_FOUND.message)
+                break;
+            default:
+                res.status(Errors.SOME_ERROR.status).send(Errors.SOME_ERROR.message)
+        }
     }
 })
 
