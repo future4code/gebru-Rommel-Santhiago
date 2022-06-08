@@ -109,11 +109,9 @@ app.put("/produtos/upDateProduto/", (req: Request, res: Response) => {
             throw new Error(Errors.PRICE_PARAMETER.message)
         }
 
-        produtos.find(produto => {
-            if(produtoId !== produto.id){
-                throw new Error(Errors.PRODUTO_NOT_FOUND.message)
-            }
-        })
+        if(!produtoId){
+            throw new Error(Errors.PRODUTO_NOT_FOUND.message)
+        }
 
         produtos.find(produto => {
             if(produto.id === produtoId){
@@ -153,12 +151,8 @@ app.delete("/produtos/delete", (req: Request, res: Response) => {
     try {
         const produtoId = req.query.produtoId
 
-        if(!produtos){
-            throw new Error("Não há uma lista de produtos")
-        }
-
         if(!produtoId){
-            throw new Error("Produto não encontrado")
+            throw new Error(Errors.PRODUTO_NOT_FOUND.message)
         }
 
         produtos.find(produto => {
@@ -170,8 +164,14 @@ app.delete("/produtos/delete", (req: Request, res: Response) => {
 
         res.status(200).send(produtos)
 
-    } catch (error) {
-        res.send(error)
+    } catch (error: any) {
+        switch(error.message){
+            case Errors.PRODUTO_NOT_FOUND.message:
+                res.status(Errors.PRODUTO_NOT_FOUND.status).send(Errors.PRODUTO_NOT_FOUND.message)
+                break;
+            default:
+                res.status(Errors.SOME_ERROR.status).send(Errors.SOME_ERROR.message)
+        }
     }
     
 })
