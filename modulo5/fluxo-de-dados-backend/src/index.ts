@@ -10,6 +10,14 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+const Errors: { [key: string]: { status: number, message: string } } = {
+    MISSING_PARAMETERS: { status: 422, message: "Informação faltando. Consulte a documentação" },
+    PRICE_PARAMETER: { status: 406, message: "O preço precisa ser um numéro" },
+    PRICE_PARAMETER_NULL: { status: 406, message: "O preço não pode ser menor ou igual a zero" },
+    NAME_PARAMETER: { status: 406, message: "O nome precisa ser uma string" },
+    SOME_ERROR: { status: 500, message: "Algo deu errado" }
+}
+
 app.get("/test", (req: Request, res: Response) => {
     try {
         res.status(200).send("API funcionando!")
@@ -19,15 +27,51 @@ app.get("/test", (req: Request, res: Response) => {
 })
 
 app.post("/produtos", (req: Request, res: Response) => {
-    const { name, price } = req.body
+    try {
+        const { name, price } = req.body
+        
+        if(!name || !price){
+            throw new Error(Errors.MISSING_PARAMETERS.message)
+        }
 
-    produtos.push({
-        id: generateId(),
-        name,
-        price
-    })
+        if(price !== +price){
+            throw new Error(Errors.PRICE_PARAMETER.message)
+        }
 
-    res.status(201).send(produtos)
+        if(+price <= 0){
+            throw new Error(Errors.PRICE_PARAMETER_NULL.message)
+        }
+
+        if(name !== name.toString()){
+            throw new Error(Errors.NAME_PARAMETER.message)
+        }
+    
+        produtos.push({
+            id: generateId(),
+            name,
+            price
+        })
+    
+        res.status(201).send(produtos)
+
+    } catch (error: any) {
+        switch(error.message){
+            case Errors.MISSING_PARAMETERS.message:
+                res.status(Errors.MISSING_PARAMETERS.status).send(Errors.MISSING_PARAMETERS.message)
+                break;            
+            case Errors.PRICE_PARAMETER.message:
+                res.status(Errors.PRICE_PARAMETER.status).send(Errors.PRICE_PARAMETER.message)
+                break;
+            case Errors.PRICE_PARAMETER_NULL.message:
+                res.status(Errors.PRICE_PARAMETER_NULL.status).send(Errors.PRICE_PARAMETER_NULL.message)
+                break;
+            case Errors.NAME_PARAMETER.message:
+                res.status(Errors.NAME_PARAMETER.status).send(Errors.NAME_PARAMETER.message)
+                break;
+            default:
+                res.status(Errors.SOME_ERROR.status).send(Errors.SOME_ERROR.message)
+        }
+    }
 })
 
 app.get("/produtos", (req: Request, res: Response) => {
