@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
-import { users } from "./data";
+import { users, User, USER_TYPE } from "./data";
 
 const app = express();
 app.use(express.json());
@@ -21,11 +21,50 @@ app.get("/users", (req: Request, res: Response) => {
     let errorCode = 500;
     try {
         if(!users.length){
-            errorCode = 404
+            errorCode = 404;
             throw new Error("Usuarios não encontrados");
         };
 
         res.status(200).send(users);
+
+    } catch (error: any) {
+        res.status(errorCode).send(error.message);
+    };
+});
+
+/**
+ * Exercício 2
+ *  a. Como você passou os parâmetros de type para a requisição? Por quê?
+        Passei atraves da query, por ser mais facil e intuitivo passar esse tipo de informação por query do que
+        por url
+ *  b. Você consegue pensar em um jeito de garantir que apenas `types` válidos sejam utilizados?
+        Sim, fazendo uma validação pelo atributo USER_TYPE
+ */
+
+app.get("/users/type", (req: Request, res: Response) => {
+    let errorCode = 500;
+    try {
+        const type = req.query.type as string;
+
+        if(!type) {
+            errorCode = 422;
+            throw new Error("Especifique um tipo de usuário válido: 'NORMAL' ou 'ADMIN'");
+        };
+
+        if (type.toLowerCase() !== USER_TYPE.NORMAL.toLowerCase() 
+            && type.toLowerCase() !== USER_TYPE.ADMIN.toLowerCase()) {
+            errorCode = 422;
+            throw new Error("Inserir tipo de usuário válido: 'NORMAL' ou 'ADMIN'");
+        };
+
+        const usersType = users.filter(user => user.type.toLowerCase() === type.toLowerCase());
+
+        if(!usersType.length) {
+            errorCode = 404
+            throw new Error("Não há usuarios na base de dados");
+        };
+
+        res.status(200).send(usersType);
 
     } catch (error: any) {
         res.status(errorCode).send(error.message);
