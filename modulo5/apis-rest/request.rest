@@ -7,3 +7,15 @@ GET http://localhost:3003/users/type?type=normal
 ###
 
 GET http://localhost:3003/users/search?name=alice
+
+###
+
+POST http://localhost:3003/users 
+Content-Type: application/json
+
+{
+    "name": "Rommel",
+    "email": "rommel@email.com",
+    "type": "ADMIN",
+    "age": 34
+}

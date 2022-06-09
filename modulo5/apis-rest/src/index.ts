@@ -51,7 +51,7 @@ app.get("/users/type", (req: Request, res: Response) => {
             throw new Error("Especifique um tipo de usuário válido: 'NORMAL' ou 'ADMIN'");
         };
 
-        if (type.toLowerCase() !== USER_TYPE.NORMAL.toLowerCase() 
+        if(type.toLowerCase() !== USER_TYPE.NORMAL.toLowerCase() 
             && type.toLowerCase() !== USER_TYPE.ADMIN.toLowerCase()) {
             errorCode = 422;
             throw new Error("Inserir tipo de usuário válido: 'NORMAL' ou 'ADMIN'");
@@ -83,14 +83,14 @@ app.get("/users/search", (req: Request, res: Response) => {
     try {
         const name = req.query.name as string;
 
-        if (!name) {
+        if(!name) {
           errorCode = 422;
           throw new Error("Insira um nome para busca!");
         };
     
         const user = users.filter(user => user.name.toLowerCase() === name.toLowerCase());
     
-        if (!user.length) {
+        if(!user.length) {
           errorCode = 404;
           throw new Error("Usuário não encontrado");
         };
@@ -101,6 +101,53 @@ app.get("/users/search", (req: Request, res: Response) => {
         res.status(errorCode).send(error.message);
     };
 });
+
+/**
+ * Exercício 4
+    a. Mude o método do endpoint para `PUT`. O que mudou?
+        Nada mudou
+    b. Você considera o método `PUT` apropriado para esta transação? Por quê?
+        Semanticamente não, por que o seu funcionamento e similar.
+ */
+
+app.post('/users', (req: Request, res: Response) => {
+    let errorCode = 500;
+    try {
+      const { name, email, type, age } = req.body;
+  
+      if(!name || !email || !type || !age) {
+        errorCode = 422;
+        throw new Error("Faltam parâmetros a serem preenchidos no body");
+      };
+  
+      if(type != USER_TYPE.NORMAL && type != USER_TYPE.ADMIN) {
+        errorCode = 422;
+        throw new Error("Inserir um tipo de usuário válido: 'NORMAL' ou 'ADMIN'");
+      };
+
+      users.find((user) => {
+          if(name === user.name || email === user.email) {
+            errorCode = 422;
+            throw new Error("Usuário já existe na base de dados");
+          };
+      });
+  
+      const newUser: User = {
+        id: users.length + 1,
+        name: name,
+        email: email,
+        type: type,
+        age: age
+      };
+  
+      users.push(newUser);
+
+      res.status(201).send(users);
+  
+    } catch (error: any) {
+      res.status(errorCode).send(error.message);
+    };
+  });
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
