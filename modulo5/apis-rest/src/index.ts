@@ -71,6 +71,37 @@ app.get("/users/type", (req: Request, res: Response) => {
     };
 });
 
+/**
+ * Exercício 3
+    a. Qual é o tipo de envio de parâmetro que costuma ser utilizado por aqui?
+        Normalmente envia se pela query
+    b. Altere este endpoint para que ele devolva uma mensagem de erro caso nenhum usuário tenha sido encontrado.
+ */
+
+app.get("/users/search", (req: Request, res: Response) => {
+    let errorCode = 500;
+    try {
+        const name = req.query.name as string;
+
+        if (!name) {
+          errorCode = 422;
+          throw new Error("Insira um nome para busca!");
+        };
+    
+        const user = users.filter(user => user.name.toLowerCase() === name.toLowerCase());
+    
+        if (!user.length) {
+          errorCode = 404;
+          throw new Error("Usuário não encontrado");
+        };
+
+        res.status(200).send(user);
+
+    } catch (error: any) {
+        res.status(errorCode).send(error.message);
+    };
+});
+
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
       const address = server.address() as AddressInfo;
