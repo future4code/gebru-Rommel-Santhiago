@@ -6,3 +6,7 @@ Content-Type: application/json
     "cpf": 88888888888,
     "dataNascimento": "08/08/2002"
 }
+
+###
+
+GET http://localhost:3003/clientes

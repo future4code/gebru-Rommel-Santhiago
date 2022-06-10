@@ -27,7 +27,22 @@ app.post('/clientes', (req: Request, res: Response) => {
     } catch (error) {
       res.send(error);
     };
-  });
+});
+
+app.get("/clientes", (req: Request, res: Response) => {
+    let errorCode = 500;
+    try {
+        if(!clientes.length){
+            errorCode = 404;
+            throw new Error("Não existe clientes na base de dados");
+        };
+
+        res.status(200).send(clientes);
+
+    } catch (error: any) {
+        res.status(errorCode).send(error.message);
+    };
+});
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
