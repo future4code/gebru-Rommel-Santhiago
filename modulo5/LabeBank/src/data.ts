@@ -14,6 +14,21 @@ type Cliente = {
     extrato: Extrato
 }[]
 
+export const transacoes: Extrato = [
+    {
+        clienteId: 1,
+        valor: 400,
+        data: "08/06/2022",
+        descricao: "Teclado"
+    },
+    {
+        clienteId: 1,
+        valor: 3.50,
+        data: "07/06/2022",
+        descricao: "Pipoca"
+    }
+]
+
 export const clientes: Cliente = [
     {
         id: 1,
@@ -21,6 +36,6 @@ export const clientes: Cliente = [
         cpf: 99999999999,
         dataNascimento: "10/10/2000",
         saldo: 2.000,
-        extrato: []
+        extrato: transacoes
     }
 ]
