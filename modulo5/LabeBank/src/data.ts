@@ -1,12 +1,12 @@
-type Extrato = {
-    clienteId: number
+export type Extrato = {
+    clienteId: number,
     valor: number,
     data: string,
     descricao: string
 }[]
 
-type Cliente = {
-    id: number
+export type Cliente = {
+    id: number,
     nome: string,
     cpf: number,
     dataNascimento: string,
@@ -35,7 +35,7 @@ export const clientes: Cliente = [
         nome: "Rommel",
         cpf: 99999999999,
         dataNascimento: "10/10/2000",
-        saldo: 2.000,
+        saldo: 2000,
         extrato: transacoes
     }
 ]
