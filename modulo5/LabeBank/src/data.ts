@@ -1,10 +1,17 @@
+type Extrato = {
+    clienteId: number
+    valor: number,
+    data: string,
+    descricao: string
+}[]
+
 type Cliente = {
     id: number
     nome: string,
     cpf: number,
     dataNascimento: string,
     saldo: number,
-    extrato: {}[]
+    extrato: Extrato
 }[]
 
 export const clientes: Cliente = [
