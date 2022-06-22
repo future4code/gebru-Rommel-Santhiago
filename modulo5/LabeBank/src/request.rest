@@ -1,0 +1,23 @@
+POST http://localhost:3003/clientes
+Content-Type: application/json
+
+{
+    "nome": "Saullo",
+    "cpf": 88888888888,
+    "dataNascimento": "08/06/2004"
+}
+
+###
+
+POST http://localhost:3003/clientes
+Content-Type: application/json
+
+{
+    "nome": "Saullo",
+    "cpf": 88888888888,
+    "dataNascimento": "20/06/2004"
+}
+
+###
+
+GET http://localhost:3003/clientes
