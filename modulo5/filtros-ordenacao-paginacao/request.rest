@@ -1,0 +1,10 @@
+// ENDEREÇO PADRÃO
+GET http://localhost:3003/users
+
+###
+// FILTRO POR NOME
+GET http://localhost:3003/users?name=Aline
+
+###
+//FILTRO POR TIPO
+GET http://localhost:3003/users/CX
