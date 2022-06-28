@@ -12,3 +12,7 @@ GET http://localhost:3003/users/CX
 ###
 // ORDENAÇÃO
 GET http://localhost:3003/users/order?sort=name&order=ASC
+
+###
+// PAGINAÇÃO
+GET http://localhost:3003/users/page?size=5&page=1

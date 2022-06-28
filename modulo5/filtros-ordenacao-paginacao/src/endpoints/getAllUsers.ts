@@ -91,3 +91,40 @@ export const getUsersByOrder = async(
        res.send(error.message || error.sqlMessage)
     }
 }
+
+export const getUsersByPage = async(
+    req: Request,
+    res: Response
+    ): Promise<void> =>{
+    try {
+        let size = Number(req.query.size)
+        let page = Number(req.query.page)
+
+        if(isNaN(size) || size < 1){
+            size = 10
+        }
+    
+        if(isNaN(page) || page <1){
+            page = 1
+        }
+    
+        let offset = size * (page - 1)
+
+       const result = await connection("aula49_users")
+       .limit(size)
+       .offset(offset)
+        
+       if(!result.length){
+          res.statusCode = 404
+          throw new Error("Users not found")
+       }
+
+       const users = result.map(toUser)
+ 
+       res.status(200).send(users)
+       
+    } catch (error: any) {
+       console.log(error)
+       res.send(error.message || error.sqlMessage)
+    }
+}
