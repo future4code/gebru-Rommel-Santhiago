@@ -57,3 +57,37 @@ export const getUsersByType = async(
        res.send(error.message || error.sqlMessage)
     }
 }
+
+export const getUsersByOrder = async(
+    req: Request,
+    res: Response
+    ): Promise<void> =>{
+    try {
+        let sort = req.query.sort as string
+        let order = req.query.order as string
+
+        if(sort !== "name" && sort !== "type" ){
+            sort = "email"
+        } 
+        
+        if(order?.toUpperCase() !== "ASC" && order?.toUpperCase() !== "DESC"){
+            order = "ASC"
+        }
+
+       const result = await connection("aula49_users")
+       .orderBy(sort, order)
+        
+       if(!result.length){
+          res.statusCode = 404
+          throw new Error("Users not found")
+       }
+
+       const users = result.map(toUser)
+ 
+       res.status(200).send(users)
+       
+    } catch (error: any) {
+       console.log(error)
+       res.send(error.message || error.sqlMessage)
+    }
+}

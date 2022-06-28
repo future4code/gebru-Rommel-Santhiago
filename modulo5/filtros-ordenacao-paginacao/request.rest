@@ -8,3 +8,7 @@ GET http://localhost:3003/users?name=Aline
 ###
 //FILTRO POR TIPO
 GET http://localhost:3003/users/CX
+
+###
+// ORDENAÇÃO
+GET http://localhost:3003/users/order?sort=name&order=ASC
