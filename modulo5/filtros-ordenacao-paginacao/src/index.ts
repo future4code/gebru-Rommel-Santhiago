@@ -1,7 +1,9 @@
 import { app } from "./app";
-import { getUsersByName, getUsersByType, getUsersByOrder, getUsersByPage} from "./endpoints/getAllUsers";
+import { getAllUsers, getUsersByName, getUsersByType, getUsersByOrder, getUsersByPage} from "./endpoints/getAllUsers";
 
-app.get("/users", getUsersByName);
+app.get("/users", getAllUsers);
+app.get("/users/:type", getAllUsers);
+app.get("/users/name", getUsersByName);
 app.get("/users/order", getUsersByOrder);
 app.get("/users/page", getUsersByPage);
-app.get("/users/:type", getUsersByType);
+app.get("/users/type/:type", getUsersByType);

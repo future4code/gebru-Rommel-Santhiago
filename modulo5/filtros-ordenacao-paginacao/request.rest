@@ -3,11 +3,11 @@ GET http://localhost:3003/users
 
 ###
 // FILTRO POR NOME
-GET http://localhost:3003/users?name=Aline
+GET http://localhost:3003/users/name?name=Aline
 
 ###
 //FILTRO POR TIPO
-GET http://localhost:3003/users/CX
+GET http://localhost:3003/users/type/CX
 
 ###
 // ORDENAÇÃO
@@ -16,3 +16,11 @@ GET http://localhost:3003/users/order?sort=name&order=ASC
 ###
 // PAGINAÇÃO
 GET http://localhost:3003/users/page?size=5&page=1
+
+###
+// TUDO JUNTO COM PARAMS
+GET http://localhost:3003/users/CX?size=2&page=2
+
+### 
+// TUDO JUNTO COM QUERY PARAMS
+GET http://localhost:3003/users?sort=name&order=ASC&size=3&page=1
