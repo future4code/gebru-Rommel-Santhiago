@@ -3,7 +3,8 @@ import { User } from "../types";
 import { 
     createUserRepository,
     readUsersRepository,
-    readUserByIdRepository 
+    readUserByIdRepository,
+    updateUserRepository 
 } from "../Repository/users-repository";
 
 const Errors: { [key: string]: { status: number, message: string } } = {
@@ -87,18 +88,75 @@ export const createUserController = async (
     req: Request,
     res: Response
  ): Promise<void> => {
-    let codeError = 500
     try {
         const id = Number(req.query.id);
 
         if(!id){
-            throw new Error(Errors.MISSING_PARAMETERS.message)
+            throw new Error(Errors.MISSING_PARAMETERS.message);
         };
 
-        const user = await readUserByIdRepository(id);
+        const users = await readUsersRepository();
+
+        let user = users.find((user: User) => user.id === id);
+
+        if(!user){
+            throw new Error(Errors.USER_NOT_FOUND.message);
+        };
+
+        user = await readUserByIdRepository(id);
 
        res.send(user[0]);
     } catch (error: any) {
-        res.status(codeError).send(error)
+        switch(error.message){
+            case Errors.MISSING_PARAMETERS.message:
+                res.status(Errors.MISSING_PARAMETERS.status).send(Errors.MISSING_PARAMETERS.message);
+                break;
+            case Errors.USER_NOT_FOUND.message:
+                res.status(Errors.USER_NOT_FOUND.status).send(Errors.USER_NOT_FOUND.message);
+                break;
+            default:
+                res.status(Errors.SOME_ERROR.status).send(Errors.SOME_ERROR.message);
+        };
     };
  }
+
+ export const updateUserController  = async (
+    req: Request,
+    res: Response
+ ): Promise<void> => {
+    try {
+        const id = Number(req.query.id);
+        const { name, nickname } = req.body;
+
+        if(!id){
+            throw new Error(Errors.MISSING_PARAMETERS.message);
+        };
+
+        if (name === "" || nickname === ""){
+            throw new Error(Errors.MISSING_PARAMETERS.message);
+        };
+
+        const users = await readUsersRepository();
+
+        let user = await users.find((user: User) => user.id === id);
+
+        if(!user){
+            throw new Error(Errors.USER_NOT_FOUND.message);
+        };
+
+        await updateUserRepository(id, name, nickname);
+
+       res.send(`Usuário ${user.name} editado com sucesso!`);
+    } catch (error: any) {
+        switch(error.message){
+            case Errors.MISSING_PARAMETERS.message:
+                res.status(Errors.MISSING_PARAMETERS.status).send(Errors.MISSING_PARAMETERS.message);
+                break;
+            case Errors.USER_NOT_FOUND.message:
+                res.status(Errors.USER_NOT_FOUND.status).send(Errors.USER_NOT_FOUND.message);
+                break;
+            default:
+                res.status(Errors.SOME_ERROR.status).send(Errors.SOME_ERROR.message);
+        };
+    };
+ };

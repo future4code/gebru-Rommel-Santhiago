@@ -24,5 +24,15 @@ export const readUserByIdRepository = async (id: number) => {
          .where("id", "=", id);
    } catch (error: any) {
       return error.message;
-   }
-}
+   };
+};
+
+export const updateUserRepository = async (id: number, name?: string, nickname?: string) => {
+   try {
+      return await connection('toDoList_users')
+         .where('id', '=', id)
+         .update({ name, nickname });
+   } catch (error: any) {
+      return error.message;
+   };
+};
