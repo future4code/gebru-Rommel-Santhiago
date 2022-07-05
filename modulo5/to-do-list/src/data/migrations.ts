@@ -14,11 +14,11 @@ const createTables = () => connection
         taskId INT(20) PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         description TEXT NOT NUL,
-        start_date DATE NOT NUL,
-        due_date DATE NOT NUL,
+        start_date DATETIME NOT NUL,
+        due_date DATETIME NOT NUL,
         status ENUM ('to do', 'doing', 'done') NOT NUL,
         user_id INT(20) NOT NUL,
-        created_at TIMESTAMP NOT NUL DEFAULT CURRENT_TIMESTAMP,
+        created_at DATETIME NOT NUL DEFAULT,
         FOREIGN KEY (user_id) 
 			REFERENCES toDoList_users(id));
 
