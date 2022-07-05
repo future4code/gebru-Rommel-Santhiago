@@ -2,7 +2,8 @@ import { Router } from "express";
 
 import { 
     readUsersController,
-    createUserController
+    createUserController,
+    readPurchasesByUserController
  } from "../Controllers/users-controllers";
 
  import { 
@@ -19,6 +20,7 @@ export const router = Router();
 
 router.get("/users", readUsersController);
 router.post('/users', createUserController);
+router.get('/users/:user_id/purchases', readPurchasesByUserController);
 
 router.get("/products", readProductsController);
 router.post('/products', createProductController);

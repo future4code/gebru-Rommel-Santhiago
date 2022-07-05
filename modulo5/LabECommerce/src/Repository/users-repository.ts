@@ -16,3 +16,13 @@ export const readUsersRepository = async () => {
       return error.message;
    }
 };
+
+export const readPurchasesByUserRepository = async (id: string) => {
+   try {
+      return await connection('labecommerce_users')
+         .select()
+         .where("id", "=", id);
+   } catch (error: any) {
+      return error.message;
+   };
+};
