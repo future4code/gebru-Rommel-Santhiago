@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
-import { v4 as uuidv4 } from 'uuid';
 import { User } from "../types";
 import { 
     createUserRepository,
-    readUsersRepository 
+    readUsersRepository,
+    readUserByIdRepository 
 } from "../Repository/users-repository";
 
 const Errors: { [key: string]: { status: number, message: string } } = {
+    USER_NOT_FOUND: { status: 404, message: "Usuário não encontrado"},
     MISSING_PARAMETERS: { status: 422, message: "É necessário informar todos os campos" },
     EMAIL_ALREADY_REGISTERED: {status: 409, message: "E-mail já cadastrado"},
     EMAIL_INVALID: { status: 422, message: "E-mail invalido"},
@@ -42,7 +43,7 @@ export const createUserController = async (
         })
 
         const user: User = {
-            id: uuidv4(),
+            id: users.length + 1,
             name,
             nickname,
             email
@@ -69,12 +70,35 @@ export const createUserController = async (
     };
  };
 
- export const readUsersController = async (req: Request, res: Response) => {
+ export const readUsersController  = async (
+    req: Request,
+    res: Response
+ ): Promise<void> => {
     try {
        const users = await readUsersRepository();
-       
+
        res.send(users);
     } catch (error: any) {
        res.end(error.message);
     };
  };
+
+ export const readUserByIdController  = async (
+    req: Request,
+    res: Response
+ ): Promise<void> => {
+    let codeError = 500
+    try {
+        const id = Number(req.query.id);
+
+        if(!id){
+            throw new Error(Errors.MISSING_PARAMETERS.message)
+        };
+
+        const user = await readUserByIdRepository(id);
+
+       res.send(user[0]);
+    } catch (error: any) {
+        res.status(codeError).send(error)
+    };
+ }
