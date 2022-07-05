@@ -20,7 +20,7 @@ export const readUsersRepository = async () => {
 export const readUserByIdRepository = async (id: number) => {
    try {
       return await connection('toDoList_users')
-         .select("id", "name")
+         .select()
          .where("id", "=", id);
    } catch (error: any) {
       return error.message;

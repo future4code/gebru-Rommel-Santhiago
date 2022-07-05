@@ -95,17 +95,18 @@ export const createUserController = async (
             throw new Error(Errors.MISSING_PARAMETERS.message);
         };
 
-        const users = await readUsersRepository();
-
-        let user = users.find((user: User) => user.id === id);
+        let user = await readUserByIdRepository(id);
 
         if(!user){
             throw new Error(Errors.USER_NOT_FOUND.message);
         };
 
-        user = await readUserByIdRepository(id);
+        let userSelected = {
+            id: user[0].id,
+            name: user[0].name
+        }
 
-       res.send(user[0]);
+       res.send(userSelected);
     } catch (error: any) {
         switch(error.message){
             case Errors.MISSING_PARAMETERS.message:
@@ -136,9 +137,7 @@ export const createUserController = async (
             throw new Error(Errors.MISSING_PARAMETERS.message);
         };
 
-        const users = await readUsersRepository();
-
-        let user = await users.find((user: User) => user.id === id);
+        let user = await readUserByIdRepository(id);
 
         if(!user){
             throw new Error(Errors.USER_NOT_FOUND.message);
@@ -146,7 +145,7 @@ export const createUserController = async (
 
         await updateUserRepository(id, name, nickname);
 
-       res.send(`Usuário ${user.name} editado com sucesso!`);
+       res.send(`Usuário ${user[0].name} editado com sucesso!`);
     } catch (error: any) {
         switch(error.message){
             case Errors.MISSING_PARAMETERS.message:
