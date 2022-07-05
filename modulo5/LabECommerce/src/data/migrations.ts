@@ -10,6 +10,13 @@ const createTables = () => connection
         email VARCHAR(255) NOT NULL UNIQUE,
         password VARCHAR(45) NOT NULL
     );
+
+    CREATE TABLE IF NOT EXISTS labecommerce_products(
+        id VARCHAR(45) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        price DOUBLE NOT NULL,
+        image_url VARCHAR(255) NOT NULL
+    );
 `)
     .then(() => { console.log("Tabelas criadas") })
     .catch(printError)
