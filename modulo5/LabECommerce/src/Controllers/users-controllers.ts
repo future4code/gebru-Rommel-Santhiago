@@ -82,8 +82,12 @@ export const readUsersController = async (
         if (!users.length) {
             throw new Error(Errors.USERS_NOT_FOUND.message);
         };
+        const allUsers = await users.map((user: User) => {
+            let userSelected: {}
+            return userSelected = {id: user.id, name: user.name}
+        })
 
-        res.send(users);
+        res.send(allUsers);
     } catch (error: any) {
         switch(error.message){
             case Errors.USERS_NOT_FOUND.message:
