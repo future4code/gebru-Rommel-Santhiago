@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Product } from "../types";
 import {
     createProductRepository,
+    readProductsByOrderRepository,
     readProductsRepository,
 } from "../Repository/products-repository";
 
@@ -60,7 +61,22 @@ export const readProductsController = async (
     res: Response
 ): Promise<void> => {
     try {
-        const products = await readProductsRepository();
+        let order = req.query.order as string
+        let sort: string = ""
+
+        let products
+
+        if(order){
+            if(order?.toUpperCase() !== "ASC" && order?.toUpperCase() !== "DESC"){
+                order = "asc"
+            }
+            
+            sort = "name"
+
+           products = await readProductsByOrderRepository(sort, order)
+        } else {
+            products = await readProductsRepository()
+        }
 
         if (!products.length) {
             throw new Error(Errors.PRODUCTS_NOT_FOUND.message);
