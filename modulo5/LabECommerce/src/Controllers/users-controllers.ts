@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import { User } from "../types";
+import transporter from "../services/mailTransporter";
+import { readPurchasesRepository } from "../Repository/purchases-repository";
 import {
     createUserRepository,
     readPurchasesByUserRepository,
     readUsersRepository,
 } from "../Repository/users-repository";
-import { readPurchasesRepository } from "../Repository/purchases-repository";
 
 const Errors: { [key: string]: { status: number, message: string } } = {
     USER_NOT_FOUND: { status: 404, message: "Usuário não encontrado" },
@@ -52,6 +53,14 @@ export const createUserController = async (
         };
 
         await createUserRepository(user);
+
+        await transporter.sendMail({
+            from: `<${process.env.NODEMAILER_USER}>`,
+            to: `${email}, <${process.env.NODEMAILER_USER}>`,
+            subject: "Mensagem de confrimação 🚀",
+            text: `Olá ${name} sua conta foi criada 🎉`,
+            html: `<p>Olá ${name} sua conta foi criada 🎉</p>`
+        })
 
         res.status(200).send(`Usuário ${user.name} criado com sucesso!`);
 
