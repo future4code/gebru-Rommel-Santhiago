@@ -26,3 +26,13 @@ export const readProductsByOrderRepository = async (sort?: any, order?: any) => 
       return error.message
    }
 }
+
+export const readProductByNameRepository = async (name?: any) => {
+   try {
+      return await connection('labecommerce_products')
+      .select()
+      .where('name', 'like', `%${name}%`)
+   } catch (error: any) {
+      return error.message
+   }
+}

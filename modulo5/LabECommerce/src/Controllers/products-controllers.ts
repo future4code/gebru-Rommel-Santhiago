@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Product } from "../types";
 import {
     createProductRepository,
+    readProductByNameRepository,
     readProductsByOrderRepository,
     readProductsRepository,
 } from "../Repository/products-repository";
@@ -63,6 +64,7 @@ export const readProductsController = async (
     try {
         let order = req.query.order as string
         let sort: string = ""
+        let search = req.query.search as string
 
         let products
 
@@ -74,6 +76,8 @@ export const readProductsController = async (
             sort = "name"
 
            products = await readProductsByOrderRepository(sort, order)
+        } else if(search) {
+            products = await readProductByNameRepository(search)
         } else {
             products = await readProductsRepository()
         }
