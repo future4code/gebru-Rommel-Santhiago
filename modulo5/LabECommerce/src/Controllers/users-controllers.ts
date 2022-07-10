@@ -91,14 +91,28 @@ export const readUsersController = async (
         if (!users.length) {
             throw new Error(Errors.USERS_NOT_FOUND.message);
         };
+
+        const allPurchases = await readPurchasesRepository();
+
         const allUsers = await users.map((user: User) => {
             let userSelected: {}
-            return userSelected = {id: user.id, name: user.name}
+
+            let purchases = []
+            for (let purchase of allPurchases) {
+                if (purchase.user_id === user.id) {
+                    purchases.push(purchase);
+                };
+            };
+            return userSelected = {
+                id: user.id,
+                name: user.name,
+                purchases
+            }
         })
 
         res.send(allUsers);
     } catch (error: any) {
-        switch(error.message){
+        switch (error.message) {
             case Errors.USERS_NOT_FOUND.message:
                 res.status(Errors.USERS_NOT_FOUND.status).send(Errors.USERS_NOT_FOUND.message);
                 break;
@@ -108,20 +122,20 @@ export const readUsersController = async (
     };
 };
 
-export const readPurchasesByUserController  = async (
+export const readPurchasesByUserController = async (
     req: Request,
     res: Response
- ): Promise<void> => {
+): Promise<void> => {
     try {
         const id = req.params.user_id as string;
 
-        if(!id){
+        if (!id) {
             throw new Error(Errors.MISSING_PARAMETERS.message);
         };
 
         let user = await readPurchasesByUserRepository(id);
 
-        if(!user.length){
+        if (!user.length) {
             throw new Error(Errors.USER_NOT_FOUND.message);
         };
 
@@ -129,8 +143,8 @@ export const readPurchasesByUserController  = async (
 
         let userPurchases = []
 
-        for(let purchase of purchases){
-            if(purchase.user_id === id){
+        for (let purchase of purchases) {
+            if (purchase.user_id === id) {
                 userPurchases.push(purchase);
             };
         };
@@ -141,9 +155,9 @@ export const readPurchasesByUserController  = async (
             userPurchases
         }
 
-       res.send(userSelected);
+        res.send(userSelected);
     } catch (error: any) {
-        switch(error.message){
+        switch (error.message) {
             case Errors.MISSING_PARAMETERS.message:
                 res.status(Errors.MISSING_PARAMETERS.status).send(Errors.MISSING_PARAMETERS.message);
                 break;
@@ -154,4 +168,4 @@ export const readPurchasesByUserController  = async (
                 res.status(Errors.SOME_ERROR.status).send(Errors.SOME_ERROR.message);
         };
     };
- }
+}
