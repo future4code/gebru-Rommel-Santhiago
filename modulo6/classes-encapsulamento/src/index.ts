@@ -17,7 +17,7 @@ class UserAccount {
     private cpf: string;
     private name: string;
     private age: number;
-    private balance: number = 0;
+    private balance: number = 1000;
     private transactions: Transaction[] = [];
   
     constructor(
@@ -50,8 +50,60 @@ class UserAccount {
     public getTransactions(): Transaction[] {
         return this.transactions;
     };
+
+    public setBalance(newValue: number): void {
+        this.balance += newValue;
+    }
+
+    public setTransactions(newTransaction: Transaction): void {
+        this.transactions = [...this.transactions, newTransaction]
+
+        this.balance -= newTransaction.getValue()
+    }
   };
 
 const rommel: UserAccount = new UserAccount("999.999.999-99", "Rommel", 34);
 
 console.log(rommel);
+
+/**
+ *  EXERCICIO 2
+    
+    Transforme a variável de tipo abaixo, chamada `Transaction` em uma classe `Transaction`. Ela deve conter as mesmas propriedades: *data*, *valor* e *descrição*. Agora, porém, todas elas devem ser **privadas**. Portanto, crie métodos (*getters*) para a leitura desses valores, tanto para essa classe quanto para a classe UserAccount. Crie uma instância dessa classe e adicione à instância já criada de UserAccount
+
+    type Transaction = {
+        description: string,
+        value: number,
+        date: string
+    }
+ */
+
+class Transaction {
+    private description: string;
+    private value: number;
+    private date: string;
+
+    constructor(description: string, value: number, date: string) {
+        this.description = description;
+        this.value = value;
+        this.date = date
+    };
+
+    public getDescription(): string {
+        return this.description;
+    };
+
+    public getValue(): number {
+        return this.value;
+    };
+
+    public getDate(): string {
+        return this.date;
+    };
+};
+
+const transaction01 = new Transaction("Tranferência", 600, "2022/07/14");
+
+rommel.setTransactions(transaction01)
+
+console.log(rommel)
