@@ -107,3 +107,24 @@ const transaction01 = new Transaction("Tranferência", 600, "2022/07/14");
 rommel.setTransactions(transaction01)
 
 console.log(rommel)
+
+/**
+ * EXERCICIO 03
+    Crie uma classe Bank, que será responsável por guardar todos os dados da aplicação. Ela deve possuir a propriedades accounts, privada (crie os getters e setters que achar apropriado).
+ */
+
+class Bank {
+    private accounts: UserAccount[];
+
+    constructor(accounts: UserAccount[]) {
+        this.accounts = accounts;
+    };
+
+    public getAccounts(): UserAccount[] {
+        return this.accounts;
+    };
+
+    public setAccounts(newAccount: UserAccount): void {
+        this.accounts.push(newAccount);
+    };
+};
