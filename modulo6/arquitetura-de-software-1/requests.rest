@@ -1,0 +1,17 @@
+
+POST http://localhost:3003/createUser
+Content-Type: application/json
+
+{
+   "name": "Jim Halpert",
+   "email": "jim@dundermifflin.com",
+   "password": "fa8s7e6fia7se6ga8i67gf9a7se6f8a7s6e5gaes"
+}
+
+###
+
+GET http://localhost:3003/all
+
+###
+
+DELETE http://localhost:3003/128e2cd1-fa73-4605-b63b-e69f63c099e3
