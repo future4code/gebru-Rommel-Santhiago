@@ -6,3 +6,14 @@ Content-Type: application/json
     "email": "rommel@email.com",
     "password": "123456"
 }
+
+###
+POST http://localhost:3003/post/create 
+Content-Type: application/json 
+
+{
+    "photo": "https://picsum.photos/200/150",
+    "description": "Photo 01",
+    "type": "normal",
+    "authorId": "65c046ad-d9d8-4f2c-90df-fd5ab746ca43"
+}
