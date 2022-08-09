@@ -13,7 +13,10 @@ Content-Type: application/json
 
 {
     "photo": "https://picsum.photos/200/150",
-    "description": "Photo 01",
+    "description": "Photo 00",
     "type": "normal",
-    "authorId": "65c046ad-d9d8-4f2c-90df-fd5ab746ca43"
+    "authorId": "8077d7e2-f26b-4ed6-b2ef-e7f028649dde"
 }
+
+###
+GET http://localhost:3003/post/9ba15479-6b0e-4df0-93ea-58c10775c5eb

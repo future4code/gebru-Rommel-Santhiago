@@ -45,12 +45,4 @@ export class UserBusiness {
             throw new Error(error.message);
         }
     };
-
-    public users = async (req: Request, res: Response) => {	
-        try {
-            await this.userDatabase.get();
-        } catch (error:any) {
-            throw new Error(error.message);
-        }
-    }
 }

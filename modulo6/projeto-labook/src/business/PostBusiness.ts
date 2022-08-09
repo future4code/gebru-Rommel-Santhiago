@@ -4,9 +4,9 @@ import moment from 'moment';
 import { post, PostInputDTO } from "../model/post";
 import { PostRepository } from "./PostRepository";
 export class PostBusiness {
-  
-  constructor(private postDatabase:PostRepository){}
-  
+
+  constructor(private postDatabase: PostRepository) { }
+
   public createPost = async (input: PostInputDTO) => {
     try {
       const { photo, description, type, authorId } = input;
@@ -18,7 +18,7 @@ export class PostBusiness {
         );
       }
 
-      if(type !== "normal" && type !== "event"){
+      if (type !== "normal" && type !== "event") {
         throw new Error('O tipo de post só pode ser "normal" ou "event"')
       }
 
@@ -32,11 +32,31 @@ export class PostBusiness {
         created_at,
         authorId,
       }
-      
+
       await this.postDatabase.insertPost(post);
-      
+
     } catch (error: any) {
       throw new Error(error.message);
     }
   };
+
+  public getPost = async (id: string) => {
+    try {
+      if (!id) {
+        throw new Error('É obrigatorio informar o "ID"');
+      }
+
+      const post = await this.postDatabase.getPost(id)
+
+      if(post) {
+           return post;
+        } else {
+            throw new Error("Post não encontrado")
+      }
+
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
+
+  }
 }

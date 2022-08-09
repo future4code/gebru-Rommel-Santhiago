@@ -15,4 +15,13 @@ implements PostRepository
       author_id: post.authorId,
     });
   };
-}
+
+  public getPost = async (id: string) => {
+    const post = await PostDatabase.connection()
+      .select()
+      .from("labook_posts")
+      .where({id: id})
+
+    return post[0];
+  };
+};

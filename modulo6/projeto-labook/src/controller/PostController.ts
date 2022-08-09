@@ -24,4 +24,16 @@ constructor(private postBusiness:PostBusiness){}
       res.status(400).send(error.message);
     }
   };
-}
+
+  public getPost = async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id as string;
+
+      const post = await this.postBusiness.getPost(id);
+
+      res.status(200).send(post)
+    } catch (error: any) {
+      res.status(400).send(error.message);
+    };
+  };
+};

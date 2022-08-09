@@ -1,4 +1,4 @@
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDoc, getFirestore } from "firebase/firestore";
 import { PostRepository } from "../../business/PostRepository";
 import { CustomError } from "../../error/customError";
 import { post } from "../../model/post";
@@ -13,6 +13,18 @@ export class PostFirestoreDatabase extends FirestoreDatabase implements PostRepo
             const postDoc = doc(PostFirestoreDatabase.postCollection, post.id)
             await setDoc(postDoc, post)
             
+        } catch (error: any) {
+            throw new CustomError(error.statusCode || 400, error.message);
+        }
+    }
+
+    public async getPost(id: string) {
+        try {
+            const db = getFirestore();
+            const post = doc(db, "labook_posts", id);
+            const docSnap = await getDoc(post);
+
+            return docSnap.data();
         } catch (error: any) {
             throw new CustomError(error.statusCode || 400, error.message);
         }
