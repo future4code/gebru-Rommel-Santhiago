@@ -2,5 +2,5 @@ import { post } from "../model/post"
 
 export interface PostRepository {
     insertPost(post: post):Promise<void>
-    getPost(id: string): Promise<any>
+    getPost(id: string): Promise<post>
 }

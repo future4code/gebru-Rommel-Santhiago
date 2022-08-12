@@ -15,3 +15,10 @@
          author_id VARCHAR(255),
          FOREIGN KEY (author_id) REFERENCES labook_users (id)
       );
+
+      CREATE TABLE IF NOT EXISTS labook_friends(
+         id VARCHAR(255) PRIMARY KEY,
+         user_id VARCHAR(255) NOT NULL,
+         friend_id VARCHAR(255) NOT NULL,
+         FOREIGN KEY (user_id) REFERENCES labook_users (id)
+      );

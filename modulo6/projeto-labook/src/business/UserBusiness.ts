@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import { CustomError, InvalidEmail, InvalidName } from "../error/customError";
-import { user, UserInputDTO } from "../model/user";
+import { Friendship, user, UserInputDTO } from "../model/user";
 import { UserRepository } from "./UserRepository";
 
 export class UserBusiness {
@@ -45,4 +45,28 @@ export class UserBusiness {
             throw new Error(error.message);
         }
     };
+
+    public  makeFriendship = async (userId: string, friendId: string) => {    
+        try {
+            if (!userId) {
+                throw new Error('É obrigatorio informar o seu "ID"');
+            }
+    
+            if (!friendId) {
+                throw new Error('É obrigatorio informar o "ID" do amigo');
+            }
+
+            const id: string = uuid();
+
+            const friendships: Friendship = {
+                id,
+                userId,
+                friendId
+            }
+            
+            await this.userDatabase.makeFriendship(friendships)
+        } catch (error: any) {
+            throw new Error(error.message);
+        }
+    }
 }

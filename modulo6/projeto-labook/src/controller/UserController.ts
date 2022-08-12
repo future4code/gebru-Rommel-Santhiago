@@ -26,4 +26,17 @@ export class UserController {
       res.status(400).send(error.message);
     }
   };
+
+  public makeFriendship = async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id as string;
+      const friendId = req.body.friendId as string;
+
+      await this.userBusiness.makeFriendship(id, friendId);
+
+      res.status(200).send({ message: "Amizade criada com sucesso!" })
+    } catch (error: any) {
+      res.status(400).send(error.message);
+    };
+  };
 }

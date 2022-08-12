@@ -12,3 +12,4 @@ const userBusiness = new UserBusiness(userDatabase)
 const userController = new UserController(userBusiness)
 
 userRouter.post('/create', (req, res)=> userController.createUser(req, res))
+userRouter.post('/:id', (req, res)=> userController.makeFriendship(req, res))

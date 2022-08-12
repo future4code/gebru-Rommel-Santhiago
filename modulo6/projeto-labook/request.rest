@@ -2,8 +2,8 @@ POST http://localhost:3003/user/create
 Content-Type: application/json 
 
 {
-    "name": "Rommel",
-    "email": "rommel@email.com",
+    "name": "Thamyres",
+    "email": "thamyres@email.com",
     "password": "123456"
 }
 
@@ -20,3 +20,11 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3003/post/9ba15479-6b0e-4df0-93ea-58c10775c5eb
+
+###
+POST http://localhost:3003/user/65c046ad-d9d8-4f2c-90df-fd5ab746ca43
+Content-Type: application/json
+
+{
+    "friendId": "f68abb3a-a386-48e0-a4ec-17a858beafe4"
+}

@@ -10,3 +10,9 @@ export type user = {
     email: string,
     password: string
  }
+
+ export type Friendship = {
+   id: string,
+   userId: string,
+   friendId: string
+ }
