@@ -36,4 +36,16 @@ constructor(private postBusiness:PostBusiness){}
       res.status(400).send(error.message);
     };
   };
+
+  public feedUser = async (req: Request, res: Response) => {
+    try {
+      const id = req.params.id as string;
+
+      const posts = await this.postBusiness.feedUser(id);
+
+      res.status(200).send(posts)
+    } catch (error: any) {
+      res.status(400).send(error.message);
+    };
+  }
 };

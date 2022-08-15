@@ -24,4 +24,13 @@ implements PostRepository
 
     return post[0];
   };
+
+  public feedUser = async (id: string) => {
+    const posts = await PostDatabase.connection()
+      .select()
+      .from("labook_posts")
+      .where({author_id: id})
+
+    return posts
+  }
 };

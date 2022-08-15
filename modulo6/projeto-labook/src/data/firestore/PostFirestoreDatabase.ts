@@ -28,4 +28,12 @@ export class PostFirestoreDatabase extends FirestoreDatabase implements PostRepo
             throw new CustomError(error.statusCode || 400, error.message);
         }
     }
+
+    public async feedUser(id: string) {
+        try {
+            // Pegar todos os posts do usuário
+        } catch (error) {
+            
+        }
+    }
 }

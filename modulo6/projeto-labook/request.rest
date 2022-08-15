@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3003/post/9ba15479-6b0e-4df0-93ea-58c10775c5eb
+GET http://localhost:3003/post/b399f532-c73d-4cb4-a3b7-7e82e3be7beb
 
 ###
 POST http://localhost:3003/user/65c046ad-d9d8-4f2c-90df-fd5ab746ca43
@@ -37,3 +37,6 @@ Content-Type: application/json
     "userId": "34396b65-44f4-47e6-b04f-45c2ee5c7e2a",
     "friendId": "8077d7e2-f26b-4ed6-b2ef-e7f028649dde"
 }
+
+###
+GET http://localhost:3003/post/user/65c046ad-d9d8-4f2c-90df-fd5ab746ca43

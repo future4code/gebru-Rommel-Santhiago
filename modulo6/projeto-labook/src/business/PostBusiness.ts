@@ -57,6 +57,23 @@ export class PostBusiness {
     } catch (error: any) {
       throw new Error(error.message);
     }
+  }
 
+  public feedUser = async (id: string) => {
+    try {
+      if (!id) {
+        throw new Error('É obrigatorio informar o "ID" do usuário');
+      }
+
+      const posts = await this.postDatabase.feedUser(id)
+
+      if(!posts) {
+        throw new Error("Usuário não tem posts")
+      }
+
+      return posts
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
   }
 }
