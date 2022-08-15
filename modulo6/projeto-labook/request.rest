@@ -28,3 +28,12 @@ Content-Type: application/json
 {
     "friendId": "f68abb3a-a386-48e0-a4ec-17a858beafe4"
 }
+
+###
+DELETE  http://localhost:3003/user/friendship
+Content-Type: application/json
+
+{
+    "userId": "34396b65-44f4-47e6-b04f-45c2ee5c7e2a",
+    "friendId": "8077d7e2-f26b-4ed6-b2ef-e7f028649dde"
+}

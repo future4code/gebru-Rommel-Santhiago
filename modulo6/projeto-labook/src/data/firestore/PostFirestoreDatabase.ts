@@ -20,11 +20,10 @@ export class PostFirestoreDatabase extends FirestoreDatabase implements PostRepo
 
     public async getPost(id: string) {
         try {
-            const db = getFirestore();
-            const post = doc(db, "labook_posts", id);
+            const post = doc(PostFirestoreDatabase.postCollection, id);
             const docSnap = await getDoc(post);
 
-            return docSnap.data();
+            return docSnap.data()
         } catch (error: any) {
             throw new CustomError(error.statusCode || 400, error.message);
         }

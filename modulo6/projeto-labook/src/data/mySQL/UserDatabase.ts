@@ -18,7 +18,7 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
       } catch (error: any) {
          throw new Error(error.message)
       }
-   }
+   };
 
    public makeFriendship = async (friendships: Friendship) => {
       try {
@@ -31,4 +31,29 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
          throw new Error(error.message)
       }
    };
+
+   public getfriendshipById = async (userId: string, friendId: string) => {
+      try {
+         const friendship = await UserDatabase.connection()
+         .select("id")
+         .from('labook_friends')
+         .where({user_id: userId})
+         .andWhere({friend_id: friendId})
+   
+         return friendship[0].id;
+      } catch (error: any) {
+         throw new Error(error.message)
+      }
+   };
+
+   public unfriend = async (friendshipId: string) => {
+      try {
+         await UserDatabase.connection()
+            .delete()
+            .from('labook_friends')
+            .where({id: friendshipId})
+      } catch (error: any) {
+         throw new Error(error.message)
+      }
+   }
 }

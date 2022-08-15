@@ -1,3 +1,4 @@
+import { info } from "console";
 import { v4 as uuid } from "uuid";
 
 import { CustomError, InvalidEmail, InvalidName } from "../error/customError";
@@ -65,6 +66,28 @@ export class UserBusiness {
             }
             
             await this.userDatabase.makeFriendship(friendships)
+        } catch (error: any) {
+            throw new Error(error.message);
+        }
+    }
+
+    public unfriend = async (userId: string, friendId: string) => {
+        try {
+            if (!userId) {
+                throw new Error('É obrigatorio informar o seu "ID"');
+            }
+    
+            if (!friendId) {
+                throw new Error('É obrigatorio informar o "ID" do amigo');
+            }
+    
+            const friendship = await this.userDatabase.getfriendshipById(userId, friendId)
+    
+            if(!friendship) {
+                throw new Error('Essa amizade não existe')
+            }
+
+            await this.userDatabase.unfriend(friendship)
         } catch (error: any) {
             throw new Error(error.message);
         }

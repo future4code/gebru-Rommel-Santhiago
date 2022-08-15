@@ -1,4 +1,4 @@
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, query, setDoc, where } from "firebase/firestore";
 import { UserRepository } from "../../business/UserRepository";
 import { CustomError } from "../../error/customError";
 import { Friendship, user } from "../../model/user";
@@ -24,6 +24,22 @@ export class UserFirestoreDatabase extends FirestoreDatabase implements UserRepo
       const friendDoc = doc(UserFirestoreDatabase.friendCollection, friendships.id)
       await setDoc(friendDoc, friendships)
 
+    } catch (error: any) {
+      throw new CustomError(error.statusCode || 400, error.message);
+    }
+  }
+
+  public async getfriendshipById(userId: string, friendId: string): Promise<any>{
+    try {
+        // Pegar amizade por ID
+    } catch (error: any) {
+      throw new CustomError(error.statusCode || 400, error.message);
+    }
+  }
+
+  public async unfriend(friendshipId: string): Promise<void> {
+    try {
+      // Desfazer amizade
     } catch (error: any) {
       throw new CustomError(error.statusCode || 400, error.message);
     }

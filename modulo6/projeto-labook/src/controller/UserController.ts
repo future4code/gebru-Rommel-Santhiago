@@ -39,4 +39,16 @@ export class UserController {
       res.status(400).send(error.message);
     };
   };
+
+  public unfriend = async (req: Request, res: Response) => {
+    try {
+      const { userId, friendId } = req.body;
+      
+      const friendship = await this.userBusiness.unfriend(userId, friendId);
+
+      res.status(200).send(friendship)
+    } catch (error: any) {
+      res.status(400).send(error.message);
+    };
+  };
 }
