@@ -4,10 +4,10 @@ import { EditUserInputDTO, UserInputDTO } from "../model/user";
 
 export class UserController {
 
-      public createUser = async (req: Request, res: Response) => {
+      public signup = async (req: Request, res: Response) => {
         try {
           const { name, nickname, email, password } = req.body;
-    
+
           const input: UserInputDTO = {
             name,
             nickname,
@@ -15,13 +15,13 @@ export class UserController {
             password,
           };
           const userBusiness = new UserBusiness()
-          userBusiness.createUser(input);
-    
-          res.status(201).send({ message: "Usuário criado!" });
+          const token = await userBusiness.signup(input);
+
+          res.status(201).send({ message: `Usuário ${input.name} criado com sucesso!`, token });
         } catch (error: any) {
           res.status(400).send(error.message);
         }
-      };    
+      };
 
       public editUser = async (req: Request, res: Response) => {
         try {

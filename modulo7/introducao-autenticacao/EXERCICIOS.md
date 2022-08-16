@@ -1,6 +1,6 @@
 # Introdução a Autenticação
 
-- Exercício 1
+## - Exercício 1
     
     Na autenticação de usuários o elemento mais fundamental talvez seja o id. É muito importante encontrar um que seja fácil de guardar e que garanta unicidade. Para isso usaremos a versão v4 do UUID, uma das mais recomendadas para isso. 
     
@@ -20,7 +20,7 @@
     b) *A partir de hoje vamos tentar isolar, ao máximo, as nossas lógicas dentro de funções. Isso vai deixar nosso código mais organizado e aumentar a facilidade da manutenção e refatoração. Dado isso, crie uma função para gerar um id.*
 
 
-- Exercício 2
+## - Exercício 2
     
     Antes de poder fazer o endpoint de cadastro, precisamos de uma forma para gerar o token de autenticação do usuário. Para isso, vamos usar o JWT. Ele possui uma função que permite gerar o token do usuário, que recebe três informações:
     
@@ -53,3 +53,34 @@
         A linha `as string` deixa esplicito para o Typescript que ele vai receber uma `string`
     
     b) *Agora, crie a função que gere o token. Além disso, crie um type  para representar o input dessa função.*
+
+
+## - Exercício 3
+    
+    Pronto, com essas três funções preparadas podemos criar o nosso endpoint. As informações dele são:
+    
+    - *Verbo/Método*: POST
+    - *Path*: `/user/signup`
+    - *Input:* O body da requisição deve ser
+        
+        ```json
+        {
+        	"email": "email do usuário",
+        	"password": "senha do usuário"
+        }
+        ```
+        
+    - *Output*: O body da resposta deve ser
+        
+        ```json
+        {
+        	"token": "token gerado pelo jwt"
+        }
+        ```
+        
+    
+    a) *Crie o endpoint que realize isso, com as funções que você implementou anteriormente*
+    
+    b) *Altere o seu endpoint para ele não aceitar um email vazio ou que não possua um `"@"`*
+    
+    c) *Altere o seu endpoint para ele só aceitar uma senha com 6 caracteres ou mais*

@@ -1,14 +1,19 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { CustomError, InvalidEmail, InvalidName } from "../error/customError";
+import { CustomError, InvalidEmail, InvalidName, InvalidPassword } from "../error/customError";
 import {
   UserInputDTO,
   user,
   EditUserInputDTO,
   EditUserInput,
 } from "../model/user";
+import { Authenticator } from "../services/Authenticator";
+import { IdGenerator } from "../services/idGenerator";
+
+const idGenerator = new IdGenerator();
+const authenticator = new Authenticator();
 
 export class UserBusiness {
-  public createUser = async (input: UserInputDTO) => {
+  public signup = async (input: UserInputDTO): Promise<string> => {
     try {
       const { name, nickname, email, password } = input;
 
@@ -23,11 +28,20 @@ export class UserBusiness {
         throw new InvalidName();
       }
 
-      if (!email.includes("@")) {
-        throw new InvalidEmail();
+      if (password.length < 6) {
+        throw new InvalidPassword();
       }
 
-      const id: string = Date.now().toString();
+      const checkEmail = (email: string) => {
+        let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+        return regex.test(email);
+      };
+
+      if (!checkEmail(email)) {
+          throw new InvalidEmail();
+      };
+
+      const id: string = idGenerator.generateId();
 
       const user: user = {
         id,
@@ -38,6 +52,9 @@ export class UserBusiness {
       };
       const userDatabase = new UserDatabase();
       await userDatabase.insertUser(user);
+
+      const token = authenticator.generateToken({ id });
+      return token;
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }
