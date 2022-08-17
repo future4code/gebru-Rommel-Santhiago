@@ -120,3 +120,23 @@
     
     b) *Altere o seu endpoint para ele não aceitar um email vazio ou que não possua um `"@"`*
 
+## - Exercício 6
+    
+    Ufa, agora temos toda a nossa base pronta para identificar o usuário. Antes de prosseguir, precisamos criar uma função que recebe o token e devolve as informações do usuário salvas nele. Veja o exemplo abaixo:
+    
+    ```tsx
+    const expiresIn = "1min";
+    
+    const getData = (token: string): AuthenticationData => {
+      const payload = jwt.verify(token, process.env.JWT_KEY as string) as any;
+      const result = {
+        id: payload.id,
+      };
+      return result;
+    };
+    ```
+    
+    a) *O que a linha `as any` faz? Por que precisamos usá-la ali?*
+        Ela está ali pra informar que o payload não tem um tipo especifico e precisamos dela ali até que determinemos qual seu tipo e fazer-mos a mudança.
+    
+    b) *Crie uma função que realize a mesma funcionalidade da função acima*
