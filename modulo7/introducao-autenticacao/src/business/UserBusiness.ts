@@ -22,15 +22,15 @@ export class UserBusiness {
           400,
           'Preencha os campos "name","nickname", "email" e "password"'
         );
-      }
+      };
 
       if (name.length < 4) {
         throw new InvalidName();
-      }
+      };
 
       if (password.length < 6) {
         throw new InvalidPassword();
-      }
+      };
 
       const checkEmail = (email: string) => {
         let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -57,7 +57,7 @@ export class UserBusiness {
       return token;
     } catch (error: any) {
       throw new CustomError(400, error.message);
-    }
+    };
   };
 
   public login = async (input: any): Promise<string> => {
@@ -66,7 +66,7 @@ export class UserBusiness {
 
       if (!email || !password) {
         throw new CustomError(400, 'Preencha os campos "email" e "password"');
-      }
+      };
 
       const checkEmail = (email: string) => {
         let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -76,24 +76,24 @@ export class UserBusiness {
       if (!checkEmail(email)) {
           throw new InvalidEmail();
       };
-      
+
       const userDatabase = new UserDatabase();
       const user = await userDatabase.findUserByEmail(email);
 
       if (!user) {
         throw new UserNotFound();
-      }
+      };
 
       if (user.password !== password) {
         throw new InvalidPassword();
-      }
+      };
 
-      const id = user.id
+      const id = user.id;
       const token = authenticator.generateToken({ id});
       return token;
     } catch (error: any) {
       throw new CustomError(400, error.message);
-    }
+    };
   };
 
   public editUser = async (input: EditUserInputDTO) => {
@@ -105,11 +105,11 @@ export class UserBusiness {
           400,
           'Preencha os campos "id", "name" e "nickname"'
         );
-      }
+      };
 
       if (name.length < 4) {
         throw new InvalidName();
-      }
+      };
 
       const editUserInput: EditUserInput = {
         id,
@@ -121,6 +121,19 @@ export class UserBusiness {
       await userDatabase.editUser(editUserInput);
     } catch (error: any) {
       throw new CustomError(400, error.message);
-    }
+    };
   };
-}
+
+  public profile = async (token: string): Promise<string> => {
+    try {      
+      const { id } = authenticator.getTokenData(token);
+  
+      const userDatabase = new UserDatabase();
+      const userId = await userDatabase.getUserById(id);
+
+      return userId;
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    };
+  };
+};

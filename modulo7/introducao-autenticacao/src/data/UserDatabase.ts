@@ -41,4 +41,16 @@ export class UserDatabase extends BaseDatabase {
       throw new CustomError(400, error.message);
     }
   };
-}
+
+  public async getUserById(id: string): Promise<any> {
+    try {      
+      const result = await UserDatabase.connection("Auth_users")
+        .select("id", "email")
+        .where({ id });
+  
+      return result[0];
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
+  };
+};

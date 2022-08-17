@@ -57,9 +57,18 @@ export class UserController {
         } catch (error: any) {
           res.status(400).send(error.message);
         }
-      }; 
- 
+      };
+      
+      public profile = async (req: Request, res: Response) => {
+        try {
+          const token = req.headers.authorization as string;
 
+          const userBusiness = new UserBusiness();
+          const userInfo = await userBusiness.profile(token);
 
-
+          res.status(200).send(userInfo)
+        } catch (error: any) {
+          res.status(400).send(error.message);
+        }
+      }
 }

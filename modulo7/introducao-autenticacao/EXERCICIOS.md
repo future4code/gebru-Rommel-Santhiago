@@ -140,3 +140,29 @@
         Ela está ali pra informar que o payload não tem um tipo especifico e precisamos dela ali até que determinemos qual seu tipo e fazer-mos a mudança.
     
     b) *Crie uma função que realize a mesma funcionalidade da função acima*
+
+## - Exercício 7
+    
+    Agora, vamos criar um endpoint que retorne as informações do usuário logado. As especificações dele estão abaixo:
+    
+    - *Verbo/Método*: GET
+    - *Path*: `/user/profile`
+    - *Input:* Deve receber, nos headers, o token de autenticação:
+        
+        ```
+        Authorization: token.do.usuario
+        ```
+        
+    - *Output*: O body da resposta deve ser
+        
+        ```json
+        {
+        	"id": "id do usuário",
+        	"email": "email do usuário"
+        }
+        ```
+        
+    
+    a) *Comece criando uma função no data que retorne o usuário a partir do id*
+    
+    b) *Crie o endpoint com as especificações passadas*
