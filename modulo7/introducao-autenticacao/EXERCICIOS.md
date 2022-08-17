@@ -84,3 +84,10 @@
     b) *Altere o seu endpoint para ele não aceitar um email vazio ou que não possua um `"@"`*
     
     c) *Altere o seu endpoint para ele só aceitar uma senha com 6 caracteres ou mais*
+
+
+## - Exercício 4
+    
+    No login, vamos receber o email e a senha do usuário. Então, vamos precisar de uma função que realize essa busca no banco de dados para gente. 
+    
+    a) *Crie uma função que retorne as informações de um usuário a partir do email*
