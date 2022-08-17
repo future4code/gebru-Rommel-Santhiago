@@ -91,3 +91,32 @@
     No login, vamos receber o email e a senha do usuário. Então, vamos precisar de uma função que realize essa busca no banco de dados para gente. 
     
     a) *Crie uma função que retorne as informações de um usuário a partir do email*
+
+## - Exercício 5
+    
+    Agora, vamos implementar o endpoint de login, com as seguintes especificações:
+    
+    - *Verbo/Método*: POST
+    - *Path*: `/user/login`
+    - *Input:* O body da requisição deve ser
+        
+        ```json
+        {
+        	"email": "email do usuário",
+        	"password": "senha do usuário"
+        }
+        ```
+        
+    - *Output*: O body da resposta deve ser
+        
+        ```json
+        {
+        	"token": "token gerado pelo jwt"
+        }
+        ```
+        
+    
+    a) *Crie o endpoint que realize isso, com as funções que você implementou anteriormente*
+    
+    b) *Altere o seu endpoint para ele não aceitar um email vazio ou que não possua um `"@"`*
+

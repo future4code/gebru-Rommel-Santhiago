@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { CustomError, InvalidEmail, InvalidName, InvalidPassword } from "../error/customError";
+import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UserNotFound } from "../error/customError";
 import {
   UserInputDTO,
   user,
@@ -54,6 +54,42 @@ export class UserBusiness {
       await userDatabase.insertUser(user);
 
       const token = authenticator.generateToken({ id });
+      return token;
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
+  };
+
+  public login = async (input: any): Promise<string> => {
+    try {
+      const { email, password } = input;
+
+      if (!email || !password) {
+        throw new CustomError(400, 'Preencha os campos "email" e "password"');
+      }
+
+      const checkEmail = (email: string) => {
+        let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+        return regex.test(email);
+      };
+
+      if (!checkEmail(email)) {
+          throw new InvalidEmail();
+      };
+      
+      const userDatabase = new UserDatabase();
+      const user = await userDatabase.findUserByEmail(email);
+
+      if (!user) {
+        throw new UserNotFound();
+      }
+
+      if (user.password !== password) {
+        throw new InvalidPassword();
+      }
+
+      const id = user.id
+      const token = authenticator.generateToken({ id});
       return token;
     } catch (error: any) {
       throw new CustomError(400, error.message);
