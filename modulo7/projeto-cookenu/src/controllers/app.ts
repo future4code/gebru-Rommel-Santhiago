@@ -10,7 +10,7 @@ app.use(cors())
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
        const address = server.address() as AddressInfo;
-       console.log(`Server is running in ${address}:${address.port}`);
+       console.log(`Server is running in ${address.address}:${address.port}`);
     } else {
        console.error(`Failure upon starting server.`);
     };
