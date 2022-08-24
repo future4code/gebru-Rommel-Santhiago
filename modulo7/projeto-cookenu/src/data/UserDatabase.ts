@@ -30,4 +30,16 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
       throw new CustomError(400, error.sqlMessage || error.message);
     }
   }
+
+  public async getUserById(id: string): Promise<any> {
+    try {      
+      const result = await UserDatabase.connection("Cookenu_users")
+        .select("id", "name", "email")
+        .where({ id });
+  
+      return result[0];
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
+  };
 }

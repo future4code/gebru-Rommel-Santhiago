@@ -39,4 +39,16 @@ export class UserController {
           res.status(400).send(error.message);
         }
       };
+
+      public profile = async (req: Request, res: Response) => {
+        try {
+          const token = req.headers.authorization as string;
+
+          const userInfo = await this.userBusiness.profile(token);
+
+          res.status(200).send(userInfo)
+        } catch (error: any) {
+          res.status(400).send(error.message);
+        }
+      }
 }

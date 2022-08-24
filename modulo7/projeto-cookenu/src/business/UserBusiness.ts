@@ -1,4 +1,4 @@
-import { CustomError, InvalidEmail, InvalidName, InvalidPassword, RegisteredUser, UserNotFound } from "../errors/customErrors";
+import { CustomError, InvalidEmail, InvalidName, InvalidPassword, RegisteredUser, Unauthorized, UserNotFound } from "../errors/customErrors";
 import { UserInputDTO, user } from "../models/user";
 import { AuthenticationData, Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/idGenerator";
@@ -102,6 +102,22 @@ export class UserBusiness {
       const access_token = authenticator.generateToken(payload);
 
       return access_token;
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    };
+  };
+
+  public profile = async (token: string): Promise<string> => {
+    try {      
+      const tokenData = authenticator.getTokenData(token)
+  
+      if(!tokenData) {
+        throw new Unauthorized()
+      }
+  
+      const userId = await this.userDatabase.getUserById(tokenData.id);
+
+      return userId;
     } catch (error: any) {
       throw new CustomError(400, error.message);
     };

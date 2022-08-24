@@ -15,3 +15,8 @@ Content-Type: application/json
 	"email": "alice@lbn.com",
 	"password": "123456"
 }
+
+###
+GET http://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNmJlMDNiLTA5ZWYtNGUyOC04NDY1LTI4Njk5Y2ViOTU1NyIsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NjEzNzI2NjEsImV4cCI6MTY2MTM3NjI2MX0.ywbQM7r9HYbul5d8flM4pu1E7u9GhOGEXH8upYmAxNU
