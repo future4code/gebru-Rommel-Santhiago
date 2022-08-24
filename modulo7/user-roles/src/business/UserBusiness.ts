@@ -1,4 +1,4 @@
-import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UserNotFound } from "../errors/customErrors";
+import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UnathorizedUser, UserNotFound } from "../errors/customErrors";
 import {
   UserInputDTO,
   user,
@@ -106,26 +106,38 @@ export class UserBusiness {
       }
 
       const token = authenticator.generateToken(payload);
+
       return token;
     } catch (error: any) {
       throw new CustomError(400, error.message);
     };
   };
 
-  public editUser = async (input: EditUserInputDTO) => {
+  public editUser = async (input: EditUserInputDTO, token: string) => {
     try {
       const { name, nickname, id } = input;
 
-      if (!name || !nickname || !id) {
+      if (!name || !nickname || !id || !token) {
         throw new CustomError(
           400,
-          'Preencha os campos "id", "name" e "nickname"'
+          'Preencha os campos "id", "name", "nickname" e "token"'
         );
       };
 
       if (name.length < 4) {
         throw new InvalidName();
       };
+
+      const userExist = await this.userDatabase.getUserById(id)
+      if(!userExist){
+        throw new UserNotFound()
+      }
+  
+      const tokenData = authenticator.getTokenData(token)
+  
+      if(tokenData.role !== "admin") {
+        throw new UnathorizedUser()
+      }
 
       const editUserInput: EditUserInput = {
         id,
@@ -142,9 +154,13 @@ export class UserBusiness {
 
   public profile = async (token: string): Promise<string> => {
     try {      
-      const { id } = authenticator.getTokenData(token);
+      const tokenData = authenticator.getTokenData(token)
   
-      const userId = await this.userDatabase.getUserById(id);
+      if(tokenData.role !== "normal") {
+        throw new UnathorizedUser()
+      }
+  
+      const userId = await this.userDatabase.getUserById(tokenData.id);
 
       return userId;
     } catch (error: any) {

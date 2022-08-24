@@ -14,4 +14,4 @@ userRouter.get('/profile', (req, res)=> userController.profile(req, res))
 userRouter.post('/signup', (req, res)=> userController.signup(req, res))
 userRouter.post('/login', (req, res)=> userController.login(req, res))
 
-userRouter.put('/edit', (req, res)=> userController.editUser(req, res))
+userRouter.put('/edit/:id', (req, res)=> userController.editUser(req, res))

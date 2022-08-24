@@ -44,14 +44,14 @@ export class UserController {
 
       public editUser = async (req: Request, res: Response) => {
         try {
-          
+          const token = req.headers.authorization as string
           const input: EditUserInputDTO = {
             name: req.body.name,
             nickname: req.body.nickname,
             id: req.params.id
           };
 
-          await this.userBusiness.editUser(input);
+          await this.userBusiness.editUser(input, token);
     
           res.status(201).send({ message: "Usuário alterado!" });
         } catch (error: any) {

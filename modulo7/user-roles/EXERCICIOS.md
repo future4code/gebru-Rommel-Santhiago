@@ -16,3 +16,8 @@
     
     d) *Altere o login para criar o token com o `role` do usuário*
 
+## - Exercício 2
+    
+    Agora, vamos usar esse `role` no endpoint `/user/profile`. Somente o usuários "normais" podem acessar esse endpoint. 
+    
+    a) *Altere o endpoint para que retorne um erro de `Unauthorized` para os usuários que "não sejam normais" e tentem acessar esse endpoint*
