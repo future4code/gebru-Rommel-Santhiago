@@ -23,7 +23,7 @@ export class UserBusiness {
         );
       };
 
-      if (name.length < 4) {
+      if (name.length < 2) {
         throw new InvalidName();
       };
 
@@ -118,6 +118,33 @@ export class UserBusiness {
       const userId = await this.userDatabase.getUserById(tokenData.id);
 
       return userId;
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    };
+  };
+
+  public getProfile = async (id: string, token: string): Promise<string> => {
+    try {      
+      const tokenData = authenticator.getTokenData(token)
+
+      if (!id || !token) {
+        throw new CustomError(
+          400,
+          'Preencha os campos "id" e "token"'
+        );
+      };
+
+      if(!tokenData) {
+        throw new Unauthorized()
+      }
+
+      const user = await this.userDatabase.getUserById(id)
+      
+      if(!user){
+        throw new UserNotFound()
+      }
+
+      return user;
     } catch (error: any) {
       throw new CustomError(400, error.message);
     };
