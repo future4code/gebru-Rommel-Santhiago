@@ -27,3 +27,9 @@ export class RegisteredUser extends CustomError{
         super(400, "Usuário já cadastrado")
     }
 }
+
+export class UserNotFound extends CustomError{ 
+    constructor(){
+        super(404, "Usuário não encontrado")
+    }
+}
