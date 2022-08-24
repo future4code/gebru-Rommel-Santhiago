@@ -1,4 +1,3 @@
-import { UserDatabase } from "../data/UserDatabase";
 import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UserNotFound } from "../errors/customErrors";
 import {
   UserInputDTO,
@@ -6,7 +5,7 @@ import {
   EditUserInputDTO,
   EditUserInput,
 } from "../model/user";
-import { Authenticator } from "../services/Authenticator";
+import { AuthenticationData, Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/idGenerator";
 import { UserRepository } from "./UserRepository";
 import { HashGenerator } from "../services/HashGenerator";
@@ -16,16 +15,16 @@ const authenticator = new Authenticator();
 const hashGenerator = new HashGenerator();
 
 export class UserBusiness {
-  constructor(private userDatabase: UserRepository) { }
+  constructor(private userDatabase: UserRepository) {}
   
   public signup = async (input: UserInputDTO): Promise<string> => {
     try {
-      const { name, nickname, email, password } = input;
+      let { name, nickname, email, password, role } = input;
 
-      if (!name || !nickname || !email || !password) {
+      if (!name || !nickname || !email || !password || !role) {
         throw new CustomError(
           400,
-          'Preencha os campos "name","nickname", "email" e "password"'
+          'Preencha os campos "name","nickname", "email", "password" e "role"'
         );
       };
 
@@ -36,6 +35,10 @@ export class UserBusiness {
       if (password.length < 6) {
         throw new InvalidPassword();
       };
+
+      if (role !== "normal" && role !== "admin"){
+        role = "normal"
+      }
 
       const checkEmail = (email: string) => {
         let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -56,11 +59,12 @@ export class UserBusiness {
         nickname,
         email,
         password: hashPassword,
+        role
       };
       
       await this.userDatabase.insertUser(user);
 
-      const token = authenticator.generateToken({ id });
+      const token = authenticator.generateToken({id, role});
       return token;
     } catch (error: any) {
       throw new CustomError(400, error.message);
@@ -96,8 +100,12 @@ export class UserBusiness {
         throw new InvalidPassword()
       }
 
-      const id = user.id;
-      const token = authenticator.generateToken({ id});
+      const payload :AuthenticationData = {
+        id: user.id, 
+        role: user.role
+      }
+
+      const token = authenticator.generateToken(payload);
       return token;
     } catch (error: any) {
       throw new CustomError(400, error.message);

@@ -13,6 +13,7 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
           nickname: user.nickname,
           email: user.email,
           password: user.password,
+          role: user.role
         })
         .into("Auth_users");
     } catch (error: any) {

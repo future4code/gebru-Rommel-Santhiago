@@ -5,7 +5,8 @@ Content-Type: application/json
     "name": "Rick Sanchez",
     "nickname": "Rick",
     "email": "rick@email.com",
-    "password": "iHateJerry"
+    "password": "iHateJerry",
+    "role": "admin"
 }
 
 ###

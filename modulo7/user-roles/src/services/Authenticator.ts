@@ -2,7 +2,8 @@ import * as jwt from "jsonwebtoken";
 import { Unauthorized } from "../errors/customErrors";
 
 export type AuthenticationData = {
-  id: string,
+  id: string, 
+  role: string
 };
 
 export class Authenticator {
