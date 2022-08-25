@@ -25,3 +25,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNmJlMDNiLTA5ZWYt
 GET http://localhost:3003/user/1cf3f207-158c-4eac-8e08-663aa3639810
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNmJlMDNiLTA5ZWYtNGUyOC04NDY1LTI4Njk5Y2ViOTU1NyIsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NjEzNzI2NjEsImV4cCI6MTY2MTM3NjI2MX0.ywbQM7r9HYbul5d8flM4pu1E7u9GhOGEXH8upYmAxNU
+
+###
+POST http://localhost:3003/recipe/create 
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNmJlMDNiLTA5ZWYtNGUyOC04NDY1LTI4Njk5Y2ViOTU1NyIsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NjE0NjY5MDgsImV4cCI6MTY2MTQ3MDUwOH0.J8Kb_VCW-PUmcyk30J6_feyr5vwwWpwTGkv3dHwLsaU
+
+{
+	"title": "Bolo de cenoura de liquidificador",
+	"description": "Bolo de cenoura é um clássico, e o melhor é que a receita é muito simples de fazer. Aqui, você prepara a massa com o auxílio do liquidificador e finaliza o doce com uma deliciosa calda de achocolatado, manteiga, leite e açúcar."
+}
