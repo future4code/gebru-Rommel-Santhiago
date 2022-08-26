@@ -15,4 +15,13 @@ implements RecipeRepository
       author_id: recipe.authorId
     });
   };
+
+  public getRecipe = async (id: string) => {
+    const recipe = await RecipeDatabase.connection()
+      .select("id", "title", "description", "created_at")
+      .from("Cookenu_recipes")
+      .where({ id: id })
+
+    return recipe[0];
+  };
 }

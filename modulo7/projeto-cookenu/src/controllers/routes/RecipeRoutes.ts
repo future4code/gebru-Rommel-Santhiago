@@ -10,4 +10,6 @@ const recipeDatabase = new RecipeDatabase()
 const recipeBusiness = new RecipeBusiness(recipeDatabase)
 const recipeController = new RecipeController(recipeBusiness)
 
+recipeRouter.get("/:id", (req, res) => recipeController.getRecipe(req, res))
+
 recipeRouter.post("/create", (req, res) => recipeController.createRecipe(req, res))

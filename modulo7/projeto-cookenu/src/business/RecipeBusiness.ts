@@ -45,4 +45,28 @@ export class RecipeBusiness {
       throw new Error(error.message);
     }
   };
+
+  public getRecipe = async (id: string, token: string) => {
+    try {
+      const tokenData = authenticator.getTokenData(token)
+      
+      if(!tokenData) {
+        throw new Unauthorized()
+      }
+
+      if (!id) {
+        throw new Error('É obrigatorio informar o "ID" da receita');
+      }
+
+      const recipe = await this.recipeDatabase.getRecipe(id)
+
+      if(!recipe) {
+        throw new Error("Receita não encontrada")
+      }
+
+      return recipe;
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
+  }
 }
