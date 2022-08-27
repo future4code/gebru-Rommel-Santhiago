@@ -1,5 +1,5 @@
 import { CustomError, InvalidEmail, InvalidName, InvalidPassword, RegisteredUser, Unauthorized, UserNotFound } from "../errors/customErrors";
-import { UserInputDTO, user } from "../models/user";
+import { UserInputDTO, user, FollowFriend, LoginInputDTO } from "../models/user";
 import { AuthenticationData, Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/idGenerator";
 import { UserRepository } from "./UserRepository";
@@ -65,7 +65,7 @@ export class UserBusiness {
     };
   };
 
-  public login = async (input: any): Promise<string> => {
+  public login = async (input: LoginInputDTO): Promise<string> => {
     try {
       const { email, password } = input;
 
@@ -130,7 +130,7 @@ export class UserBusiness {
       if (!id || !token) {
         throw new CustomError(
           400,
-          'Preencha os campos "id" e "token"'
+          'Preencha os campos "id" e "authorization"'
         );
       };
 
@@ -149,4 +149,34 @@ export class UserBusiness {
       throw new CustomError(400, error.message);
     };
   };
+
+  public followFriends =  async (userToFollowId: string, token: string) => {
+    try {
+      const tokenData = authenticator.getTokenData(token)
+
+      if (!userToFollowId || !token) {
+        throw new CustomError(
+          400,
+          'Preencha os campos "userToFollowId" e "authorization"'
+        );
+      };
+
+      if(!tokenData) {
+        throw new Unauthorized()
+      }
+
+      const id: string = idGenerator.generateId();
+
+      const followFriend: FollowFriend = {
+          id,
+          user_id: tokenData.id,
+          friend_id: userToFollowId
+      }
+
+      await this.userDatabase.followFriends(followFriend)
+
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    };
+  }
 }

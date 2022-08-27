@@ -17,3 +17,9 @@ export type user = {
    email: string,
    password: string
 }
+
+export type FollowFriend = {
+   id: string,
+   user_id: string,
+   friend_id: string
+ }

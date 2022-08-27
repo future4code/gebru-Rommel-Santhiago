@@ -64,4 +64,17 @@ export class UserController {
           res.status(400).send(error.message);
         }
       }
+
+      public followFriends = async (req: Request, res: Response) => {
+        try {
+          const token = req.headers.authorization as string;
+          const { userToFollowId } = req.body
+    
+          await this.userBusiness.followFriends(userToFollowId, token);
+    
+          res.status(200).send({ message: "Amizade criada com sucesso!" })
+        } catch (error: any) {
+          res.status(400).send(error.message);
+        };
+      };
 }

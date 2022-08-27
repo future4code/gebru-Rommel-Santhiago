@@ -1,6 +1,6 @@
 import { UserRepository } from "../business/UserRepository";
 import { CustomError } from "../errors/customErrors";
-import { user } from "../models/user";
+import { FollowFriend, user } from "../models/user";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase implements UserRepository {
@@ -40,6 +40,18 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
       return result[0];
     } catch (error: any) {
       throw new CustomError(400, error.message);
+    }
+  };
+
+  public followFriends = async (followFriend: FollowFriend) => {
+    try {
+       await UserDatabase.connection.insert({
+          id: followFriend.id,
+          user_id: followFriend.user_id,
+          friend_id: followFriend.friend_id
+       }).into('Cookenu_follow')
+    } catch (error: any) {
+       throw new Error(error.message)
     }
   };
 }

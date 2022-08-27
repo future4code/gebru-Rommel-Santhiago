@@ -14,3 +14,10 @@ CREATE TABLE IF NOT EXISTS Cookenu_recipes (
     author_id VARCHAR(255),
     FOREIGN KEY (author_id) REFERENCES Cookenu_users (id)
 );
+
+CREATE TABLE IF NOT EXISTS Cookenu_follow (
+    id VARCHAR(255) PRIMARY KEY,
+    user_id VARCHAR(255) NOT NULL,
+    friend_id VARCHAR(255) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Cookenu_users (id)
+);
