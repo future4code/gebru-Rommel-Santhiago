@@ -82,3 +82,16 @@
     
     c) *O que foi mais difícil de fazer?*
         - Definir a saida da função
+
+
+## - Exercício 4
+    
+    Vamos escrever os testes da função do exercício 3. 
+    
+    a) *Escreva um teste que receba um usuário brasileiro que possa entrar em um estabelecimento no Brasil*
+    
+    b) *Escreva um teste que receba um usuário americando que possa entrar em um estabelecimento no Brasil*
+    
+    c) *Escreva um teste que receba dois usuários brasileiros e dois americanos. Todos devem ter a idade de 19 anos e quererem entrar em um estabelecimento nos Estados Unidos.*
+    
+    d) *Escreva um teste que receba dois usuários brasileiros e dois americanos. Os brasileiros devem ter 19 anos e os americanos 21 anos. Eles querem estrar em um estabelecimento nos Estados Unidos.*
