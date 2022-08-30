@@ -77,4 +77,17 @@ export class UserController {
           res.status(400).send(error.message);
         };
       };
+
+      public unfollow = async (req: Request, res: Response) => {
+        try {
+          const token = req.headers.authorization as string;
+          const { userToUnfollowId } = req.body
+
+          await this.userBusiness.unfollow(token, userToUnfollowId);
+    
+          res.status(200).send({ message: "Amizade deletada com sucesso!" })
+        } catch (error: any) {
+          res.status(400).send(error.message);
+        };
+      };
 }

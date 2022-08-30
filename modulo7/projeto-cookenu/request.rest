@@ -2,8 +2,8 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json 
 
 {
-	"name": "Bob",
-	"email": "bob@lbn.com",
+	"name": "Saullo",
+	"email": "saullo@lbn.com",
 	"password": "123456"
 }
 
@@ -12,7 +12,7 @@ POST http://localhost:3003/user/login
 Content-Type: application/json 
 
 {
-	"email": "alice@lbn.com",
+	"email": "bob@lbn.com",
 	"password": "123456"
 }
 
@@ -29,11 +29,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNmJlMDNiLTA5ZWYt
 ###
 POST http://localhost:3003/recipe/create 
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNmJlMDNiLTA5ZWYtNGUyOC04NDY1LTI4Njk5Y2ViOTU1NyIsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NjE0NjY5MDgsImV4cCI6MTY2MTQ3MDUwOH0.J8Kb_VCW-PUmcyk30J6_feyr5vwwWpwTGkv3dHwLsaU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFjZjNmMjA3LTE1OGMtNGVhYy04ZTA4LTY2M2FhMzYzOTgxMCIsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NjE2Mzk4OTUsImV4cCI6MTY2MTY0MzQ5NX0.yVNl0zPMNKRUmi7Y2gKeD_LEgQ6Xf1Cj-i5ONEsLFdY
 
 {
-	"title": "Bolo de cenoura de liquidificador",
-	"description": "Bolo de cenoura é um clássico, e o melhor é que a receita é muito simples de fazer. Aqui, você prepara a massa com o auxílio do liquidificador e finaliza o doce com uma deliciosa calda de achocolatado, manteiga, leite e açúcar."
+	"title": "Macarrão de abobrinha simples",
+	"description": "Traga leveza e um sabor diferente ao tradicional preparo do macarrão trocando a massa por abobrinha. Basta fatiar o vegetal em tiras fininhas, com uma faca ou uma mandolina. Assim, os fios ficam parecendo macarrão e com excelente sabor."
 }
 
 
@@ -45,8 +45,17 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNmJlMDNiLTA5ZWYt
 ###
 POST http://localhost:3003/user/follow
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFjZjNmMjA3LTE1OGMtNGVhYy04ZTA4LTY2M2FhMzYzOTgxMCIsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NjE2NDA4NTMsImV4cCI6MTY2MTY0NDQ1M30.2jLKoXXOWhc1fjqs2QE-HsaNRRWPxx00H5e73mhv6aQ
+
+{
+	"userToFollowId": "fa6be03b-09ef-4e28-8465-28699ceb9557"
+}
+
+###
+POST http://localhost:3003/user/unfollow
+Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhNmJlMDNiLTA5ZWYtNGUyOC04NDY1LTI4Njk5Y2ViOTU1NyIsInJvbGUiOiJub3JtYWwiLCJpYXQiOjE2NjE2MzQ3NTcsImV4cCI6MTY2MTYzODM1N30.OrPmQzYmKT8-WhviRBY3JJ0ToOolv4KgHrSzailn6SA
 
 {
-	"userToFollowId": "1cf3f207-158c-4eac-8e08-663aa3639810"
+	"userToUnfollowId": "1cf3f207-158c-4eac-8e08-663aa3639810"
 }

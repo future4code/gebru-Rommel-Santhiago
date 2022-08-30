@@ -10,11 +10,11 @@ const authenticator = new Authenticator();
 const hashGenerator = new HashGenerator();
 
 export class UserBusiness {
-  constructor(private userDatabase: UserRepository) {}
-  
+  constructor(private userDatabase: UserRepository) { }
+
   public signup = async (input: UserInputDTO): Promise<string> => {
     try {
-      let { name, email, password} = input;
+      let { name, email, password } = input;
 
       if (!name || !email || !password) {
         throw new CustomError(
@@ -37,13 +37,13 @@ export class UserBusiness {
       };
 
       if (!checkEmail(email)) {
-          throw new InvalidEmail();
+        throw new InvalidEmail();
       };
 
       const userExist = await this.userDatabase.findUserByEmail(email)
 
-      if(userExist){
-          throw new RegisteredUser()
+      if (userExist) {
+        throw new RegisteredUser()
       }
       const id: string = idGenerator.generateId();
 
@@ -55,10 +55,10 @@ export class UserBusiness {
         email,
         password: hashPassword
       };
-      
+
       await this.userDatabase.insertUser(user);
 
-      const token = authenticator.generateToken({id});
+      const token = authenticator.generateToken({ id });
       return token;
     } catch (error: any) {
       throw new CustomError(400, error.message);
@@ -79,7 +79,7 @@ export class UserBusiness {
       };
 
       if (!checkEmail(email)) {
-          throw new InvalidEmail();
+        throw new InvalidEmail();
       };
 
       const user = await this.userDatabase.findUserByEmail(email);
@@ -90,12 +90,12 @@ export class UserBusiness {
 
       const hashCompare = await hashGenerator.compareHash(password, user.password)
 
-      if(!hashCompare){ 
+      if (!hashCompare) {
         throw new InvalidPassword()
       }
 
-      const payload :AuthenticationData = {
-        id: user.id, 
+      const payload: AuthenticationData = {
+        id: user.id,
         role: user.role as string
       }
 
@@ -108,13 +108,13 @@ export class UserBusiness {
   };
 
   public profile = async (token: string): Promise<string> => {
-    try {      
+    try {
       const tokenData = authenticator.getTokenData(token)
-  
-      if(!tokenData) {
+
+      if (!tokenData) {
         throw new Unauthorized()
       }
-  
+
       const userId = await this.userDatabase.getUserById(tokenData.id);
 
       return userId;
@@ -124,7 +124,7 @@ export class UserBusiness {
   };
 
   public getProfile = async (id: string, token: string): Promise<string> => {
-    try {      
+    try {
       const tokenData = authenticator.getTokenData(token)
 
       if (!id || !token) {
@@ -134,13 +134,13 @@ export class UserBusiness {
         );
       };
 
-      if(!tokenData) {
+      if (!tokenData) {
         throw new Unauthorized()
       }
 
       const user = await this.userDatabase.getUserById(id)
-      
-      if(!user){
+
+      if (!user) {
         throw new UserNotFound()
       }
 
@@ -150,7 +150,7 @@ export class UserBusiness {
     };
   };
 
-  public followFriends =  async (userToFollowId: string, token: string) => {
+  public followFriends = async (userToFollowId: string, token: string) => {
     try {
       const tokenData = authenticator.getTokenData(token)
 
@@ -161,16 +161,16 @@ export class UserBusiness {
         );
       };
 
-      if(!tokenData) {
+      if (!tokenData) {
         throw new Unauthorized()
       }
 
       const id: string = idGenerator.generateId();
 
       const followFriend: FollowFriend = {
-          id,
-          user_id: tokenData.id,
-          friend_id: userToFollowId
+        id,
+        userId: tokenData.id,
+        friendId: userToFollowId
       }
 
       await this.userDatabase.followFriends(followFriend)
@@ -178,5 +178,32 @@ export class UserBusiness {
     } catch (error: any) {
       throw new CustomError(400, error.message);
     };
+  }
+
+  public unfollow = async (token: string, userToUnfollowId: string) => {
+    try {
+      const tokenData = authenticator.getTokenData(token)
+
+      if (!userToUnfollowId || !token) {
+        throw new CustomError(
+          400,
+          'Preencha os campos "userToUnfollowId" e "authorization"'
+        );
+      };
+
+      if (!tokenData) {
+        throw new Unauthorized()
+      }
+
+      const following = await this.userDatabase.getFollowingById(tokenData.id, userToUnfollowId)
+
+      if (!following) {
+        throw new Error('Essa amizade não existe')
+      }
+
+      await this.userDatabase.unfollow(following)
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
   }
 }
