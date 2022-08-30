@@ -15,7 +15,7 @@ test("Testing balance greater than value", () => {
 	})
 })
 
-test("Testing balance greater than value", () => {
+test("Testing balance equal to value", () => {
 	const user: User = {
 		name: "Astrodev",
 		balance: 50
@@ -27,4 +27,15 @@ test("Testing balance greater than value", () => {
 		...user,
 		balance: 0
 	})
+})
+
+test("Testing the balance less than the amount", () => {
+	const user: User = {
+		name: "Astrodev",
+		balance: 30
+	}
+
+	const result = performPurchase(user, 50)
+	
+	expect(result).not.toBeDefined()
 })
