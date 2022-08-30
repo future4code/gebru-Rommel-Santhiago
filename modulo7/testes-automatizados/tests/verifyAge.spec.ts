@@ -58,8 +58,33 @@ test("No one allowed", () => {
         american,
     ]);
     expect(result.brazilians.unallowed).toEqual(["Astrodev BR", "Astrodev BR"]);
-    expect(result.americans.unallowed).toEqual([
-        "Astrodev EUA",
-        "Astrodev EUA",
+    expect(result.americans.unallowed).toEqual(["Astrodev EUA", "Astrodev EUA"]);
+});
+
+test("2 american allowed and 2 brazilians unallowed", () => {
+    const brazilian: User = {
+        name: "Astrodev BR",
+        age: 19,
+        nacionality: NACIONALITY.BRAZILIAN,
+    };
+
+    const american: User = {
+        name: "Astrodev EUA",
+        age: 21,
+        nacionality: NACIONALITY.AMERICAN,
+    };
+
+    const casino: Casino = {
+        name: "Balada Estelar",
+        location: LOCATION.EUA,
+    };
+
+    const result = verifyAge(casino, [
+        brazilian,
+        brazilian,
+        american,
+        american,
     ]);
+    expect(result.brazilians.unallowed).toEqual(["Astrodev BR", "Astrodev BR"]);
+    expect(result.americans.allowed).toEqual(["Astrodev EUA", "Astrodev EUA"]);
 });
