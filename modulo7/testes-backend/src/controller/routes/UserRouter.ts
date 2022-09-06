@@ -17,5 +17,7 @@ const userController = new UserController(userBusiness)
 
 export const userRouter = express.Router();
 
+userRouter.get('/profile/:id', (req, res)=> userController.getUserById(req, res));
+
 userRouter.post("/signup", (req, res) => userController.signup(req, res));
 userRouter.post("/login", (req, res) => userController.login(req, res));

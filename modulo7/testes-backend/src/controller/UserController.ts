@@ -32,4 +32,17 @@ export class UserController {
          res.status(statusCode || 400).send({ message });
       }
    }
+
+   public async getUserById(req: Request, res: Response) {
+      try {
+        const token = req.headers.authorization as string;
+        const { id } = req.params
+
+        const user = await this.userBusiness.getUserById(id, token);
+
+        res.status(200).send(user)
+      } catch (error: any) {
+        res.status(400).send(error.message);
+      }
+   }
 }

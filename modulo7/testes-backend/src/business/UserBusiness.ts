@@ -1,4 +1,4 @@
-import { CustomError } from "../errors/CustomError";
+import { CustomError, Unauthorized, UserNotFound } from "../errors/CustomError";
 import { User, stringToUserRole } from "../model/User";
 import { IHashGenerator, IIDGenerator, ITokenGenerator } from "./Ports";
 import { UserRepository } from "./UserRepository";
@@ -18,16 +18,25 @@ export class UserBusiness {
       role: string
    ) {
       try {
-         if (!name || !email || !password || !role) {
+         if (!name || !email || !password) {
             throw new CustomError(422, "Missing input");
          }
 
-         if (email.indexOf("@") === -1) {
+         const checkEmail = (email: string) => {
+            let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+            return regex.test(email);
+         };
+
+         if (!checkEmail(email)) {
             throw new CustomError(422, "Invalid email");
          }
 
          if (password.length < 6) {
             throw new CustomError(422, "Invalid password");
+         }
+
+         if(role !== "NORMAL" && role !== "ADMIN"){
+            role = "NORMAL"
          }
 
          const id = this.idGenerator.generate();
@@ -50,11 +59,9 @@ export class UserBusiness {
 
          throw new CustomError(error.statusCode, error.message)
       }
-
    }
 
    public async login(email: string, password: string) {
-
       try {
          if (!email || !password) {
             throw new CustomError(422, "Missing input");
@@ -85,4 +92,31 @@ export class UserBusiness {
          throw new CustomError(error.statusCode, error.message)
       }
    }
+
+   public getUserById = async (id: string, token: string): Promise<User> => {
+      try {
+        const tokenData = this.tokenGenerator.verify(token)
+  
+        if (!id || !token) {
+          throw new CustomError(
+            400,
+            'Preencha os campos "id" e "authorization"'
+          );
+        };
+  
+        if (!tokenData) {
+          throw new Unauthorized()
+        }
+  
+        const user = await this.userDatabase.getUserById(id)
+  
+        if (!user) {
+          throw new UserNotFound()
+        }
+  
+        return user;
+      } catch (error: any) {
+        throw new CustomError(error.statusCode, error.message);
+      };
+    };  
 }

@@ -1,7 +1,7 @@
 {
-    "name": "to-do-list",
+    "name": "testes-backend",
     "version": "1.0.0",
-    "description": "## ESTRUTURA DE DADOS",
+    "description": "## TESTES BACK-END",
     "main": "index.js",
     "scripts": {
         "start": "tsc && node --inspect ./build/index.js",
