@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS User_Arq (
 
 * ## Pegar usuário pelo id
   * Método: GET
-  * Path: `/profile/:id`
+  * Path: `user/profile/:id`
+  * Authorization: `token`
   * Body de Resposta: (retornar um erro se não encontrar)
     * id
     * nickname

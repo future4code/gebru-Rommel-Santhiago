@@ -9,13 +9,13 @@ export class CustomError extends Error {
 
 export class UserNotFound extends CustomError{ 
    constructor(){
-       super(404, "Usuário não encontrado")
+       super(404, "User not found")
    }
 }
 
 export class Unauthorized extends CustomError{ 
       constructor(){
-         super(401, "Usuário não não authorizado, faça login novamente")
+         super(401, "Unauthorized user, please login again")
       }
 }
  
