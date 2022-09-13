@@ -6,7 +6,8 @@
   "scripts": {
     "exercicio01": "cls && tsnd --transpile-only --ignore-watch node_modules src/exercicio01",
     "exercicio02": "cls && tsnd --transpile-only --ignore-watch node_modules src/exercicio02",
-    "exercicio03": "cls && tsnd --transpile-only --ignore-watch node_modules src/exercicio03"
+    "exercicio03": "cls && tsnd --transpile-only --ignore-watch node_modules src/exercicio03",
+    "exercicio04": "cls && tsnd --transpile-only --ignore-watch node_modules src/exercicio04"
   },
   "author": "Rommel",
   "license": "ISC",
