@@ -1,0 +1,22 @@
+POST http://localhost:3003/user/signup 
+Content-Type: application/json 
+
+{
+	"name": "Bob",
+	"email": "bob@lbn.com",
+	"password": "123456"
+}
+
+###
+POST http://localhost:3003/user/login 
+Content-Type: application/json 
+
+{
+	"email": "alice@lbn.com",
+	"password": "123456"
+}
+
+###
+GET http://localhost:3003/user/profile/9c65fb96-e8ff-42d9-9c0b-b169304e7c3f
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBhYzQwYTc2LTVmMmMtNDZlOC1iYmQ4LTM1NzdlYzE2MDRjNyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjI1MDMyMTQsImV4cCI6MTY2MzEwODAxNH0.vsZ8z6kPs2DmrHt1U4D9-JuLwRIKpQdoQZu3QoQUQsk
